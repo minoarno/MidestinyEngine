@@ -10,7 +10,9 @@ namespace dae
 	public:
 		void Add(const std::shared_ptr<SceneObject>& object);
 
+		void FixedUpdate();
 		void Update();
+		void LateUpdate();
 		void Render() const;
 
 		~Scene();

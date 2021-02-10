@@ -9,9 +9,13 @@ namespace dae
 	class TextObject final : public SceneObject
 	{
 	public:
+		void Initialize() override;
+		void FixedUpdate() override;
 		void Update() override;
+		void LateUpdate() override;
 		void Render() const override;
 
+		
 		void SetText(const std::string& text);
 		void SetPosition(float x, float y);
 

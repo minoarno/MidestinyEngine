@@ -11,6 +11,15 @@ dae::TextObject::TextObject(const std::string& text, const std::shared_ptr<Font>
 	: m_NeedsUpdate(true), m_Text(text), m_Font(font), m_Texture(nullptr)
 { }
 
+void dae::TextObject::Initialize()
+{
+}
+
+void dae::TextObject::FixedUpdate()
+{
+}
+
+
 void dae::TextObject::Update()
 {
 	if (m_NeedsUpdate)
@@ -32,11 +41,15 @@ void dae::TextObject::Update()
 	}
 }
 
+void dae::TextObject::LateUpdate()
+{
+}
+
 void dae::TextObject::Render() const
 {
 	if (m_Texture != nullptr)
 	{
-		const auto pos = m_Transform.GetPosition();
+		const glm::vec3 pos = m_Transform.GetPosition();
 		Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
 	}
 }

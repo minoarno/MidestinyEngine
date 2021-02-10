@@ -2,14 +2,42 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
+#include "BaseComponent.h"
 
-dae::GameObject::~GameObject() = default;
+dae::GameObject::~GameObject()
+{
+	for (BaseComponent* baseComponent : m_pBaseComponents)
+	{
+		delete baseComponent;
+		baseComponent = nullptr;
+	}
+	m_pBaseComponents.clear();
+}
 
-void dae::GameObject::Update(){}
+void dae::GameObject::AddComponent(BaseComponent* newComponent)
+{
+	m_pBaseComponents.push_back(newComponent);
+}
+
+void dae::GameObject::Initialize()
+{
+}
+
+void dae::GameObject::FixedUpdate()
+{
+}
+
+void dae::GameObject::Update()
+{
+}
+
+void dae::GameObject::LateUpdate()
+{
+}
 
 void dae::GameObject::Render() const
 {
-	const auto pos = m_Transform.GetPosition();
+	const glm::vec3 pos = m_Transform.GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
 }
 
