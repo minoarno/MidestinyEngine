@@ -6,10 +6,14 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
-#include <SDL.h>
+#pragma warning(push)
+#pragma warning(disable : 26812)
+#include "SDL.h"
+#pragma warning(pop)
 #include "TextObject.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include "Time.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -22,7 +26,7 @@ void dae::Minigin::Initialize()
 	}
 
 	m_Window = SDL_CreateWindow(
-		"Programming 4 assignment",
+		"Programming 4 assignment - Poppe Arno",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		640,
@@ -81,15 +85,34 @@ void dae::Minigin::Run()
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
 
+		double lag = 0.0f;
+
+		time_point<steady_clock> lastTime = high_resolution_clock::now();
+		
 		bool doContinue = true;
 		while (doContinue)
 		{
-			const auto currentTime = high_resolution_clock::now();
+			const time_point<steady_clock> currentTime = high_resolution_clock::now();
+			const double elapsed = static_cast<double>(duration_cast<seconds>(currentTime - lastTime).count());
+
+			//Saves the current elapsed time inside of the time singleton.
+			Time::GetInstance().SetElapsedSeconds(elapsed);
+
+			lastTime = currentTime;
+			lag += elapsed;
 			
 			doContinue = input.ProcessInput();
-			sceneManager.Update();
-			renderer.Render();
 			
+			while (lag >= MsPerFrame)
+			{
+				sceneManager.FixedUpdate();
+				lag -= MsPerFrame;
+			}
+			sceneManager.Update();
+			sceneManager.LateUpdate();
+			
+			renderer.Render();
+
 			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
 			this_thread::sleep_for(sleepTime);
 		}
