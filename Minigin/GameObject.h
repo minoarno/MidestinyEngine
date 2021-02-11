@@ -1,25 +1,25 @@
 #pragma once
 #include "Transform.h"
-#include "SceneObject.h"
+//#include "Texture2D.h"
 
 class BaseComponent;
 namespace dae
 {
 	class Texture2D;
-	class GameObject final : public SceneObject
+	class GameObject final
 	{
 	public:
-		void Initialize() override;
-		void FixedUpdate() override;
-		void Update() override;
-		void LateUpdate() override;
+		void Initialize();
+		void FixedUpdate();
+		void Update();
+		void LateUpdate();
 
-		void Render() const override;
+		void Render() const;
 
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 
-		GameObject() = default;
+		GameObject();
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
@@ -27,24 +27,72 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 		void AddComponent(BaseComponent* newComponent);
+		void AddChild(GameObject* newChildObject);
+		void SetParent(GameObject* newParentObject);
+		void RemoveChild(GameObject* childObject);
+
+		
+		GameObject* GetParent()const { return m_pParent; };
+		GameObject* GetChild(int index);
+		const std::vector<GameObject*>& GetChildren()const { return m_pChildren; };
+		
 		template<class T>
-		T* GetComponent()const;
+		T* GetComponent();
+		template<class T>
+		void SetComponent(T* value);
 	private:
-		Transform m_Transform;
-		std::shared_ptr<Texture2D> m_Texture{};
+		Transform* m_pTransform;
+		Texture2D* m_pTexture;
 		std::vector<BaseComponent*> m_pBaseComponents;
+		std::vector<GameObject*> m_pChildren;
+		GameObject* m_pParent = nullptr;
 	};
 
 	template<class T>
-	inline T* GameObject::GetComponent() const
+	inline T* GameObject::GetComponent()
 	{
+		if (typeid(T) == typeid(dae::Transform))
+		{
+			return reinterpret_cast<T*>(m_pTransform);
+		}
+
+		if (typeid(T) == typeid(dae::Texture2D))
+		{
+			return reinterpret_cast<T*>(m_pTexture);
+		}
+		
 		for (BaseComponent* c : m_pBaseComponents)
 		{
 			if (typeid(T) == typeid(*c))
 			{
-				return static_cast<T*>(c);
+				return reinterpret_cast<T*>(c);
 			}
 		}
 		return nullptr;
+	}
+
+	template<class T>
+	inline void GameObject::SetComponent(T* value)
+	{
+		if (typeid(T) == typeid(dae::Transform))
+		{
+			m_pTransform = reinterpret_cast<dae::Transform*>(value);
+			return;
+		}
+
+		if (typeid(T) == typeid(dae::Texture2D))
+		{
+			m_pTexture = reinterpret_cast<dae::Texture2D*>(value);
+			return;
+		}
+
+		for (BaseComponent*& c : m_pBaseComponents)
+		{
+			if (typeid(T) == typeid(*c))
+			{
+				c = reinterpret_cast<BaseComponent*>(value);
+				return;
+			}
+		}
 	}
 }

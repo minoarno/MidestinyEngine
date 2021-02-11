@@ -6,13 +6,10 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
-#pragma warning(push)
-#pragma warning(disable : 26812)
-#include "SDL.h"
-#pragma warning(pop)
-#include "TextObject.h"
+
 #include "GameObject.h"
 #include "Scene.h"
+#include "TextComponent.h"
 #include "Time.h"
 
 using namespace std;
@@ -58,7 +55,9 @@ void dae::Minigin::LoadGame() const
 	scene.Add(go);
 
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = std::make_shared<TextObject>("Midestiny Engine", font);
+	auto to = std::make_shared<GameObject>();
+	to->AddComponent(new TextComponent{font,"Midestiny Engine" });
+	//"Midestiny Engine", font
 	to->SetPosition(80, 20);
 	scene.Add(to);
 }

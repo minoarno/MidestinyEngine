@@ -1,4 +1,9 @@
 #pragma once
+namespace dae
+{
+	class GameObject;
+}
+
 class BaseComponent
 {
 public:
@@ -14,4 +19,8 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void Render() const;
+
+	void SetGameObject(dae::GameObject* ownerGameObject) { m_pGameObject = ownerGameObject; }
+protected:
+	dae::GameObject* m_pGameObject = nullptr;
 };

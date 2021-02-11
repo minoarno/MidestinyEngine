@@ -27,9 +27,6 @@
     <ClInclude Include="Texture2D.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="TextObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>GameObject</Filter>
     </ClInclude>
@@ -54,25 +51,24 @@
     <ClInclude Include="Scene.h">
       <Filter>SceneManagent</Filter>
     </ClInclude>
-    <ClInclude Include="SceneObject.h">
-      <Filter>SceneManagent</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Input</Filter>
     </ClInclude>
     <ClInclude Include="BaseComponent.h">
       <Filter>GameObject\BaseComponents</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="TextComponent.h">
+      <Filter>GameObject\BaseComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="TextObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
@@ -108,6 +104,11 @@
     <ClCompile Include="BaseComponent.cpp">
       <Filter>GameObject\BaseComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>GameObject\BaseComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
