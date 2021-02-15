@@ -10,13 +10,21 @@
 #include "GameObject.h"
 #include "Scene.h"
 #include "TextComponent.h"
+#include "FPSComponent.h"
 #include "Time.h"
 
 using namespace std;
 using namespace std::chrono;
 
+dae::Minigin::~Minigin()
+{
+	Cleanup();
+}
+
 void dae::Minigin::Initialize()
 {
+
+	
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
@@ -54,17 +62,25 @@ void dae::Minigin::LoadGame() const
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
-	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	const auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	auto to = std::make_shared<GameObject>();
 	to->AddComponent(new TextComponent{font,"Midestiny Engine" });
 	//"Midestiny Engine", font
 	to->SetPosition(80, 20);
+	scene.Add(to);
+	
+	to = std::make_shared<GameObject>();
+	to->AddComponent(new FPSComponent{font});
+	//fps
+	to->SetPosition(80, 80);
+	
 	scene.Add(to);
 }
 
 void dae::Minigin::Cleanup()
 {
 	Renderer::GetInstance().Destroy();
+	ResourceManager::GetInstance().CleanUp();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
 	SDL_Quit();
@@ -86,19 +102,19 @@ void dae::Minigin::Run()
 
 		double lag = 0.0f;
 
-		time_point<steady_clock> lastTime = high_resolution_clock::now();
+		time_point<high_resolution_clock> lastTime = high_resolution_clock::now();
 		
 		bool doContinue = true;
 		while (doContinue)
 		{
-			const time_point<steady_clock> currentTime = high_resolution_clock::now();
-			const double elapsed = static_cast<double>(duration_cast<seconds>(currentTime - lastTime).count());
+			const time_point<high_resolution_clock> currentTime = high_resolution_clock::now();
+			const double elapsed =duration_cast<duration<double>>(currentTime - lastTime).count();
 
 			//Saves the current elapsed time inside of the time singleton.
 			Time::GetInstance().SetElapsedSeconds(elapsed);
-
+			double elapsedFromTime = Time::GetInstance().GetElapsedSeconds();
 			lastTime = currentTime;
-			lag += elapsed;
+			lag += elapsedFromTime;
 			
 			doContinue = input.ProcessInput();
 			
@@ -112,7 +128,7 @@ void dae::Minigin::Run()
 			
 			renderer.Render();
 
-			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
+			auto sleepTime = duration_cast<duration<double>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
 			this_thread::sleep_for(sleepTime);
 		}
 	}

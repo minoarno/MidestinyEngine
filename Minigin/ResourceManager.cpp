@@ -11,19 +11,24 @@
 
 dae::ResourceManager::~ResourceManager()
 {
-	for(auto& p : m_Textures)
+	CleanUp();
+}
+
+void dae::ResourceManager::CleanUp()
+{
+	for (std::pair<const std::string, Texture2D*>& p : m_pTextures)
 	{
 		delete p.second;
 		p.second = nullptr;
 	}
-	m_Textures.clear();
-	
-	for (auto& p : m_Fonts)
+	m_pTextures.clear();
+
+	for (std::pair<const std::string, Font*>& p : m_pFonts)
 	{
 		delete p.second;
 		p.second = nullptr;
 	}
-	m_Fonts.clear();
+	m_pFonts.clear();
 }
 
 void dae::ResourceManager::Init(const std::string& dataPath)
@@ -50,7 +55,7 @@ void dae::ResourceManager::Init(const std::string& dataPath)
 
 dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file)
 {
-	if (m_Textures.find(file) == m_Textures.end())
+	if (m_pTextures.find(file) == m_pTextures.end())
 	{
 		const auto fullPath = m_DataPath + file;
 		auto texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
@@ -58,19 +63,19 @@ dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file)
 		{
 			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
 		}
-		m_Textures.emplace(file, new Texture2D{ texture });
+		m_pTextures.emplace(file, new Texture2D{ texture });
 	}
 
-	return m_Textures.at(file);
+	return m_pTextures.at(file);
 }
 
 dae::Font* dae::ResourceManager::LoadFont(const std::string& file, unsigned int size)
 {
-	if (m_Fonts.find(file) == m_Fonts.end())
+	if (m_pFonts.find(file) == m_pFonts.end())
 	{
 		const auto fullPath = m_DataPath + file;
-		m_Fonts.emplace( file,new Font{m_DataPath + file, size});
+		m_pFonts.emplace( file,new Font{m_DataPath + file, size});
 	}
 	
-	return m_Fonts.at(file);
+	return m_pFonts.at(file);
 }

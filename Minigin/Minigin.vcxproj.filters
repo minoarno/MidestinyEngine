@@ -63,6 +63,9 @@
     <ClInclude Include="Time.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="FPSComponent.h">
+      <Filter>GameObject\BaseComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSComponent.cpp">
+      <Filter>GameObject\BaseComponents</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

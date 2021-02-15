@@ -10,17 +10,20 @@ namespace dae
 	public:
 		void Add(const std::shared_ptr<GameObject>& object);
 
+		void Initialize();
+		
 		void FixedUpdate();
 		void Update();
 		void LateUpdate();
 		void Render() const;
 
-		~Scene();
+		void Unload();
+		
+		~Scene() = default;
 		Scene(const Scene& other) = delete;
 		Scene(Scene&& other) = delete;
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
-
 	private: 
 		explicit Scene(const std::string& name);
 

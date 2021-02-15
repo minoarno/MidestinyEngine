@@ -34,6 +34,38 @@ void dae::SceneManager::Render()
 	}
 }
 
+void dae::SceneManager::NextScene()
+{
+	if (m_Scenes.size() > 1)
+	{
+		m_Scenes[m_CurrentIndex]->Unload();
+		m_CurrentIndex = ++m_CurrentIndex % m_Scenes.size();
+		m_Scenes[m_CurrentIndex]->Initialize();
+	}
+}
+
+
+void dae::SceneManager::LoadScene(int index)
+{
+	if (index != m_CurrentIndex)
+	{
+		if (index >= 0 && index < m_Scenes.size())
+		{
+			m_Scenes[m_CurrentIndex]->Unload();
+			m_CurrentIndex = index;
+			m_Scenes[m_CurrentIndex]->Initialize();
+		}
+		else
+		{
+			// out of range
+		}
+	}
+	else
+	{
+		// Same scene	
+	}
+}
+
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
 	const std::shared_ptr<Scene>& scene = std::shared_ptr<Scene>(new Scene(name));

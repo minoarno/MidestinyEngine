@@ -13,10 +13,14 @@ namespace dae
 		void Update();
 		void LateUpdate();
 
+		void NextScene();
+		void LoadScene(int index);
+		
 		void Render();
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;
 		std::vector<std::shared_ptr<Scene>> m_Scenes;
+		int m_CurrentIndex = 0;
 	};
 }

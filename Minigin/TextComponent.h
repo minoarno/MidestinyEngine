@@ -17,11 +17,11 @@ public:
 	TextComponent& operator=(TextComponent&& other) = default;
 	virtual ~TextComponent() = default;
 
-	void Initialize() override;
-	void FixedUpdate() override;
-	void Update() override;
-	void LateUpdate() override;
-	void Render() const override;
+	virtual void Initialize() override;
+	virtual void FixedUpdate() override;
+	virtual void Update() override;
+	virtual void LateUpdate() override;
+	virtual void Render() const override;
 
 	void SetText(const std::string& text);
 protected:

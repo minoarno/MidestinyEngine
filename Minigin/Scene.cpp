@@ -11,7 +11,19 @@ Scene::Scene(const std::string& name)
 {
 }
 
-Scene::~Scene() = default;
+void Scene::Initialize()
+{
+	for (std::shared_ptr<GameObject>& object : m_Objects)
+	{
+		object->Initialize();
+	}
+}
+
+void Scene::Unload()
+{
+	
+}
+
 
 void Scene::Add(const std::shared_ptr<GameObject>& object)
 {

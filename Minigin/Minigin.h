@@ -5,6 +5,7 @@ namespace dae
 	class Minigin
 	{
 	public:
+		~Minigin();
 		void Initialize();
 		void LoadGame() const;
 		void Cleanup();
