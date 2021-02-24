@@ -41,6 +41,7 @@ void TextComponent::LateUpdate()
 			{
 				throw std::runtime_error(std::string("Render text failed: ") + SDL_GetError());
 			}
+			
 			SDL_Texture* texture = SDL_CreateTextureFromSurface(dae::Renderer::GetInstance().GetSDLRenderer(), surf);
 			if (texture == nullptr)
 			{

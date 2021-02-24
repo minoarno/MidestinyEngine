@@ -49,7 +49,7 @@ void dae::SceneManager::LoadScene(int index)
 {
 	if (index != m_CurrentIndex)
 	{
-		if (index >= 0 && index < m_Scenes.size())
+		if (index >= 0 && index < int(m_Scenes.size()))
 		{
 			m_Scenes[m_CurrentIndex]->Unload();
 			m_CurrentIndex = index;

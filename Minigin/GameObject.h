@@ -1,6 +1,6 @@
 #pragma once
 #include "Transform.h"
-//#include "Texture2D.h"
+#include "Texture2D.h"
 
 class BaseComponent;
 namespace dae
@@ -76,12 +76,15 @@ namespace dae
 	{
 		if (typeid(T) == typeid(dae::Transform))
 		{
+			//delete m_pTransform;
+			delete m_pTransform;
 			m_pTransform = reinterpret_cast<dae::Transform*>(value);
 			return;
 		}
 
 		if (typeid(T) == typeid(dae::Texture2D))
 		{
+			delete m_pTexture;
 			m_pTexture = reinterpret_cast<dae::Texture2D*>(value);
 			return;
 		}
@@ -90,6 +93,7 @@ namespace dae
 		{
 			if (typeid(T) == typeid(*c))
 			{
+				delete c;
 				c = reinterpret_cast<BaseComponent*>(value);
 				return;
 			}

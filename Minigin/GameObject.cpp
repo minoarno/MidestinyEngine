@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "BaseComponent.h"
 #include "Transform.h"
+#include "Texture2D.h"
 
 dae::GameObject::GameObject()
 	: m_pTransform{new Transform{}}
@@ -26,6 +27,15 @@ dae::GameObject::~GameObject()
 		child = nullptr;
 	}
 	m_pChildren.clear();
+
+	delete m_pTransform;
+	m_pTransform = nullptr;
+
+	if (m_pTexture == nullptr)
+	{
+		//delete m_pTexture;
+		//m_pTexture = nullptr;
+	}
 }
 
 void dae::GameObject::AddComponent(BaseComponent* newComponent)
@@ -75,7 +85,7 @@ void dae::GameObject::RemoveChild(GameObject* childObject)
 
 dae::GameObject* dae::GameObject::GetChild(int index)
 {
-	if (index >= m_pChildren.size())
+	if (index >= int(m_pChildren.size()))
 	{
 		return nullptr;
 	}
@@ -137,8 +147,6 @@ void dae::GameObject::LateUpdate()
 
 void dae::GameObject::Render() const
 {
-	m_pTexture;
-	
 	const glm::vec3 pos = m_pTransform->GetPosition();
 	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 

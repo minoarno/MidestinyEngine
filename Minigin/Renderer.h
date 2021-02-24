@@ -14,6 +14,7 @@ namespace dae
 	{
 	public:
 		void Init(SDL_Window* window);
+		static int GetOpenGLDriverIndex();
 		void Render() const;
 		void Destroy();
 
@@ -23,6 +24,9 @@ namespace dae
 		SDL_Renderer* GetSDLRenderer() const { return m_Renderer; }
 	private:
 		SDL_Renderer* m_Renderer{};
+
+		SDL_Window* m_Window = nullptr;
+		static bool m_ShowDemo;
 	};
 }
 

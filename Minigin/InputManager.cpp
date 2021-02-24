@@ -1,42 +1,118 @@
 #include "MiniginPCH.h"
+#include <XInput.h>
 #include "InputManager.h"
 #include <SDL.h>
+#include "Commands.h"
+
+dae::InputManager::~InputManager()
+{
+	for (auto c : m_ControllerCommands)
+	{
+		delete c.second.second;
+		c.second.second = nullptr;
+	}
+	m_ControllerCommands.clear();
+
+	for (auto c : m_KeyboardCommands)
+	{
+		delete c.second;
+		c.second = nullptr;
+	}
+}
 
 
 bool dae::InputManager::ProcessInput()
 {
-	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
+	//DWORD state;
+	SecureZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
 
+	if (!IsPressed(ControllerButton(m_CurrentState.Gamepad.wButtons)))
+	{
+		for (auto& c : m_ControllerCommands)
+		{
+			if (c.second.first == true)
+			{
+				c.second.first = false;
+				c.second.second->OnRelease();
+			}
+		}
+	}
+
+	m_DidInputGet = false;
 	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) {
+	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+		{
+			std::cout << "YOU SHOULDN'T BE HERE UNLESS YOU CLOSE" << '\n';
 			return false;
 		}
-		if (e.type == SDL_KEYDOWN) {
-			
+		if (e.type == SDL_KEYDOWN)
+		{
+
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN) {
-			
+		if (e.type == SDL_KEYUP)
+		{
+
+		}
+		if (e.type == SDL_MOUSEBUTTONDOWN)
+		{
+
+		}
+		if (e.type == SDL_MOUSEBUTTONUP)
+		{
+
+		}
+		for (auto& key : m_KeyboardCommands)
+		{
+			if (key.first == e.key.keysym.scancode)
+			{
+				key.second->OnHold();
+			}
+		}
+
+		if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+		{
+			m_KeyboardCommands.at(e.key.keysym.scancode)->OnHold();
 		}
 	}
 
 	return true;
 }
 
-bool dae::InputManager::IsPressed(ControllerButton button) const
+bool dae::InputManager::IsPressed(ControllerButton button)
 {
-	switch (button)
+	if (m_ControllerCommands.find(button) != m_ControllerCommands.end())
 	{
-	case ControllerButton::ButtonA:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
-	case ControllerButton::ButtonB:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_B;
-	case ControllerButton::ButtonX:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X;
-	case ControllerButton::ButtonY:
-		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
-	default: return false;
+		const bool previousState = m_ControllerCommands.at(button).first;
+		if (previousState == false)
+		{
+			m_ControllerCommands.at(button).first = true;
+			m_ControllerCommands.at(button).second->OnPressDown();
+		}
+		else
+		{
+			m_ControllerCommands.at(button).second->OnHold();
+		}
+		return true;
 	}
+	return false;
 }
 
+SDL_Event dae::InputManager::GetEvent()
+{
+	SDL_Event temp = m_Event;
+	m_Event = SDL_Event{};
+	return temp;
+}
+
+void dae::InputManager::AddInput(ControllerButton controllerButton, Command* command)
+{
+	m_ControllerCommands.emplace(controllerButton, std::make_pair(false, command));
+}
+
+void dae::InputManager::AddInput(SDL_Scancode scancode, Command* command)
+{
+	m_KeyboardCommands.emplace(scancode, command);
+}

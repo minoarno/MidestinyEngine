@@ -34,15 +34,15 @@ void dae::Minigin::Initialize()
 		"Programming 4 assignment - Poppe Arno",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		640,
-		480,
+		1280,
+		960,
 		SDL_WINDOW_OPENGL
 	);
 	if (m_Window == nullptr) 
 	{
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
-	}
-
+	};
+	
 	Renderer::GetInstance().Init(m_Window);
 }
 
@@ -51,9 +51,9 @@ void dae::Minigin::Initialize()
  */
 void dae::Minigin::LoadGame() const
 {
-	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
+	Scene& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	auto go = std::make_shared<GameObject>();
+	shared_ptr<GameObject> go = std::make_shared<GameObject>();
 	go->SetTexture("background.jpg");
 	scene.Add(go);
 
@@ -62,18 +62,15 @@ void dae::Minigin::LoadGame() const
 	go->SetPosition(216, 180);
 	scene.Add(go);
 
-	const auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = std::make_shared<GameObject>();
+	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
+	shared_ptr<GameObject> to = std::make_shared<GameObject>();
 	to->AddComponent(new TextComponent{font,"Midestiny Engine" });
-	//"Midestiny Engine", font
 	to->SetPosition(80, 20);
 	scene.Add(to);
 	
 	to = std::make_shared<GameObject>();
 	to->AddComponent(new FPSComponent{font});
-	//fps
 	to->SetPosition(80, 80);
-	
 	scene.Add(to);
 }
 
@@ -96,9 +93,9 @@ void dae::Minigin::Run()
 	LoadGame();
 
 	{
-		auto& renderer = Renderer::GetInstance();
-		auto& sceneManager = SceneManager::GetInstance();
-		auto& input = InputManager::GetInstance();
+		Renderer& renderer = Renderer::GetInstance();
+		SceneManager& sceneManager = SceneManager::GetInstance();
+		InputManager& input = InputManager::GetInstance();
 
 		double lag = 0.0f;
 
@@ -108,7 +105,7 @@ void dae::Minigin::Run()
 		while (doContinue)
 		{
 			const time_point<high_resolution_clock> currentTime = high_resolution_clock::now();
-			const double elapsed =duration_cast<duration<double>>(currentTime - lastTime).count();
+			const double elapsed = duration_cast<duration<double>>(currentTime - lastTime).count();
 
 			//Saves the current elapsed time inside of the time singleton.
 			Time::GetInstance().SetElapsedSeconds(elapsed);
@@ -132,6 +129,4 @@ void dae::Minigin::Run()
 			this_thread::sleep_for(sleepTime);
 		}
 	}
-
-	Cleanup();
 }

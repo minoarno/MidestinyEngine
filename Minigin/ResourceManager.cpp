@@ -57,8 +57,8 @@ dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file)
 {
 	if (m_pTextures.find(file) == m_pTextures.end())
 	{
-		const auto fullPath = m_DataPath + file;
-		auto texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
+		const std::string fullPath = m_DataPath + file;
+		SDL_Texture* texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
 		if (texture == nullptr)
 		{
 			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
@@ -73,7 +73,7 @@ dae::Font* dae::ResourceManager::LoadFont(const std::string& file, unsigned int 
 {
 	if (m_pFonts.find(file) == m_pFonts.end())
 	{
-		const auto fullPath = m_DataPath + file;
+		const std::string fullPath = m_DataPath + file;
 		m_pFonts.emplace( file,new Font{m_DataPath + file, size});
 	}
 	
