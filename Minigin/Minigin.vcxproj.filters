@@ -19,6 +19,9 @@
     <Filter Include="Imgui">
       <UniqueIdentifier>{b42a87b6-c761-4d78-a21e-3e17cb84fb54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Entry Point">
+      <UniqueIdentifier>{5e12e485-1a25-4bae-9666-6fdfeaf55e92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transform.h">
@@ -96,6 +99,18 @@
     <ClInclude Include="Commands.h">
       <Filter>Input</Filter>
     </ClInclude>
+    <ClInclude Include="Midestiny.h">
+      <Filter>Core\Entry Point</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Core\Entry Point</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Core\Entry Point</Filter>
+    </ClInclude>
+    <ClInclude Include="EntryPoint.h">
+      <Filter>Core\Entry Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -166,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.81\backends\imgui_impl_sdl.cpp">
       <Filter>Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Core\Entry Point</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

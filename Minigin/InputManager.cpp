@@ -1,19 +1,19 @@
 #include "MiniginPCH.h"
-#include <XInput.h>
+#pragma once
 #include "InputManager.h"
-#include <SDL.h>
 #include "Commands.h"
 
 dae::InputManager::~InputManager()
 {
-	for (auto c : m_ControllerCommands)
+	
+	for (std::pair<ControllerButton, std::pair<bool, Command*>> c : m_ControllerCommands)
 	{
 		delete c.second.second;
 		c.second.second = nullptr;
 	}
 	m_ControllerCommands.clear();
 
-	for (auto c : m_KeyboardCommands)
+	for (std::pair<SDL_Scancode, Command*> c : m_KeyboardCommands)
 	{
 		delete c.second;
 		c.second = nullptr;
@@ -45,7 +45,6 @@ bool dae::InputManager::ProcessInput()
 	{
 		if (e.type == SDL_QUIT)
 		{
-			std::cout << "YOU SHOULDN'T BE HERE UNLESS YOU CLOSE" << '\n';
 			return false;
 		}
 		if (e.type == SDL_KEYDOWN)
@@ -112,7 +111,10 @@ void dae::InputManager::AddInput(ControllerButton controllerButton, Command* com
 	m_ControllerCommands.emplace(controllerButton, std::make_pair(false, command));
 }
 
-void dae::InputManager::AddInput(SDL_Scancode scancode, Command* command)
+#pragma warning(push)
+#pragma warning(disable : 26812)
+void dae::InputManager::AddInput(SDL_Scancode scanCode, Command* command)
 {
-	m_KeyboardCommands.emplace(scancode, command);
+	m_KeyboardCommands.emplace(scanCode, command);
 }
+#pragma warning(pop)

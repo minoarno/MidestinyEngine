@@ -1,4 +1,6 @@
 #pragma once
+#include <Windows.h>
+#include <XInput.h>
 #include <map>
 #include "Singleton.h"
 
@@ -39,7 +41,7 @@ namespace dae
 		InputManager() = default;
 		std::map<ControllerButton, std::pair<bool, Command*>> m_ControllerCommands;
 		std::map<SDL_Scancode, Command*> m_KeyboardCommands;
-		XINPUT_STATE m_CurrentState{};
+		XINPUT_STATE m_CurrentState;
 		SDL_Event m_Event;
 		bool m_DidInputGet = false;
 	};

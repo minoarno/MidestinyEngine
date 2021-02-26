@@ -53,6 +53,10 @@ nunit-*.xml
 [Rr]eleasePS/
 dlldata.c
 
+# Bin and Bin-it
+bin
+bin-int
+
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 

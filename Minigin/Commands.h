@@ -36,13 +36,13 @@ public:
 	
 	virtual void OnHold()const override
 	{
-		
+		std::cout << "HOLD ON" << '\n';
 	}
 	
 	virtual void OnRelease()const override
 	{
 		
-	};
+	}
 protected:
 	//std::function<void> m_FunctionOnPressDown;
 	//std::function<void> m_FunctionOnHold;
