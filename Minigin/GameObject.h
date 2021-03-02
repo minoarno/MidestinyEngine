@@ -1,6 +1,7 @@
 #pragma once
 #include "Transform.h"
 #include "Texture2D.h"
+#include <vector>
 
 class BaseComponent;
 namespace dae

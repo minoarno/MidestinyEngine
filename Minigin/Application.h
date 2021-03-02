@@ -1,7 +1,7 @@
 #pragma once
 #include "Core.h"
 
-namespace Midestiny
+namespace midestiny
 {
 	class MIDESTINYENGINE_API Application
 	{

@@ -22,6 +22,9 @@
     <Filter Include="Core\Entry Point">
       <UniqueIdentifier>{5e12e485-1a25-4bae-9666-6fdfeaf55e92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{45574c66-ce7e-4f21-9002-aa4cd63d50bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transform.h">
@@ -111,6 +114,12 @@
     <ClInclude Include="EntryPoint.h">
       <Filter>Core\Entry Point</Filter>
     </ClInclude>
+    <ClInclude Include="EventObserver.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSubject.h">
+      <Filter>EventManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -124,9 +133,6 @@
     </ClCompile>
     <ClCompile Include="Font.cpp">
       <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Minigin.cpp">
       <Filter>Core</Filter>
@@ -184,6 +190,12 @@
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Core\Entry Point</Filter>
+    </ClCompile>
+    <ClCompile Include="EventObserver.cpp">
+      <Filter>EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSubject.cpp">
+      <Filter>EventManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

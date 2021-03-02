@@ -4,7 +4,7 @@
 #include "Minigin.h"
 #include <iostream>
 
-namespace Midestiny
+namespace midestiny
 {
 	Application::Application() = default;
 

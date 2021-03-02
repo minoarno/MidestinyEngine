@@ -1,19 +1,26 @@
 #include <Midestiny.h>
-
-class Sandbox : public Midestiny::Application
+//#include <SceneManager.h>
+class Sandbox final : public midestiny::Application
 {
 public:
 	Sandbox()
+		:Application()
 	{
-		
+		//dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("StartScene");
+
 	}
 	~Sandbox()
 	{
 		
 	}
+
+	Sandbox(const Sandbox& other) = delete;
+	Sandbox& operator=(const Sandbox& other) = delete;
+	Sandbox(Sandbox&& other) = delete;
+	Sandbox& operator=(Sandbox&& other) = delete;
 };
 
-Midestiny::Application* Midestiny::CreateApplication()
+midestiny::Application* midestiny::CreateApplication()
 {
 	return new Sandbox();
 }

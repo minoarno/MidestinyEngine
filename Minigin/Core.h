@@ -8,3 +8,5 @@
 #else
 	#error Midestiny Engine only supports windows
 #endif
+
+#define MAX_OBSERVERS 5

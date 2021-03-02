@@ -3,6 +3,7 @@
 #include <XInput.h>
 #include <map>
 #include "Singleton.h"
+#include <SDL_events.h>
 
 class Command;
 namespace dae

@@ -3,11 +3,11 @@
 #include <iostream>
 #ifdef ME_PLATFORM_WINDOWS
 
-extern Midestiny::Application* Midestiny::CreateApplication();
+extern midestiny::Application* midestiny::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	Midestiny::Application* app = Midestiny::CreateApplication();
+	midestiny::Application* app = midestiny::CreateApplication();
 	app->Run();
 	delete app;
 	std::cin.get();

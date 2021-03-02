@@ -208,6 +208,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="Application.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="EntryPoint.h" />
+    <ClInclude Include="EventObserver.h" />
+    <ClInclude Include="EventSubject.h" />
     <ClInclude Include="Midestiny.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Commands.h" />
@@ -272,13 +274,14 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     </ClCompile>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
+    <ClCompile Include="EventObserver.cpp" />
+    <ClCompile Include="EventSubject.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FPSComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="MiniginPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
