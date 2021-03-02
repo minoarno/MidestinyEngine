@@ -66,6 +66,11 @@ void dae::SceneManager::LoadScene(int index)
 	}
 }
 
+void dae::SceneManager::AddGameObject(int index, dae::GameObject* go)
+{
+	m_Scenes[index]->Add(go);
+}
+
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
 	const std::shared_ptr<Scene>& scene = std::shared_ptr<Scene>(new Scene(name));

@@ -1,19 +1,14 @@
 #include "MiniginPCH.h"
+#pragma once
 #include "Application.h"
-
 #include "Minigin.h"
+#include <iostream>
 
 namespace Midestiny
 {
-	Application::Application()
-	{
+	Application::Application() = default;
 
-	}
-
-	Application::~Application()
-	{
-
-	}
+	Application::~Application() = default;
 	
 	void Application::Run()
 	{

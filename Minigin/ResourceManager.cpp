@@ -39,16 +39,19 @@ void dae::ResourceManager::Init(const std::string& dataPath)
 
 	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) 
 	{
+		std::cout << SDL_GetError() << '\n';
 		throw std::runtime_error(std::string("Failed to load support for png's: ") + SDL_GetError());
 	}
 
 	if ((IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG) != IMG_INIT_JPG) 
 	{
+		std::cout << SDL_GetError() << '\n';
 		throw std::runtime_error(std::string("Failed to load support for jpg's: ") + SDL_GetError());
 	}
 
 	if (TTF_Init() != 0) 
 	{
+		std::cout << SDL_GetError() << '\n';
 		throw std::runtime_error(std::string("Failed to load support for fonts: ") + SDL_GetError());
 	}
 }
@@ -61,6 +64,7 @@ dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file)
 		SDL_Texture* texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
 		if (texture == nullptr)
 		{
+			std::cout << SDL_GetError() << '\n';
 			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
 		}
 		m_pTextures.emplace(file, new Texture2D{ texture });

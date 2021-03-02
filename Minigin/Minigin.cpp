@@ -53,25 +53,25 @@ void dae::Minigin::LoadGame() const
 {
 	Scene& scene = SceneManager::GetInstance().CreateScene("Demo");
 
-	shared_ptr<GameObject> go = std::make_shared<GameObject>();
+	GameObject* go = new GameObject();
 	go->SetTexture("background.jpg");
 	scene.Add(go);
 
-	go = std::make_shared<GameObject>();
-	go->SetTexture("logo.png");
-	go->SetPosition(216, 180);
-	scene.Add(go);
+	GameObject* go2 = new GameObject();
+	go2->SetTexture("logo.png");
+	go2->SetPosition(216, 180);
+	scene.Add(go2);
 
 	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	shared_ptr<GameObject> to = std::make_shared<GameObject>();
+	GameObject* to = new GameObject();
 	to->AddComponent(new TextComponent{font,"Midestiny Engine" });
 	to->SetPosition(80, 20);
 	scene.Add(to);
 	
-	to = std::make_shared<GameObject>();
-	to->AddComponent(new FPSComponent{font});
-	to->SetPosition(80, 80);
-	scene.Add(to);
+	GameObject* to2 = new GameObject();
+	to2->AddComponent(new FPSComponent{font});
+	to2->SetPosition(80, 80);
+	scene.Add(to2);
 }
 
 void dae::Minigin::Cleanup()

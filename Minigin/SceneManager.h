@@ -1,8 +1,10 @@
 #pragma once
 #include "Singleton.h"
+#include <vector>
 
 namespace dae
 {
+	class GameObject;
 	class Scene;
 	class SceneManager final : public Singleton<SceneManager>
 	{
@@ -15,6 +17,8 @@ namespace dae
 
 		void NextScene();
 		void LoadScene(int index);
+
+		void AddGameObject(int index, GameObject* go);
 		
 		void Render();
 	private:

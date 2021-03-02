@@ -11,9 +11,18 @@ Scene::Scene(const std::string& name)
 {
 }
 
+Scene::~Scene()
+{
+	for (int i = 0; i < int(m_Objects.size()); i++)
+	{
+		delete m_Objects[i];
+		m_Objects[i] = nullptr;
+	}
+}
+
 void Scene::Initialize()
 {
-	for (std::shared_ptr<GameObject>& object : m_Objects)
+	for (GameObject* object : m_Objects)
 	{
 		object->Initialize();
 	}
@@ -25,14 +34,14 @@ void Scene::Unload()
 }
 
 
-void Scene::Add(const std::shared_ptr<GameObject>& object)
+void Scene::Add(GameObject* object)
 {
 	m_Objects.push_back(object);
 }
 
 void Scene::FixedUpdate()
 {
-	for(std::shared_ptr<GameObject>& object : m_Objects)
+	for(GameObject* object : m_Objects)
 	{
 		object->FixedUpdate();
 	}
@@ -40,7 +49,7 @@ void Scene::FixedUpdate()
 
 void Scene::Update()
 {
-	for(std::shared_ptr<GameObject>& object : m_Objects)
+	for(GameObject* object : m_Objects)
 	{
 		object->Update();
 	}
@@ -48,7 +57,7 @@ void Scene::Update()
 
 void Scene::LateUpdate()
 {
-	for (std::shared_ptr<GameObject>& object : m_Objects)
+	for (GameObject* object : m_Objects)
 	{
 		object->LateUpdate();
 	}
@@ -56,7 +65,7 @@ void Scene::LateUpdate()
 
 void Scene::Render() const
 {
-	for (const std::shared_ptr<GameObject>& object : m_Objects)
+	for (const GameObject* object : m_Objects)
 	{
 		object->Render();
 	}

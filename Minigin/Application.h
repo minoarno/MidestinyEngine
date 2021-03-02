@@ -13,9 +13,7 @@ namespace Midestiny
 		Application& operator=(Application&& other) = delete;
 		virtual ~Application();
 
-		void Run();
-	private:
-		
+		static void Run();
 	};
 
 	//TO BE DEFINED IN CLIENT
