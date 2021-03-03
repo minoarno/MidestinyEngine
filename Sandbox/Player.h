@@ -9,6 +9,8 @@ public:
 	Player(Player&& other) = delete;
 	Player& operator=(Player&& other) = delete;
 	~Player() = default;
+
+	void IncrementScore() { m_Score++; }
 private:
 	int m_Score = 0;
 };

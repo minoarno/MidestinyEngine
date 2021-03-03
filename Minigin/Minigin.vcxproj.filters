@@ -25,6 +25,9 @@
     <Filter Include="EventManager">
       <UniqueIdentifier>{45574c66-ce7e-4f21-9002-aa4cd63d50bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Player">
+      <UniqueIdentifier>{66990ece-7758-4431-ada2-bb1d05f75e0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transform.h">
@@ -120,6 +123,14 @@
     <ClInclude Include="EventSubject.h">
       <Filter>EventManager</Filter>
     </ClInclude>
+    <ClInclude Include="LiveObserver.h" />
+    <ClInclude Include="PlayerComponent.h" />
+    <ClInclude Include="ScoreObserver.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="Lives.h" />
+    <ClInclude Include="Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -197,5 +208,10 @@
     <ClCompile Include="EventSubject.cpp">
       <Filter>EventManager</Filter>
     </ClCompile>
+    <ClCompile Include="LiveObserver.cpp" />
+    <ClCompile Include="PlayerComponent.cpp" />
+    <ClCompile Include="ScoreObserver.cpp" />
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Lives.cpp" />
   </ItemGroup>
 </Project>

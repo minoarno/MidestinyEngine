@@ -1,5 +1,6 @@
 #pragma once
-//#include <functional>
+#include <functional>
+
 class Command
 {
 public:
@@ -31,20 +32,44 @@ public:
 	
 	virtual void OnPressDown()const override
 	{
-		
+		if (m_FunctionOnPressDown != nullptr)
+		{
+			m_FunctionOnPressDown();
+		}
 	}
 	
 	virtual void OnHold()const override
 	{
-		std::cout << "HOLD ON" << '\n';
+		if (m_FunctionOnHold != nullptr)
+		{
+			m_FunctionOnHold();
+		}
 	}
 	
 	virtual void OnRelease()const override
 	{
-		
+		if (m_FunctionOnRelease != nullptr)
+		{
+			m_FunctionOnRelease();
+		}
+	}
+
+	void SetFunctionOnPressDown(std::function<void()> func)
+	{
+		m_FunctionOnPressDown = func;
+	}
+
+	void SetFunctionOnHold(std::function<void()> func)
+	{
+		m_FunctionOnHold = func;
+	}
+
+	void SetFunctionOnRelease(std::function<void()> func)
+	{
+		m_FunctionOnRelease = func;
 	}
 protected:
-	//std::function<void> m_FunctionOnPressDown;
-	//std::function<void> m_FunctionOnHold;
-	//std::function<void> m_FunctionOnRelease;
+	std::function<void()> m_FunctionOnPressDown;
+	std::function<void()> m_FunctionOnHold;
+	std::function<void()> m_FunctionOnRelease;
 };

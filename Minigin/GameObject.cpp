@@ -148,7 +148,10 @@ void dae::GameObject::LateUpdate()
 void dae::GameObject::Render() const
 {
 	const glm::vec3 pos = m_pTransform->GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+	if (m_pTexture != nullptr)
+	{
+		Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+	}
 
 	for (size_t i = 0; i < m_pBaseComponents.size(); i++)
 	{
