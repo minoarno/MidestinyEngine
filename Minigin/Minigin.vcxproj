@@ -223,7 +223,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="ScoreObserver.h" />
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="LiveObserver.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="MeTime.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="MiniginPCH.h" />
@@ -291,7 +291,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="ScoreObserver.cpp" />
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="LiveObserver.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="MeTime.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="MiniginPCH.cpp">

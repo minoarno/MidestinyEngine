@@ -1,8 +1,9 @@
 #pragma once
 #include "EventObserver.h"
+#include "BaseComponent.h"
 
 class TextComponent;
-class LiveObserver final : public EventObserver
+class LiveObserver final : public BaseComponent, public EventObserver
 {
 public:
 	LiveObserver(TextComponent* pTextComponent);

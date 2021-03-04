@@ -72,9 +72,6 @@
     <ClInclude Include="TextComponent.h">
       <Filter>GameObject\BaseComponents</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="FPSComponent.h">
       <Filter>GameObject\BaseComponents</Filter>
     </ClInclude>
@@ -131,6 +128,9 @@
     <ClInclude Include="Input.h">
       <Filter>Input</Filter>
     </ClInclude>
+    <ClInclude Include="MeTime.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -172,9 +172,6 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>GameObject\BaseComponents</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="FPSComponent.cpp">
       <Filter>GameObject\BaseComponents</Filter>
     </ClCompile>
@@ -213,5 +210,8 @@
     <ClCompile Include="ScoreObserver.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Lives.cpp" />
+    <ClCompile Include="MeTime.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

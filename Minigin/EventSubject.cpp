@@ -4,35 +4,21 @@
 
 void EventSubject::AddObserver(EventObserver* observer)
 {
-	if (m_AmountObservers < MAX_OBSERVERS)
-	{
-		for (int i = 0; i < m_AmountObservers; i++)
-		{
-			if (observer == m_pObservers[i])
-			{
-				std::cout << "This observer already is added to the subject\n";
-				return;
-			}
-		}
-		
-		m_pObservers[m_AmountObservers] = observer;
-		m_AmountObservers++;
-	}
-	else
-	{
-		std::cout << "You already have the max amount of observers you can have on a single subject.\n";
-	}
+	m_pObservers.push_back(observer);
 }
 
 void EventSubject::RemoveObserver(EventObserver* observer)
 {
-	for (int i = 0; i < m_AmountObservers; i++)
+	auto it = m_pObservers.begin();
+	while (it != m_pObservers.end())
 	{
-		if (observer == m_pObservers[i])
+		if (*it == observer)
 		{
-			m_pObservers[i] = m_pObservers[m_AmountObservers - 1];
-			m_pObservers[m_AmountObservers - 1] = nullptr;
-			m_AmountObservers--;
+			it = m_pObservers.erase(it);
+		}
+		else
+		{
+			++it;
 		}
 	}
 }

@@ -5,7 +5,7 @@
 
 extern midestiny::Application* midestiny::CreateApplication();
 
-int main(int argc, char** argv)
+int main(int, char**)
 {
 	midestiny::Application* app = midestiny::CreateApplication();
 	app->Run();

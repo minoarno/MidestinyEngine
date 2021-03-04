@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "FPSComponent.h"
-#include "Time.h"
+#include "MeTime.h"
 
 FPSComponent::FPSComponent(dae::Font* font, float refreshRate)
 	: TextComponent{ font," " }

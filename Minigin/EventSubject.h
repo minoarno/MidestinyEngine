@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "BaseComponent.h"
+#include <vector>
 
 class EventObserver;
 
@@ -21,7 +22,7 @@ protected:
 	void Notify(BaseComponent* pBaseComponent);
 
 private:
-	EventObserver* m_pObservers[MAX_OBSERVERS]{};
+	std::vector<EventObserver*> m_pObservers{};
 	int m_AmountObservers = 0;
 };
 
