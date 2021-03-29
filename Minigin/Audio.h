@@ -6,6 +6,9 @@
 class Audio
 {
 public:
+	virtual void AddSound(const std::string& file) = 0;
+	virtual void AddMusic(const std::string& file) = 0;
+
 	virtual void Play(int soundID) = 0;
 	virtual void Stop(int soundID) = 0;
 	virtual void StopAllSounds() = 0;
@@ -17,8 +20,8 @@ public:
 	Mixer_Sound_System() = default;
 	~Mixer_Sound_System();
 
-	virtual void AddSound(const std::string& file);
-	virtual void AddMusic(const std::string& file);
+	virtual void AddSound(const std::string& file) override;
+	virtual void AddMusic(const std::string& file) override;
 
 	virtual void Play(int soundID) override;
 	virtual void Stop(int soundID) override;
@@ -33,6 +36,9 @@ private:
 class NullAudio : public Audio
 {
 public:
+	virtual void AddSound(const std::string&) override {};
+	virtual void AddMusic(const std::string&) override {};
+
 	virtual void Play(int) override { }
 	virtual void Stop(int) override { }
 	virtual void StopAllSounds() override { }

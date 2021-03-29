@@ -292,6 +292,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ScoreObserver.cpp" />
+    <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="LiveObserver.cpp" />
     <ClCompile Include="MeTime.cpp" />

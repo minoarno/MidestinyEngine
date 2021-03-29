@@ -2,6 +2,8 @@
 #include "PlayerComponent.h"
 #include "Input.h"
 #include <functional>
+#include "ServiceLocator.h"
+#include "Audio.h"
 PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton incrementScore, dae::ControllerButton die)
 	: BaseComponent()
 	, m_pScore(pScore)
@@ -19,6 +21,7 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerBu
 void PlayerComponent::IncrementScore()
 {
 	m_pScore->IncreaseScore(50);
+	ServiceLocator::GetAudio().Play(0);
 }
 void PlayerComponent::GainLife()
 {

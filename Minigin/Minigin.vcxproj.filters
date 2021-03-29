@@ -225,5 +225,8 @@
     <ClCompile Include="Audio.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

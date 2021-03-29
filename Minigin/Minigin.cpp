@@ -18,6 +18,9 @@
 #include "ScoreObserver.h"
 #include "MeTime.h"
 
+#include "Audio.h"
+#include "ServiceLocator.h"
+
 using namespace std;
 using namespace std::chrono;
 
@@ -49,6 +52,9 @@ void dae::Minigin::Initialize()
 	};
 	
 	Renderer::GetInstance().Init(m_Window);
+	ServiceLocator::Initialize();
+
+	m_pSoundSystem = new Mixer_Sound_System{};
 }
 
 /**
@@ -57,6 +63,9 @@ void dae::Minigin::Initialize()
 void dae::Minigin::LoadGame() const
 {
 	Scene& scene = SceneManager::GetInstance().CreateScene("Demo");
+
+	ServiceLocator::RegisterSoundSystem(m_pSoundSystem);
+	ServiceLocator::GetAudio().AddSound("../Data/Cork.wav");
 
 	GameObject* go = new GameObject();
 	go->SetTexture("background.jpg");
@@ -93,8 +102,6 @@ void dae::Minigin::LoadGame() const
 	lives2->AddComponent(observerL2);
 	lives2->SetPosition(300, 420);
 	scene.Add(lives2);
-
-
 	
 	GameObject* score1 = new GameObject();
 	TextComponent* textS1 = new TextComponent{ font };
