@@ -28,6 +28,9 @@
     <Filter Include="GameObject\Player">
       <UniqueIdentifier>{66990ece-7758-4431-ada2-bb1d05f75e0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{d1e56283-8fab-41b8-817d-db916b7b6c31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transform.h">
@@ -131,6 +134,12 @@
     <ClInclude Include="MeTime.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Transform.cpp">
@@ -212,6 +221,9 @@
     <ClCompile Include="Lives.cpp" />
     <ClCompile Include="MeTime.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Audio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

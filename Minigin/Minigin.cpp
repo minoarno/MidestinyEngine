@@ -94,15 +94,7 @@ void dae::Minigin::LoadGame() const
 	lives2->SetPosition(300, 420);
 	scene.Add(lives2);
 
-	GameObject* to3 = new GameObject();
-	to3->AddComponent(new TextComponent{ font,"Player 1 - Button B : increase score - Button A : lose live" });
-	to3->SetPosition(80, 300);
-	scene.Add(to3);
 
-	GameObject* to4 = new GameObject();
-	to4->AddComponent(new TextComponent{ font,"Player 2 - DPAD DOWN : increase score - DPAD UP : lose live" });
-	to4->SetPosition(80, 360);
-	scene.Add(to4);
 	
 	GameObject* score1 = new GameObject();
 	TextComponent* textS1 = new TextComponent{ font };
