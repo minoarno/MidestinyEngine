@@ -25,10 +25,7 @@ public:
 	FunctionCommand& operator=(const FunctionCommand& other) = delete;
 	FunctionCommand(FunctionCommand&& other) = delete;
 	FunctionCommand& operator=(FunctionCommand&& other) = delete;
-	~FunctionCommand()
-	{
-		
-	}
+	~FunctionCommand() = default;
 	
 	virtual void OnPressDown()const override
 	{

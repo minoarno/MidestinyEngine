@@ -1,7 +1,7 @@
-#include "MiniginPCH.h"
 #include "ScoreObserver.h"
 #include "TextComponent.h"
 #include "Score.h"
+#include <string>
 
 ScoreObserver::ScoreObserver(TextComponent* pTextComponent)
 	: EventObserver()

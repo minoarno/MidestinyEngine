@@ -1,82 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="GameObject">
-      <UniqueIdentifier>{4f36e410-6cfb-4633-bcce-75c06d3e225d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{0514f680-3371-4470-9490-77dbfee87ca9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SceneManagent">
-      <UniqueIdentifier>{3d8df718-cece-43ea-87eb-79d84360b952}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{8a41385a-781f-42aa-8b06-21448f5b2ca8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\BaseComponents">
-      <UniqueIdentifier>{9cf7f2f4-e0cd-483c-b232-07a14f8be7d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Imgui">
-      <UniqueIdentifier>{b42a87b6-c761-4d78-a21e-3e17cb84fb54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Entry Point">
-      <UniqueIdentifier>{5e12e485-1a25-4bae-9666-6fdfeaf55e92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventManager">
-      <UniqueIdentifier>{45574c66-ce7e-4f21-9002-aa4cd63d50bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\Player">
-      <UniqueIdentifier>{66990ece-7758-4431-ada2-bb1d05f75e0e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Audio">
-      <UniqueIdentifier>{d1e56283-8fab-41b8-817d-db916b7b6c31}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Transform.h">
-      <Filter>GameObject</Filter>
+    <ClInclude Include="Commands.h" />
+    <ClInclude Include="EventObserver.h" />
+    <ClInclude Include="EventSubject.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="MeTime.h" />
+    <ClInclude Include="Midestiny.h" />
+    <ClInclude Include="Minigin.h" />
+    <ClInclude Include="MiniginPCH.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="ServiceLocator.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="TextObject.h" />
+    <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="Audio.h">
+      <Filter>Audio</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture2D.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="Application.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
+    <ClInclude Include="ENTRYPOINT.H">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Minigin.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="MiniginPCH.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>SceneManagent</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>SceneManagent</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseComponent.h">
-      <Filter>GameObject\BaseComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="TextComponent.h">
-      <Filter>GameObject\BaseComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSComponent.h">
-      <Filter>GameObject\BaseComponents</Filter>
     </ClInclude>
     <ClInclude Include="..\3rdParty\imgui-1.81\imconfig.h">
       <Filter>Imgui</Filter>
@@ -102,87 +54,40 @@
     <ClInclude Include="..\3rdParty\imgui-1.81\backends\imgui_impl_sdl.h">
       <Filter>Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Commands.h">
-      <Filter>Input</Filter>
+    <ClInclude Include="BaseComponent.h">
+      <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Midestiny.h">
-      <Filter>Core\Entry Point</Filter>
+    <ClInclude Include="FPSComponent.h">
+      <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Core\Entry Point</Filter>
+    <ClInclude Include="TextComponent.h">
+      <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Core\Entry Point</Filter>
-    </ClInclude>
-    <ClInclude Include="EntryPoint.h">
-      <Filter>Core\Entry Point</Filter>
-    </ClInclude>
-    <ClInclude Include="EventObserver.h">
-      <Filter>EventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSubject.h">
-      <Filter>EventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="LiveObserver.h" />
-    <ClInclude Include="PlayerComponent.h" />
-    <ClInclude Include="ScoreObserver.h" />
-    <ClInclude Include="Score.h" />
-    <ClInclude Include="Lives.h" />
-    <ClInclude Include="Input.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="MeTime.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="ServiceLocator.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
-      <Filter>Audio</Filter>
+    <ClInclude Include="Transform.h">
+      <Filter>GameObject\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Transform.cpp">
-      <Filter>GameObject</Filter>
+    <ClCompile Include="EventObserver.cpp" />
+    <ClCompile Include="EventSubject.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="MeTime.cpp" />
+    <ClCompile Include="Minigin.cpp" />
+    <ClCompile Include="MiniginPCH.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ServiceLocator.cpp" />
+    <ClCompile Include="TextObject.cpp" />
+    <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Audio.cpp">
+      <Filter>Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Minigin.cpp">
+    <ClCompile Include="Application.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="MiniginPCH.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>SceneManagent</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>SceneManagent</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Input</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseComponent.cpp">
-      <Filter>GameObject\BaseComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="TextComponent.cpp">
-      <Filter>GameObject\BaseComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSComponent.cpp">
-      <Filter>GameObject\BaseComponents</Filter>
     </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.81\imgui.cpp">
       <Filter>Imgui</Filter>
@@ -205,28 +110,37 @@
     <ClCompile Include="..\3rdParty\imgui-1.81\backends\imgui_impl_sdl.cpp">
       <Filter>Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Core\Entry Point</Filter>
+    <ClCompile Include="BaseComponent.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="EventObserver.cpp">
-      <Filter>EventManager</Filter>
+    <ClCompile Include="FPSComponent.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="EventSubject.cpp">
-      <Filter>EventManager</Filter>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="LiveObserver.cpp" />
-    <ClCompile Include="PlayerComponent.cpp" />
-    <ClCompile Include="ScoreObserver.cpp" />
-    <ClCompile Include="Score.cpp" />
-    <ClCompile Include="Lives.cpp" />
-    <ClCompile Include="MeTime.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="Transform.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Audio.cpp">
-      <Filter>Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="ServiceLocator.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{0457769d-6c13-4380-b076-ee70b8cce10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{a736110e-f472-4c05-89af-4bb7cb1f729d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Imgui">
+      <UniqueIdentifier>{da5d76db-d0d8-4843-8fb1-2804bf9ae559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EventManager">
+      <UniqueIdentifier>{e9d6161c-064f-420e-a8f5-3c5c0b68ef4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{f0554878-930c-459d-a08d-ecdb34030c7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component">
+      <UniqueIdentifier>{ca7c8644-358d-48e9-8461-b2503a4e45b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

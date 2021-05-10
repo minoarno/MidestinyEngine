@@ -2,23 +2,27 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Entry">
-      <UniqueIdentifier>{8480aafb-95ae-41ab-a958-24b82fbab251}</UniqueIdentifier>
+      <UniqueIdentifier>{70de14be-bada-435c-95dd-b9d91a500ffd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{b586d7f8-8550-411d-b185-990187d19c30}</UniqueIdentifier>
+    <Filter Include="Player">
+      <UniqueIdentifier>{e0931eaa-db1b-4a7a-80db-c412d4a2791a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SandboxApp.cpp">
       <Filter>Entry</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="ScoreObserver.cpp" />
+    <ClCompile Include="LiveObserver.cpp" />
+    <ClCompile Include="Lives.cpp" />
+    <ClCompile Include="PlayerComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Game</Filter>
-    </ClInclude>
+    <ClInclude Include="ScoreObserver.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="PlayerComponent.h" />
+    <ClInclude Include="LiveObserver.h" />
+    <ClInclude Include="Lives.h" />
   </ItemGroup>
 </Project>

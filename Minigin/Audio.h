@@ -1,7 +1,7 @@
 #pragma once
-#include <SDL_mixer.h>
 #include <vector>
 #include <iostream>
+
 
 class Audio
 {
@@ -14,6 +14,8 @@ public:
 	virtual void StopAllSounds() = 0;
 };
 
+struct Mix_Chunk;
+typedef struct _Mix_Music Mix_Music;
 class Mixer_Sound_System : public Audio
 {
 public:

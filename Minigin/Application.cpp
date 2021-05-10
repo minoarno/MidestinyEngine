@@ -1,8 +1,6 @@
 #include "MiniginPCH.h"
-#pragma once
 #include "Application.h"
 #include "Minigin.h"
-#include <iostream>
 
 namespace midestiny
 {
@@ -13,6 +11,8 @@ namespace midestiny
 	void Application::Run()
 	{
 		dae::Minigin engine{};
+		engine.Initialize();
+		IntializeGame();
 		engine.Run();
 	}
 }

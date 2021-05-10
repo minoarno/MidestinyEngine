@@ -8,7 +8,6 @@ namespace dae
 	public:
 		~Minigin();
 		void Initialize();
-		void LoadGame() const;
 		void Cleanup();
 		void Run();
 	private:

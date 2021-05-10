@@ -1,5 +1,4 @@
 #pragma once
-#include "Core.h"
 #include "BaseComponent.h"
 #include <vector>
 

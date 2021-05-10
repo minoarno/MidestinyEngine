@@ -1,4 +1,3 @@
-#include "MiniginPCH.h"
 #include "Lives.h"
 
 Lives::Lives(const int amount)

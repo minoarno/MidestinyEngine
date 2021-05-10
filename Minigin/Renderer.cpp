@@ -8,8 +8,6 @@ bool dae::Renderer::m_ShowDemo = true;
 
 void dae::Renderer::Init(SDL_Window * window)
 {
-	//glDisable(GL_SCISSOR_TEST);
-
 	m_Window = window;
 	m_Renderer = SDL_CreateRenderer(window, GetOpenGLDriverIndex(), SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (m_Renderer == nullptr) 

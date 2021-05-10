@@ -1,9 +1,8 @@
 #pragma once
-#include "Core.h"
 
 namespace midestiny
 {
-	class MIDESTINYENGINE_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -13,8 +12,11 @@ namespace midestiny
 		Application& operator=(Application&& other) = delete;
 		virtual ~Application();
 
-		static void Run();
+		virtual void IntializeGame() {};
+
+		void Run();
 	};
+
 
 	//TO BE DEFINED IN CLIENT
 	Application* CreateApplication();

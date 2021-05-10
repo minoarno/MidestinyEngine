@@ -1,4 +1,5 @@
 #include "MiniginPCH.h"
+#include <SDL_mixer.h>
 #include "Audio.h"
 
 Mixer_Sound_System::~Mixer_Sound_System()
@@ -15,7 +16,7 @@ void Mixer_Sound_System::AddSound(const std::string& file)
 
 void Mixer_Sound_System::AddMusic(const std::string& file)
 {
-	m_Music.push_back(Mix_LoadMUS(file.c_str()));
+	m_Music.push_back(reinterpret_cast<Mix_Music*>(Mix_LoadMUS(file.c_str())));
 }
 
 void Mixer_Sound_System::Play(int soundID)

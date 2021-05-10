@@ -1,7 +1,12 @@
 #pragma once
 #include "Application.h"
+
+#if _DEBUG
+// ReSharper disable once CppUnusedIncludeDirective
+#include <vld.h>
+#endif
+
 #include <iostream>
-#ifdef ME_PLATFORM_WINDOWS
 
 extern midestiny::Application* midestiny::CreateApplication();
 
@@ -13,5 +18,3 @@ int main(int, char**)
 	std::cin.get();
 	return 0;
 }
-
-#endif

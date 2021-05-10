@@ -24,3 +24,7 @@
 #include "EventSubject.h"
 
 #include "ResourceManager.h"
+
+#include "ServiceLocator.h"
+
+using namespace dae;

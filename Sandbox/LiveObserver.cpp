@@ -1,6 +1,5 @@
-#include "MiniginPCH.h"
 #include "LiveObserver.h"
-
+#include <string>
 #include "Lives.h"
 #include "TextComponent.h"
 LiveObserver::LiveObserver(TextComponent* pTextComponent)
