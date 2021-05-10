@@ -5,6 +5,7 @@
 void EventSubject::AddObserver(EventObserver* observer)
 {
 	m_pObservers.push_back(observer);
+	m_AmountObservers++;
 }
 
 void EventSubject::RemoveObserver(EventObserver* observer)

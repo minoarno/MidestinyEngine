@@ -21,12 +21,18 @@ void Mixer_Sound_System::AddMusic(const std::string& file)
 
 void Mixer_Sound_System::Play(int soundID)
 {
-	m_Sounds[soundID].second = Mix_PlayChannel(-1, m_Sounds[soundID].first, false);
+	if (m_Sounds.size() > soundID && m_Sounds[soundID].first != nullptr)
+	{
+		m_Sounds[soundID].second = Mix_PlayChannel(-1, m_Sounds[soundID].first, false);
+	}
 }
 
 void Mixer_Sound_System::Stop(int soundID)
 {
-	Mix_HaltChannel(m_Sounds[soundID].second);
+	if (m_Sounds.size() > soundID)
+	{
+		Mix_HaltChannel(m_Sounds[soundID].second);
+	}
 }
 
 void Mixer_Sound_System::StopAllSounds()

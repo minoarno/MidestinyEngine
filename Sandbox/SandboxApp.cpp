@@ -16,7 +16,7 @@ public:
 	{
 		Scene& scene = SceneManager::GetInstance().CreateScene("StartScene");
 
-		ServiceLocator::GetAudio().AddSound("../Data/Cork.wav");
+		//ServiceLocator::GetAudio().AddSound("../Data/Cork.wav");
 
 		GameObject* go = new GameObject();
 		go->SetTexture("background.jpg");
@@ -39,7 +39,7 @@ public:
 		scene.Add(to2);
 
 		GameObject* lives1 = new GameObject();
-		TextComponent* textL1 = new TextComponent{ font };
+		TextComponent* textL1 = new TextComponent{ font , "Lives: 5"};
 		LiveObserver* observerL1 = new LiveObserver(textL1);
 		lives1->AddComponent(textL1);
 		lives1->AddComponent(observerL1);
@@ -47,7 +47,7 @@ public:
 		scene.Add(lives1);
 
 		GameObject* lives2 = new GameObject();
-		TextComponent* textL2 = new TextComponent{ font };
+		TextComponent* textL2 = new TextComponent{ font , "Lives: 5" };
 		LiveObserver* observerL2 = new LiveObserver(textL2);
 		lives2->AddComponent(textL2);
 		lives2->AddComponent(observerL2);
@@ -55,7 +55,7 @@ public:
 		scene.Add(lives2);
 
 		GameObject* score1 = new GameObject();
-		TextComponent* textS1 = new TextComponent{ font };
+		TextComponent* textS1 = new TextComponent{ font , "Score: 0" };
 		ScoreObserver* observerS1 = new ScoreObserver(textS1);
 		score1->AddComponent(textS1);
 		score1->AddComponent(observerS1);
@@ -63,7 +63,7 @@ public:
 		scene.Add(score1);
 
 		GameObject* score2 = new GameObject();
-		TextComponent* textS2 = new TextComponent{ font };
+		TextComponent* textS2 = new TextComponent{ font , "Score: 0" };
 		ScoreObserver* observerS2 = new ScoreObserver(textS2);
 		score2->AddComponent(textS2);
 		score2->AddComponent(observerS2);
@@ -96,6 +96,8 @@ public:
 		to4->AddComponent(new TextComponent{ font,"Player 2 - DPAD DOWN : increase score - DPAD UP : lose live" });
 		to4->SetPosition(80, 360);
 		scene.Add(to4);
+
+		InputManager::GetInstance().ProcessInput();
 	}
 
 	Sandbox(const Sandbox& other) = delete;

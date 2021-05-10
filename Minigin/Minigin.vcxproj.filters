@@ -16,10 +16,8 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SceneObject.h" />
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="TextObject.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Audio.h">
       <Filter>Audio</Filter>
@@ -81,7 +79,6 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
-    <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Audio.cpp">
       <Filter>Audio</Filter>

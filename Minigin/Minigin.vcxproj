@@ -249,7 +249,6 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClInclude Include="Midestiny.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="MiniginPCH.h" />
-    <ClInclude Include="SceneObject.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
@@ -257,7 +256,6 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TextComponent.h" />
-    <ClInclude Include="TextObject.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
@@ -328,7 +326,6 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="TextComponent.cpp" />
-    <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
