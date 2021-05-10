@@ -15,7 +15,6 @@
     <ClCompile Include="SandboxApp.cpp">
       <Filter>Entry</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="LiveObserver.cpp">
       <Filter>Observers</Filter>
     </ClCompile>
@@ -28,9 +27,11 @@
     <ClCompile Include="ScoreObserver.cpp">
       <Filter>Observers</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerComponent.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="Lives.h">
       <Filter>Observers</Filter>
     </ClInclude>
@@ -42,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerComponent.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

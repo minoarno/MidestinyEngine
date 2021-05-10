@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="Commands.h" />
-    <ClInclude Include="EventObserver.h" />
-    <ClInclude Include="EventSubject.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="MeTime.h" />
-    <ClInclude Include="Midestiny.h" />
-    <ClInclude Include="Minigin.h" />
-    <ClInclude Include="MiniginPCH.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="ServiceLocator.h" />
-    <ClInclude Include="Singleton.h" />
-    <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Audio.h">
       <Filter>Audio</Filter>
     </ClInclude>
@@ -64,22 +46,62 @@
     <ClInclude Include="Transform.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigin.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Midestiny.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniginPCH.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MeTime.h">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSubject.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventObserver.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EventObserver.cpp" />
-    <ClCompile Include="EventSubject.cpp" />
-    <ClCompile Include="Font.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="MeTime.cpp" />
-    <ClCompile Include="Minigin.cpp" />
-    <ClCompile Include="MiniginPCH.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="ServiceLocator.cpp" />
-    <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Audio.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
@@ -119,6 +141,48 @@
     <ClCompile Include="Transform.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniginPCH.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="MeTime.cpp">
+      <Filter>Scenes, ServiceLocator And Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="EventObserver.cpp">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSubject.cpp">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -130,14 +194,20 @@
     <Filter Include="Imgui">
       <UniqueIdentifier>{da5d76db-d0d8-4843-8fb1-2804bf9ae559}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EventManager">
-      <UniqueIdentifier>{e9d6161c-064f-420e-a8f5-3c5c0b68ef4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{f0554878-930c-459d-a08d-ecdb34030c7e}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameObject\Component">
       <UniqueIdentifier>{ca7c8644-358d-48e9-8461-b2503a4e45b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{c5bb2711-5b17-4f71-8c30-2ab93e6368fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes, ServiceLocator And Managers">
+      <UniqueIdentifier>{50995a3a-a84a-48f6-9824-0d0887c09de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input, Commands And Observers">
+      <UniqueIdentifier>{3f27b7d8-2fb0-4cc7-8e65-b16f6850d4c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
