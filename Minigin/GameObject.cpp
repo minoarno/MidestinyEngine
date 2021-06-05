@@ -5,11 +5,30 @@
 #include "BaseComponent.h"
 #include "Transform.h"
 #include "Texture2D.h"
+#include "Scene.h"
+#include "SceneManager.h"
 
 dae::GameObject::GameObject()
-	: m_pTransform{new Transform{}}
+	: m_pTransform{ nullptr }
 	, m_pTexture{ nullptr }
+	, m_pScene{ nullptr }
 {
+	if (m_pTransform == nullptr)
+	{
+		m_pTransform = new Transform{};
+	}
+
+}
+
+dae::GameObject::GameObject(Scene* pScene)
+	: m_pTransform{nullptr }
+	, m_pTexture{ nullptr }
+	, m_pScene{ pScene }
+{
+	if (m_pTransform == nullptr)
+	{
+		m_pTransform = new Transform{};
+	}
 }
 
 dae::GameObject::~GameObject()
@@ -28,13 +47,17 @@ dae::GameObject::~GameObject()
 	}
 	m_pChildren.clear();
 
-	delete m_pTransform;
-	m_pTransform = nullptr;
-
-	if (m_pTexture == nullptr)
+	if (m_pTransform != nullptr)
 	{
-		//delete m_pTexture;
-		//m_pTexture = nullptr;
+		delete m_pTransform;
+		m_pTransform = nullptr;
+	}
+
+
+	if (m_pTexture != nullptr)
+	{
+		delete m_pTexture;
+		m_pTexture = nullptr;
 	}
 }
 
@@ -50,9 +73,9 @@ void dae::GameObject::AddChild(GameObject* newChildObject)
 
 	//Checking if the the newChildObject isn't one of this object's parents
 	GameObject* pObject = this;
-	while (pObject != nullptr && pObject != newChildObject)
+	if (pObject != nullptr && pObject != newChildObject)
 	{
-		pObject = this->GetParent();
+		pObject->m_pChildren.push_back(newChildObject);
 	}
 }
 
@@ -83,6 +106,16 @@ void dae::GameObject::RemoveChild(GameObject* childObject)
 	}
 }
 
+void dae::GameObject::SetScene(Scene* pScene)
+{
+	m_pScene = pScene;
+}
+
+const dae::Scene* dae::GameObject::GetScene() const
+{
+	return m_pScene;
+}
+
 dae::GameObject* dae::GameObject::GetChild(int index)
 {
 	if (index >= int(m_pChildren.size()))
@@ -95,6 +128,11 @@ dae::GameObject* dae::GameObject::GetChild(int index)
 
 void dae::GameObject::Initialize()
 {
+	if (m_pTransform == nullptr)
+	{
+		m_pTransform = new Transform{};
+	}
+
 	for (size_t i = 0; i < m_pBaseComponents.size(); i++)
 	{
 		m_pBaseComponents[i]->Initialize();
@@ -167,6 +205,16 @@ void dae::GameObject::Render() const
 void dae::GameObject::SetTexture(const std::string& filename)
 {
 	m_pTexture = ResourceManager::GetInstance().LoadTexture(filename);
+}
+
+void dae::GameObject::SetTexture(const std::string& filename, int cols, int rows)
+{
+	m_pTexture = ResourceManager::GetInstance().LoadTexture(filename, cols, rows);
+}
+
+void dae::GameObject::SetTexture(const std::string& filename, int cols, int rows, int amountOfSprites)
+{
+	m_pTexture = ResourceManager::GetInstance().LoadTexture(filename, cols, rows, amountOfSprites);
 }
 
 void dae::GameObject::SetPosition(float x, float y)

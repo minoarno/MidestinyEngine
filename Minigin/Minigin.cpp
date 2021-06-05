@@ -74,8 +74,10 @@ void dae::Minigin::Run()
 
 		time_point<high_resolution_clock> lastTime = high_resolution_clock::now();
 		
+		sceneManager.InitializeActiveScene();
+
 		bool doContinue = true;
-		while (true)
+		while (doContinue)
 		{
 			const time_point<high_resolution_clock> currentTime = high_resolution_clock::now();
 			const double elapsed = duration_cast<duration<double>>(currentTime - lastTime).count();

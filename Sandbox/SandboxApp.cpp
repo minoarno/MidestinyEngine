@@ -5,6 +5,7 @@
 #include "Lives.h"
 #include "LiveObserver.h"
 #include "PlayerComponent.h"
+#include "Grid.h"
 
 class Sandbox final : public midestiny::Application
 {
@@ -39,7 +40,7 @@ public:
 		scene.Add(to2);
 
 		GameObject* lives1 = new GameObject();
-		TextComponent* textL1 = new TextComponent{ font , "Lives: 5"};
+		TextComponent* textL1 = new TextComponent{ font , "Lives: 5" };
 		LiveObserver* observerL1 = new LiveObserver(textL1);
 		lives1->AddComponent(textL1);
 		lives1->AddComponent(observerL1);
@@ -96,6 +97,11 @@ public:
 		to4->AddComponent(new TextComponent{ font,"Player 2 - DPAD DOWN : increase score - DPAD UP : lose live" });
 		to4->SetPosition(80, 360);
 		scene.Add(to4);
+
+		dae::GameObject* level = new dae::GameObject();
+		level->AddComponent(new Grid{ 7, 20.f });
+		scene.Add(level);
+		
 
 		InputManager::GetInstance().ProcessInput();
 	}

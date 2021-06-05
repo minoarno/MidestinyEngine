@@ -1,11 +1,15 @@
 #pragma once
 #include "Transform.h"
 #include "Texture2D.h"
+#include "TextureSpriteSheet.h"
 #include <vector>
+#include <typeindex>
 
+#include <string>
 class BaseComponent;
 namespace dae
 {
+	class Scene;
 	class Texture2D;
 	class GameObject final
 	{
@@ -18,9 +22,12 @@ namespace dae
 		void Render() const;
 
 		void SetTexture(const std::string& filename);
+		void SetTexture(const std::string& filename,int cols, int rows);
+		void SetTexture(const std::string& filename,int cols, int rows, int amountOfSprites);
 		void SetPosition(float x, float y);
 
 		GameObject();
+		GameObject(Scene* pScene);
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
@@ -32,7 +39,8 @@ namespace dae
 		void SetParent(GameObject* newParentObject);
 		void RemoveChild(GameObject* childObject);
 
-		
+		void SetScene(Scene* pScene);
+		const Scene* GetScene()const;
 		GameObject* GetParent()const { return m_pParent; };
 		GameObject* GetChild(int index);
 		const std::vector<GameObject*>& GetChildren()const { return m_pChildren; };
@@ -47,24 +55,25 @@ namespace dae
 		std::vector<BaseComponent*> m_pBaseComponents;
 		std::vector<GameObject*> m_pChildren;
 		GameObject* m_pParent = nullptr;
+		dae::Scene* m_pScene;
 	};
 
 	template<class T>
 	inline T* GameObject::GetComponent()
 	{
-		if (typeid(T) == typeid(dae::Transform))
+		if (typeid(T).name() == typeid(*m_pTransform).name())
 		{
 			return reinterpret_cast<T*>(m_pTransform);
 		}
 
-		if (typeid(T) == typeid(dae::Texture2D))
+		if (typeid(T).name() == typeid(*m_pTexture).name())
 		{
 			return reinterpret_cast<T*>(m_pTexture);
 		}
 		
 		for (BaseComponent* c : m_pBaseComponents)
 		{
-			if (typeid(T) == typeid(*c))
+			if (typeid(T).name() == typeid(*c).name())
 			{
 				return reinterpret_cast<T*>(c);
 			}

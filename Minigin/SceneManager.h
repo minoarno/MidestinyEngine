@@ -1,6 +1,7 @@
 #pragma once
 #include "Singleton.h"
 #include <vector>
+#include <memory>
 
 namespace dae
 {
@@ -10,6 +11,9 @@ namespace dae
 	{
 	public:
 		Scene& CreateScene(const std::string& name);
+		std::shared_ptr<Scene> GetActiveScene()const;
+
+		void InitializeActiveScene();
 
 		void FixedUpdate();
 		void Update();

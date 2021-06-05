@@ -100,6 +100,9 @@
     <ClInclude Include="EventObserver.h">
       <Filter>Input, Commands And Observers</Filter>
     </ClInclude>
+    <ClInclude Include="TextureSpriteSheet.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="EventSubject.cpp">
       <Filter>Input, Commands And Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureSpriteSheet.cpp">
+      <Filter>GameObject\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

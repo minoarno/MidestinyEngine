@@ -10,6 +10,9 @@
     <Filter Include="Observers">
       <UniqueIdentifier>{256512ef-2ca4-496a-a3ec-a82b663857ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{44909f48-3723-4159-8b91-94d18145c59e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SandboxApp.cpp">
@@ -30,6 +33,12 @@
     <ClCompile Include="PlayerComponent.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -46,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="PlayerComponent.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Level</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

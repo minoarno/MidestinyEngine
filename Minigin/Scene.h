@@ -1,10 +1,11 @@
 #pragma once
 #include "SceneManager.h"
+#include <string>
 
 namespace dae
 {
 	class GameObject;
-	class Scene
+	class Scene final
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
@@ -32,5 +33,4 @@ namespace dae
 
 		static unsigned int m_IdCounter; 
 	};
-
 }
