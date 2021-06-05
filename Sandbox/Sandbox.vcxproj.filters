@@ -10,8 +10,11 @@
     <Filter Include="Observers">
       <UniqueIdentifier>{256512ef-2ca4-496a-a3ec-a82b663857ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level">
+    <Filter Include="Grid">
       <UniqueIdentifier>{44909f48-3723-4159-8b91-94d18145c59e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{fdc5fe69-4067-4ad8-a8ad-47bfd1bed2ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,10 +37,19 @@
       <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
+      <Filter>Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleplayer.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplayer.cpp">
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
-      <Filter>Level</Filter>
+      <Filter>Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +69,18 @@
       <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>Level</Filter>
+      <Filter>Grid</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
+      <Filter>Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleplayer.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplayer.h">
       <Filter>Level</Filter>
     </ClInclude>
   </ItemGroup>

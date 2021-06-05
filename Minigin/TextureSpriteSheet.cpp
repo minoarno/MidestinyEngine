@@ -37,18 +37,18 @@ void dae::TextureSpriteSheet::SetIndex(int index)
 
 	int width, height;
 	GetSize(m_Texture, width, height);
-
-	SDL_Texture* pImgPart = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, width, height);
-
+	
+	SDL_Texture* pImgPart = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, m_SpriteWidth, m_SpriteHeight + 4);
+	
 	SDL_Rect srcRect = { m_CurrentIndex % m_AmountOfCols, m_CurrentIndex / m_AmountOfCols, m_SpriteWidth, m_SpriteHeight };
 	SDL_Rect dstRect = { 0, 0, m_Width, m_Height };
-
+	
 	SDL_SetRenderTarget(pRenderer, pImgPart);
 	SDL_RenderCopy(pRenderer, m_Texture, &srcRect, &dstRect);
-
+	
 	// the folowing line should reset the target to default(the screen)
 	SDL_SetRenderTarget(pRenderer, NULL);
-
+	
 	SDL_DestroyTexture(m_pCurrentSprite);
 	m_pCurrentSprite = pImgPart;
 }

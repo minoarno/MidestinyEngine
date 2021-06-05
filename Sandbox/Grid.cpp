@@ -33,7 +33,7 @@ void Grid::Initialize()
 	glm::vec3 pos = pTransform->GetPosition();
 
 	int tileWidth = int(float(sqrt(3)) * m_TileSize);
-	int tileHeight = 2 * m_TileSize;
+	int tileHeight = int(2 * m_TileSize);
 
 	m_Grid.resize(m_Size);
 	for (unsigned int r = 0; r < m_Size; r++)
@@ -47,9 +47,9 @@ void Grid::Initialize()
 			vector[c] = new Tile{ m_TileSize };
 			pObject->AddComponent(vector[c]);
 			dae::Transform* transform = pObject->GetComponent<dae::Transform>();
-			transform->SetPosition(pos.x + 0.5f * tileWidth * ((m_Size - 1) - r) + tileWidth * c, pos.y + tileHeight * r, pos.z);
+			transform->SetPosition(pos.x + tileWidth * (0.5f * ((m_Size - 1) - r) + c), pos.y + tileHeight * r, pos.z);
 			pObject->SetTexture("Blocks.png", 1, 3);
-			pObject->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth,tileHeight);
+			pObject->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth,tileHeight - 1);
 			m_pGameObject->AddChild(pObject);
 		}
 		m_Grid[r] = vector;
@@ -58,20 +58,27 @@ void Grid::Initialize()
 
 void Grid::MoveUpRight(int& r, int& w)
 {
-
+	r--;
 }
 
 void Grid::MoveUpLeft(int& r, int& w)
 {
-
+	r--;
+	w--;
 }
 
 void Grid::MoveDownRight(int& r, int& w)
 {
-
+	r++;
+	w++;
 }
 
 void Grid::MoveDownLeft(int& r, int& w)
 {
+	r++;
+}
 
+Tile* Grid::GetTile(int r, int w)
+{
+	return m_Grid[r][w];
 }

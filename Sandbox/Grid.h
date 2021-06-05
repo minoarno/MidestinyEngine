@@ -19,6 +19,8 @@ public:
 	void MoveUpLeft(int& r, int& w);
 	void MoveDownRight(int& r, int& w);
 	void MoveDownLeft(int& r, int& w);
+
+	Tile* GetTile(int r, int w);
 private:
 	std::vector<std::vector<Tile*>> m_Grid;
 	unsigned int m_Size;

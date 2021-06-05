@@ -33,7 +33,6 @@ void Scene::Unload()
 	
 }
 
-
 void Scene::Add(GameObject* object)
 {
 	m_Objects.push_back(object);

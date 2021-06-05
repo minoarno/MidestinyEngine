@@ -4,34 +4,22 @@
 
 void dae::SceneManager::FixedUpdate()
 {
-	for (std::shared_ptr<Scene>& scene : m_Scenes)
-	{
-		scene->FixedUpdate();
-	}
+	m_Scenes[m_CurrentIndex]->FixedUpdate();
 }
 
 void dae::SceneManager::Update()
 {
-	for(std::shared_ptr<Scene>& scene : m_Scenes)
-	{
-		scene->Update();
-	}
+	m_Scenes[m_CurrentIndex]->Update();
 }
 
 void dae::SceneManager::LateUpdate()
 {
-	for (std::shared_ptr<Scene>& scene : m_Scenes)
-	{
-		scene->LateUpdate();
-	}
+	m_Scenes[m_CurrentIndex]->LateUpdate();
 }
 
 void dae::SceneManager::Render()
 {
-	for (const std::shared_ptr<Scene>& scene : m_Scenes)
-	{
-		scene->Render();
-	}
+	m_Scenes[m_CurrentIndex]->Render();
 }
 
 void dae::SceneManager::NextScene()
@@ -78,9 +66,31 @@ dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 	return *(scene);
 }
 
+dae::Scene& dae::SceneManager::AddScene(dae::Scene* pScene)
+{
+	const std::shared_ptr<Scene>& scene = std::shared_ptr<Scene>(pScene);
+	m_Scenes.push_back(scene);
+	return *(scene);
+}
+
 std::shared_ptr<dae::Scene> dae::SceneManager::GetActiveScene() const
 {
 	return m_Scenes[m_CurrentIndex];
+}
+
+void dae::SceneManager::SetActiveScene(const int index)
+{
+	if (index < m_Scenes.size())
+	{
+		if (index != m_CurrentIndex)
+		{
+			m_CurrentIndex = index;
+			InitializeActiveScene();
+		}
+	}
+	else
+	{
+	}
 }
 
 void dae::SceneManager::InitializeActiveScene()

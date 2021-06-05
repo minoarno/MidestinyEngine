@@ -11,7 +11,9 @@ namespace dae
 	{
 	public:
 		Scene& CreateScene(const std::string& name);
+		Scene& AddScene(Scene* pScene);
 		std::shared_ptr<Scene> GetActiveScene()const;
+		void SetActiveScene(const int index);
 
 		void InitializeActiveScene();
 
