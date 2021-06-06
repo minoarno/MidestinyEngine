@@ -26,6 +26,12 @@ Multiplayer::Multiplayer()
 	go2->SetPosition(216, 180);
 	Add(go2);
 
+	dae::GameObject* levelGrid = new dae::GameObject();
+	Grid* pGrid = new Grid{ 7, 20.f };
+	levelGrid->AddComponent(pGrid);
+	levelGrid->SetPosition(500, 200);
+	Add(levelGrid);
+
 	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	GameObject* to = new GameObject();
 	to->AddComponent(new TextComponent{ font,"Midestiny Engine" });
@@ -74,8 +80,10 @@ Multiplayer::Multiplayer()
 	Score* pScore1 = new Score();
 	pLives1->AddObserver(observerL1);
 	pScore1->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, SDL_SCANCODE_UP, SDL_SCANCODE_RIGHT, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, 6,0);
+	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, 6,0);
+	playerComponent->SetGrid(pGrid);
 	player1->AddComponent(playerComponent);
+	player1->SetTexture("Qbert.png", 8, 1);
 	Add(player1);
 
 	GameObject* player2 = new GameObject();
@@ -83,13 +91,12 @@ Multiplayer::Multiplayer()
 	Score* pScore2 = new Score();
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
-	player2->AddComponent(new PlayerComponent{ pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadLeft,6,6 });
+	PlayerComponent* playerComponent2 = new PlayerComponent{ pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,6,6 };
+	playerComponent2->SetGrid(pGrid);
+	player2->AddComponent(playerComponent2);
+	player2->SetTexture("Qbert2.png", 8, 1);
 	Add(player2);
 
-	dae::GameObject* levelGrid = new dae::GameObject();
-	levelGrid->AddComponent(new Grid{ 7, 20.f });
-	levelGrid->SetPosition(860, 200);
-	Add(levelGrid);
 }
 
 Multiplayer::~Multiplayer()

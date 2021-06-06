@@ -27,6 +27,12 @@ Singleplayer::Singleplayer()
 	go2->SetPosition(216, 180);
 	Add(go2);
 
+	GameObject* levelGrid = new GameObject();
+	Grid* pGrid = new Grid{ 7, 20.f };
+	levelGrid->AddComponent(pGrid);
+	levelGrid->SetPosition(500, 200);
+	Add(levelGrid);
+
 	GameObject* lives1 = new GameObject();
 	TextComponent* textL1 = new TextComponent{ font , "Lives: 5" };
 	LiveObserver* observerL1 = new LiveObserver(textL1);
@@ -43,19 +49,16 @@ Singleplayer::Singleplayer()
 	score1->SetPosition(80, 500);
 	Add(score1);
 
-	GameObject* player1 = new GameObject();
-	Lives* pLives1 = new Lives(3);
-	Score* pScore1 = new Score();
-	pLives1->AddObserver(observerL1);
-	pScore1->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, SDL_SCANCODE_UP, SDL_SCANCODE_RIGHT, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, 6, 0);
-	player1->AddComponent(playerComponent);
-	Add(player1);
-
-	GameObject* levelGrid = new GameObject();
-	levelGrid->AddComponent(new Grid{ 7, 20.f });
-	levelGrid->SetPosition(860, 200);
-	Add(levelGrid);
+	GameObject* player = new GameObject();
+	Lives* pLives = new Lives(3);
+	Score* pScore = new Score();
+	pLives->AddObserver(observerL1);
+	pScore->AddObserver(observerS1);
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,6,6 };
+	playerComponent->SetGrid(pGrid);
+	player->AddComponent(playerComponent);
+	player->SetTexture("Qbert.png",8,1);
+	Add(player);
 }
 
 Singleplayer::~Singleplayer()

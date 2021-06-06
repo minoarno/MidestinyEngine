@@ -10,7 +10,7 @@ Versus::Versus()
 
 	GameObject* levelGrid = new GameObject();
 	levelGrid->AddComponent(new Grid{ 7, 20.f });
-	levelGrid->SetPosition(860, 200);
+	levelGrid->SetPosition(500, 200);
 	Add(levelGrid);
 }
 

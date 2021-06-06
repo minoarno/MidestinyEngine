@@ -51,11 +51,17 @@ bool dae::InputManager::ProcessInput()
 		}
 		if (e.type == SDL_KEYDOWN)
 		{
-
+			if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+			{
+				m_KeyboardCommands.at(e.key.keysym.scancode)->OnPressDown();
+			}
 		}
 		if (e.type == SDL_KEYUP)
 		{
-
+			if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+			{
+				m_KeyboardCommands.at(e.key.keysym.scancode)->OnRelease();
+			}
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 		{

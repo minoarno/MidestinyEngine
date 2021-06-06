@@ -60,9 +60,9 @@ void Grid::Initialize()
 	}
 }
 
-bool Grid::MoveUpRight(int& r, int&)
+bool Grid::MoveUpRight(int& r, int& w)
 {
-	if (r > 0)
+	if (r > 0 && w < m_Grid[r - 1].size())
 	{
 		r--;
 		return true;
