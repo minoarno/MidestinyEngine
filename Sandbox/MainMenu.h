@@ -10,7 +10,12 @@ public:
 	MainMenu& operator=(MainMenu&& other) = delete;
 	MainMenu(MainMenu&& other) = delete;
 	~MainMenu();
-private:
 
+	void Initialize() override;
+private:
+	void StartSinglePlayer();
+	void StartMultiplayer();
+	void StartVersus();
+	void QuitGame();
 };
 

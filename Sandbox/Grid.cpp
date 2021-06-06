@@ -6,11 +6,15 @@
 #include "Scene.h"
 #include "TextureSpriteSheet.h"
 
-Grid::Grid(unsigned int size, float tileSize)
+Grid::Grid(int size, float tileSize)
 	: BaseComponent{}
 	, m_TileSize{tileSize}
 	, m_Size{size}
 {
+	if (size < 1)
+	{
+		size = 1;
+	}
 }
 
 Grid::~Grid()
@@ -36,12 +40,12 @@ void Grid::Initialize()
 	int tileHeight = int(2 * m_TileSize);
 
 	m_Grid.resize(m_Size);
-	for (unsigned int r = 0; r < m_Size; r++)
+	for (int r = 0; r < m_Size; r++)
 	{
 		std::vector<Tile*> vector;
-		unsigned int sizeCols = r + 1;
+		int sizeCols = r + 1;
 		vector.resize(sizeCols);
-		for (unsigned int c = 0; c < sizeCols; c++)
+		for (int c = 0; c < sizeCols; c++)
 		{
 			dae::GameObject* pObject = new dae::GameObject{};
 			vector[c] = new Tile{ m_TileSize };
@@ -56,26 +60,46 @@ void Grid::Initialize()
 	}
 }
 
-void Grid::MoveUpRight(int& r, int& w)
+bool Grid::MoveUpRight(int& r, int&)
 {
-	r--;
+	if (r > 0)
+	{
+		r--;
+		return true;
+	}
+	return false;
 }
 
-void Grid::MoveUpLeft(int& r, int& w)
+bool Grid::MoveUpLeft(int& r, int& w)
 {
-	r--;
-	w--;
+	if (r > 0 && w > 0)
+	{
+		r--;
+		w--;
+		return true;
+	}
+	return false;
 }
 
-void Grid::MoveDownRight(int& r, int& w)
+bool Grid::MoveDownRight(int& r, int& w)
 {
-	r++;
-	w++;
+	if (r < (m_Size - 1) && w < int(m_Grid[r].size() - 1))
+	{
+		r++;
+		w++;
+		return true;
+	}
+	return false;
 }
 
-void Grid::MoveDownLeft(int& r, int& w)
+bool Grid::MoveDownLeft(int& r, int&)
 {
-	r++;
+	if (r < (m_Size - 1))
+	{
+		r++;
+		return true;
+	}
+	return false;
 }
 
 Tile* Grid::GetTile(int r, int w)

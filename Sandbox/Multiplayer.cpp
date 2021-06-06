@@ -74,7 +74,7 @@ Multiplayer::Multiplayer()
 	Score* pScore1 = new Score();
 	pLives1->AddObserver(observerL1);
 	pScore1->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, dae::ControllerButton::ButtonA, dae::ControllerButton::ButtonB);
+	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, SDL_SCANCODE_UP, SDL_SCANCODE_RIGHT, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, 6,0);
 	player1->AddComponent(playerComponent);
 	Add(player1);
 
@@ -83,18 +83,8 @@ Multiplayer::Multiplayer()
 	Score* pScore2 = new Score();
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
-	player2->AddComponent(new PlayerComponent(pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadDown));
+	player2->AddComponent(new PlayerComponent{ pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadLeft,6,6 });
 	Add(player2);
-
-	dae::GameObject* to3 = new dae::GameObject();
-	to3->AddComponent(new TextComponent{ font,"Player 1 - Button B : increase score - Button A : lose live" });
-	to3->SetPosition(80, 300);
-	Add(to3);
-
-	dae::GameObject* to4 = new dae::GameObject();
-	to4->AddComponent(new TextComponent{ font,"Player 2 - DPAD DOWN : increase score - DPAD UP : lose live" });
-	to4->SetPosition(80, 360);
-	Add(to4);
 
 	dae::GameObject* levelGrid = new dae::GameObject();
 	levelGrid->AddComponent(new Grid{ 7, 20.f });

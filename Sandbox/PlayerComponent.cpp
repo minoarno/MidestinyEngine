@@ -3,18 +3,64 @@
 #include <functional>
 #include "ServiceLocator.h"
 #include "Audio.h"
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton incrementScore, dae::ControllerButton die)
+
+#include "Grid.h"
+#include "Tile.h"
+
+#include "GameObject.h"
+
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC)
 	: BaseComponent()
-	, m_pScore(pScore)
-	, m_pLives(pLives)
+	, m_pScore{ pScore }
+	, m_pLives{ pLives }
+	, m_Col{ startC }
+	, m_Row{ startR }
+	, m_pGrid{ nullptr }
 {
-	FunctionCommand* commandIncreaseScore = new FunctionCommand();
-	commandIncreaseScore->SetFunctionOnRelease(std::bind(&PlayerComponent::IncrementScore, this));
-	dae::InputManager::GetInstance().AddInput(incrementScore, commandIncreaseScore);
-	
-	FunctionCommand* commandDie = new FunctionCommand();
-	commandDie->SetFunctionOnRelease(std::bind(&PlayerComponent::LoseLife, this));
-	dae::InputManager::GetInstance().AddInput(die, commandDie);
+	FunctionCommand* commandUpRight = new FunctionCommand();
+	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
+	dae::InputManager::GetInstance().AddInput(upRight, commandUpRight);
+
+	FunctionCommand* commandUpLeft = new FunctionCommand();
+	commandUpLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpLeft, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandUpLeft);
+
+	FunctionCommand* commandDownRight = new FunctionCommand();
+	commandDownRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownRight, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandDownRight);
+
+	FunctionCommand* commandDownLeft = new FunctionCommand();
+	commandDownLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownLeft, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandDownLeft);
+}
+
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC)
+	: BaseComponent()
+	, m_pScore{ pScore }
+	, m_pLives{ pLives }
+	, m_Col{ startC }
+	, m_Row{ startR }
+	, m_pGrid{ nullptr }
+{
+	FunctionCommand* commandUpRight = new FunctionCommand();
+	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
+	dae::InputManager::GetInstance().AddInput(upRight, commandUpRight);
+
+	FunctionCommand* commandUpLeft = new FunctionCommand();
+	commandUpLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpLeft, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandUpLeft);
+
+	FunctionCommand* commandDownRight = new FunctionCommand();
+	commandDownRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownRight, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandDownRight);
+
+	FunctionCommand* commandDownLeft = new FunctionCommand();
+	commandDownLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownLeft, this));
+	dae::InputManager::GetInstance().AddInput(upLeft, commandDownLeft);
+}
+
+void PlayerComponent::Initialize()
+{
 }
 
 void PlayerComponent::IncrementScore()
@@ -29,4 +75,48 @@ void PlayerComponent::GainLife()
 void PlayerComponent::LoseLife()
 {
 	m_pLives->LoseLife();
+}
+
+void PlayerComponent::MoveUpRight()
+{
+	if (m_pGrid->MoveUpRight(m_Row,m_Col))
+	{
+		Tile* pTile = m_pGrid->GetTile(m_Row, m_Col);
+		pTile->SetHasBeenWalkedOn(true);
+		glm::vec3 pos = pTile->GetPosition();
+		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
+	}
+}
+
+void PlayerComponent::MoveUpLeft()
+{
+	if (m_pGrid->MoveUpLeft(m_Row, m_Col))
+	{
+		Tile* pTile = m_pGrid->GetTile(m_Row, m_Col);
+		pTile->SetHasBeenWalkedOn(true);
+		glm::vec3 pos = pTile->GetPosition();
+		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
+	}
+}
+
+void PlayerComponent::MoveDownRight()
+{
+	if (m_pGrid->MoveDownRight(m_Row, m_Col))
+	{
+		Tile* pTile = m_pGrid->GetTile(m_Row, m_Col);
+		pTile->SetHasBeenWalkedOn(true);
+		glm::vec3 pos = pTile->GetPosition();
+		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
+	}
+}
+
+void PlayerComponent::MoveDownLeft()
+{
+	if (m_pGrid->MoveDownLeft(m_Row, m_Col))
+	{
+		Tile* pTile = m_pGrid->GetTile(m_Row, m_Col);
+		pTile->SetHasBeenWalkedOn(true);
+		glm::vec3 pos = pTile->GetPosition();
+		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x,pos.y,pos.z);
+	}
 }

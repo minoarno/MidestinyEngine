@@ -162,6 +162,7 @@
     <ClCompile Include="ScoreObserver.cpp" />
     <ClCompile Include="Singleplayer.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Versus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grid.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="ScoreObserver.h" />
     <ClInclude Include="Singleplayer.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Versus.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

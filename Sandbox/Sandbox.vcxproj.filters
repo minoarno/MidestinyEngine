@@ -51,6 +51,9 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Grid</Filter>
     </ClCompile>
+    <ClCompile Include="Versus.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -81,6 +84,9 @@
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="Multiplayer.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Versus.h">
       <Filter>Level</Filter>
     </ClInclude>
   </ItemGroup>
