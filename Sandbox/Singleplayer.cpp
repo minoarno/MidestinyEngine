@@ -9,6 +9,7 @@
 #include "LiveObserver.h"
 #include "ScoreObserver.h"
 #include "ResourceManager.h"
+
 using namespace dae;
 
 Singleplayer::Singleplayer()
@@ -51,7 +52,7 @@ Singleplayer::Singleplayer()
 	player1->AddComponent(playerComponent);
 	Add(player1);
 
-	dae::GameObject* levelGrid = new dae::GameObject();
+	GameObject* levelGrid = new GameObject();
 	levelGrid->AddComponent(new Grid{ 7, 20.f });
 	levelGrid->SetPosition(860, 200);
 	Add(levelGrid);

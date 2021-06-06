@@ -14,8 +14,8 @@ public:
 	void IntializeGame() override
 	{
 		SceneManager::GetInstance().AddScene(new MainMenu{});
-		SceneManager::GetInstance().AddScene(new Multiplayer{});
 		SceneManager::GetInstance().AddScene(new Singleplayer{});
+		SceneManager::GetInstance().AddScene(new Multiplayer{});
 		SceneManager::GetInstance().AddScene(new Versus{});
 
 		SceneManager::GetInstance().SetActiveScene(0);

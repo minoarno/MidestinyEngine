@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "Commands.h"
 #include "GameObject.h"
+#include <SDL.h>
 
 Button::Button(Command* pOnPressDownCommand)
 	: UIElement{}
@@ -46,6 +47,13 @@ void Button::LateUpdate()
 
 void Button::Render() const
 {
+	//glm::vec3 pos = m_pGameObject->GetComponent<dae::Transform>()->GetPosition();
+	//glBegin(GL_QUADS);
+	//glVertex2f(pos.x, pos.y);
+	//glVertex2f(pos.x + m_Width, pos.y);
+	//glVertex2f(pos.x + m_Width, pos.y + m_Height);
+	//glVertex2f(pos.x, pos.y + m_Height);
+	//glEnd();
 }
 
 void Button::SetSize(float width, float height)

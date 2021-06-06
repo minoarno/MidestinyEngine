@@ -7,7 +7,6 @@ using namespace dae;
 Versus::Versus()
 	: dae::Scene{"Versus"}
 {
-	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 
 	GameObject* levelGrid = new GameObject();
 	levelGrid->AddComponent(new Grid{ 7, 20.f });
