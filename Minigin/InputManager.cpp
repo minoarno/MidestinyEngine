@@ -2,6 +2,8 @@
 #pragma once
 #include "InputManager.h"
 #include "Commands.h"
+#include "UIManager.h"
+#include "Log.h"
 
 dae::InputManager::~InputManager()
 {
@@ -57,7 +59,14 @@ bool dae::InputManager::ProcessInput()
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
-
+			
+			int x, y;
+			Uint32 mouseState = SDL_GetMouseState(&x, &y);
+			if (mouseState & SDL_BUTTON(SDL_BUTTON_LEFT)) //left mouse button
+			{
+				UIManager::GetInstance().OnMouseDown(x, y);
+				ME_CORE_INFO("{0} {1}", x, y);
+			}
 		}
 		if (e.type == SDL_MOUSEBUTTONUP)
 		{

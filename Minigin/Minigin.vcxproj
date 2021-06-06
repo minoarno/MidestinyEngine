@@ -99,6 +99,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\imgui-1.81;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,6 +133,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\imgui-1.81;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -167,6 +169,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\imgui-1.81;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -204,6 +207,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
       <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\imgui-1.81;$(SolutionDir)3rdParty\spdlog-1.x\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>MiniginPCH.h</PrecompiledHeaderFile>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -240,6 +244,10 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClInclude Include="Application.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="BaseComponent.h" />
+    <ClInclude Include="BinaryDataType.h" />
+    <ClInclude Include="BinaryReader.h" />
+    <ClInclude Include="BinaryWriter.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="ENTRYPOINT.H" />
     <ClInclude Include="EventObserver.h" />
@@ -264,6 +272,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TextureSpriteSheet.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="UIElement.h" />
+    <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\3rdParty\imgui-1.81\backends\imgui_impl_opengl2.cpp">
@@ -311,6 +321,9 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
+    <ClCompile Include="BinaryReader.cpp" />
+    <ClCompile Include="BinaryWriter.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="EventObserver.cpp" />
     <ClCompile Include="EventSubject.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -336,6 +349,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_mixer-2.0.4\lib\$(PlatformTarget)\*.dll" "$(O
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TextureSpriteSheet.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

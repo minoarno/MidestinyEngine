@@ -106,6 +106,24 @@
     <ClInclude Include="Log.h">
       <Filter>Logging</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryWriter.h">
+      <Filter>Binary Reader And Writer</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReader.h">
+      <Filter>Binary Reader And Writer</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryDataType.h">
+      <Filter>Binary Reader And Writer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -195,6 +213,21 @@
     <ClCompile Include="Log.cpp">
       <Filter>Logging</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryReader.cpp">
+      <Filter>Binary Reader And Writer</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryWriter.cpp">
+      <Filter>Binary Reader And Writer</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -226,6 +259,9 @@
     </Filter>
     <Filter Include="Logging">
       <UniqueIdentifier>{2fcdb0e9-f113-4820-900c-8e06460b0854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Binary Reader And Writer">
+      <UniqueIdentifier>{233b592d-0642-4789-b31a-86becfac5b28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
