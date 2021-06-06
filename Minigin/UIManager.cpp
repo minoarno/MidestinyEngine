@@ -16,6 +16,11 @@ UIManager::~UIManager()
 	}
 }
 
+void UIManager::Add(UIElement* newElement)
+{
+	m_pElements.push_back(newElement);
+}
+
 void UIManager::OnMouseDown(int mouseX, int mouseY)
 {
 	std::shared_ptr<Scene> activeScene = SceneManager::GetInstance().GetActiveScene();

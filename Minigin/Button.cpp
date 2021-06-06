@@ -6,10 +6,16 @@
 Button::Button(Command* pOnPressDownCommand)
 	: UIElement{}
 	, m_pOnClickCommand{ pOnPressDownCommand }
+	, m_Width{100}
+	, m_Height{100}
 {
 }
 
 Button::Button(std::function<void()>& onPressDownFunction)
+	: UIElement{}
+	, m_pOnClickCommand{nullptr}
+	, m_Width{ 100 }
+	, m_Height{ 100 }
 {
 	FunctionCommand* funcCommand = new FunctionCommand{};
 	funcCommand->SetFunctionOnPressDown(onPressDownFunction);
