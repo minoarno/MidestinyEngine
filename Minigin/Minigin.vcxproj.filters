@@ -103,6 +103,9 @@
     <ClInclude Include="TextureSpriteSheet.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -189,6 +192,9 @@
     <ClCompile Include="TextureSpriteSheet.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Logging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -214,6 +220,12 @@
     </Filter>
     <Filter Include="Input, Commands And Observers">
       <UniqueIdentifier>{3f27b7d8-2fb0-4cc7-8e65-b16f6850d4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{e261ee61-f910-4b00-884f-80710f47f94b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{2fcdb0e9-f113-4820-900c-8e06460b0854}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
