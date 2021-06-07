@@ -74,7 +74,7 @@ void PlayerComponent::Initialize()
 void PlayerComponent::IncrementScore()
 {
 	m_pScore->IncreaseScore(50);
-	ServiceLocator::GetAudio().Play(0);
+	ServiceLocator::GetAudio().Play(0,1);
 }
 void PlayerComponent::GainLife()
 {
