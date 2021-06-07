@@ -21,6 +21,11 @@ public:
 		SceneManager::GetInstance().SetActiveScene(0);
 
 		InputManager::GetInstance().ProcessInput();
+
+		ServiceLocator::GetAudio().AddSound("jump.wav");
+		ServiceLocator::GetAudio().SetVolumeSound(0,10);
+		ServiceLocator::GetAudio().Play(0,1);
+
 	}
 
 	Sandbox(const Sandbox& other) = delete;

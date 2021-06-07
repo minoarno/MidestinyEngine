@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include <SDL_mixer.h>
 #include "Audio.h"
+#include "Log.h"
 
 Mixer_Sound_System::~Mixer_Sound_System()
 {
@@ -12,6 +13,14 @@ Mixer_Sound_System::~Mixer_Sound_System()
 		Mix_FreeMusic(m_Music[i]); 
 		m_Music[i] = nullptr;
 	}
+	m_Music.clear();
+
+	for (size_t i = 0; i < m_Sounds.size(); i++)
+	{
+		Mix_FreeChunk(m_Sounds[i].first);
+		m_Sounds[i].first = nullptr;
+	}
+	m_Sounds.clear();
 }
 
 void Mixer_Sound_System::AddSound(const std::string& file)
@@ -29,6 +38,11 @@ bool Mixer_Sound_System::Play(int soundID, int loops)
 	// Don't save the channel as a data member, 
 	// because when it stops playing the channel becomes free
 	// and available for usage by other effects
+	if (soundID > m_Sounds.size())
+	{
+		ME_CORE_WARN("soundID {0} is out of vector reach.");
+		return false;
+	}
 	if (m_Sounds[soundID].first != nullptr)
 	{
 		int channel{ Mix_PlayChannel(-1, m_Sounds[soundID].first, loops) };
@@ -39,9 +53,14 @@ bool Mixer_Sound_System::Play(int soundID, int loops)
 
 bool Mixer_Sound_System::PlayMusic(int soundID, bool repeat)
 {
-	if (m_Sounds.size() > soundID && m_Sounds[soundID].first != nullptr)
+	if (soundID > m_Music.size())
 	{
-		int result = m_Sounds[soundID].second = Mix_PlayMusic(m_Music[soundID],(repeat)? -1 : 1);
+		ME_CORE_WARN("soundID {0} is out of vector reach.");
+		return false;
+	}
+	if (m_Music[soundID] != nullptr)
+	{
+		int result = Mix_PlayMusic(m_Music[soundID],(repeat)? -1 : 1);
 		return (result == 0);
 	}
 	return false;
@@ -100,9 +119,29 @@ int Mixer_Sound_System::GetVolumeMusic() const
 	return Mix_VolumeMusic(-1);
 }
 
+int Mixer_Sound_System::GetVolumeSound(int soundID) const
+{
+	if (m_Sounds[soundID].first != nullptr)
+	{
+		return Mix_VolumeChunk(m_Sounds[soundID].first, -1);
+	}
+	else
+	{
+		return -1;
+	}
+}
+
 void Mixer_Sound_System::SetVolumeMusic(int value)
 {
 	Mix_VolumeMusic(value);
+}
+
+void Mixer_Sound_System::SetVolumeSound(int soundID, int value)
+{
+	if (m_Sounds[soundID].first != nullptr)
+	{
+		Mix_VolumeChunk(m_Sounds[soundID].first, value);
+	}
 }
 
 bool Mixer_Sound_System::IsPlaying()

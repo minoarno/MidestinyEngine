@@ -26,7 +26,9 @@ public:
 	virtual void ResumeMusic() = 0;
 
 	virtual int GetVolumeMusic()const = 0;
+	virtual int GetVolumeSound(int soundID)const = 0;
 	virtual void SetVolumeMusic(int value) = 0;
+	virtual void SetVolumeSound(int soundID, int value) = 0;
 	virtual bool IsPlaying() = 0;
 };
 
@@ -59,7 +61,9 @@ public:
 	virtual void ResumeMusic() override;
 
 	virtual int GetVolumeMusic()const override;
+	virtual int GetVolumeSound(int soundID)const override;
 	virtual void SetVolumeMusic(int value) override;
+	virtual void SetVolumeSound(int soundID, int value) override;
 	virtual bool IsPlaying() override;
 private:
 	std::vector<std::pair<Mix_Chunk*,int>> m_Sounds;
@@ -91,7 +95,9 @@ public:
 	virtual void ResumeAll() override { };
 	virtual void ResumeMusic() override { };
 
-	virtual int GetVolumeMusic()const override { return 0; };
+	virtual int GetVolumeMusic()const override { return -1; };
+	virtual int GetVolumeSound(int)const override { return -1; };
 	virtual void SetVolumeMusic(int) override { };
+	virtual void SetVolumeSound(int, int) override {};
 	virtual bool IsPlaying() override { return false; };
 };
