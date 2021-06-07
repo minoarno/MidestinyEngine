@@ -15,6 +15,8 @@ Tile::~Tile()
 void Tile::SetHasBeenWalkedOn(bool value)
 {
 	m_HasBeenWalkedOn = value;
+	dae::TextureSpriteSheet* m_pSpriteSheet = m_pGameObject->GetComponent<dae::TextureSpriteSheet>();
+	m_pSpriteSheet->SetIndex(int(value));
 }
 
 glm::vec3 Tile::GetPosition() const

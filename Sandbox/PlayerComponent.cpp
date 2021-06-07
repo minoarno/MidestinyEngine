@@ -22,6 +22,7 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerBu
 	, m_pLives{ pLives }
 	, m_Col{ startC }
 	, m_Row{ startR }
+	, m_FacingDirection{ FacingDirection::downLeft }
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
@@ -46,6 +47,7 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRi
 	, m_pLives{ pLives }
 	, m_Col{ startC }
 	, m_Row{ startR }
+	, m_FacingDirection{ FacingDirection::downLeft }
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));

@@ -12,7 +12,7 @@ class Grid;
 class PlayerComponent final : public BaseComponent
 {
 public:
-	enum FacingDirection : int
+	enum class FacingDirection : int
 	{
 		upRight = 0,
 		upLeft = 2,

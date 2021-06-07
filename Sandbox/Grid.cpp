@@ -16,6 +16,7 @@ Grid::Grid(int size, float tileSize)
 	if (size < 1)
 	{
 		size = 1;
+		ME_WARN("GRID ONLY HAS 1 SIZE");
 	}
 }
 
@@ -34,6 +35,11 @@ Grid::~Grid()
 }
 
 void Grid::Initialize()
+{
+	CreateGrid();
+}
+
+void Grid::CreateGrid()
 {
 	dae::Transform* pTransform = m_pGameObject->GetComponent<dae::Transform>();
 	glm::vec3 pos = pTransform->GetPosition();
@@ -55,19 +61,19 @@ void Grid::Initialize()
 			dae::Transform* transform = pObject->GetComponent<dae::Transform>();
 			transform->SetPosition(pos.x + tileWidth * (0.5f * ((m_Size - 1) - r) + c), pos.y + tileHeight * r, pos.z);
 			pObject->SetTexture("Blocks.png", 1, 3);
-			pObject->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth,tileHeight);
+			pObject->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth, tileHeight);
 			m_pGameObject->AddChild(pObject);
 		}
 		m_Grid[r] = vector;
 	}
 }
 
-bool Grid::MoveUpRight(int& r, int& w) const
+bool Grid::MoveUpRight(int& r, int& w)
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		return false;
+		CreateGrid();
 	}
 
 	if (r > 0 && w < int(m_Grid[r - 1].size()))
@@ -78,12 +84,12 @@ bool Grid::MoveUpRight(int& r, int& w) const
 	return false;
 }
 
-bool Grid::MoveUpLeft(int& r, int& w) const
+bool Grid::MoveUpLeft(int& r, int& w)
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		return false;
+		CreateGrid();
 	}
 
 	if (r > 0 && w > 0)
@@ -95,15 +101,15 @@ bool Grid::MoveUpLeft(int& r, int& w) const
 	return false;
 }
 
-bool Grid::MoveDownRight(int& r, int& w) const
+bool Grid::MoveDownRight(int& r, int& w)
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		return false;
+		CreateGrid();
 	}
 
-	if (r < (m_Size - 1) && w < int(m_Grid[r].size() - 1))
+	if (r < (m_Size - 1) && w < int(m_Grid[r].size()))
 	{
 		r++;
 		w++;
@@ -112,12 +118,12 @@ bool Grid::MoveDownRight(int& r, int& w) const
 	return false;
 }
 
-bool Grid::MoveDownLeft(int& r, int&) const
+bool Grid::MoveDownLeft(int& r, int&)
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		return false;
+		CreateGrid();
 	}
 
 	if (r < (m_Size - 1))

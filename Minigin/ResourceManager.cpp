@@ -76,36 +76,22 @@ dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file)
 
 dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file, int col, int row)
 {
-	if (m_pTextures.find(file) == m_pTextures.end())
-	{
-		const std::string fullPath = m_DataPath + file;
-		SDL_Texture* texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
-		if (texture == nullptr)
-		{
-			std::cout << SDL_GetError() << '\n';
-			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
-		}
-		m_pTextures.emplace(file, new TextureSpriteSheet{ texture, col, row });
-	}
+	dae::Texture2D* texture = LoadTexture(file);
 
-	return m_pTextures.at(file);
+	TextureSpriteSheet* sprite = new TextureSpriteSheet{ texture->GetSDLTexture(), col, row };
+	m_pSprites.push_back(sprite);
+
+	return sprite;
 }
 
 dae::Texture2D* dae::ResourceManager::LoadTexture(const std::string& file, int col, int row, int amountOfSprites)
 {
-	if (m_pTextures.find(file) == m_pTextures.end())
-	{
-		const std::string fullPath = m_DataPath + file;
-		SDL_Texture* texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
-		if (texture == nullptr)
-		{
-			std::cout << SDL_GetError() << '\n';
-			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
-		}
-		m_pTextures.emplace(file, new TextureSpriteSheet{ texture, col, row, amountOfSprites });
-	}
+	dae::Texture2D* texture = LoadTexture(file);
 
-	return m_pTextures.at(file);
+	TextureSpriteSheet* sprite = new TextureSpriteSheet{ texture->GetSDLTexture(), col, row, amountOfSprites };
+	m_pSprites.push_back(sprite);
+
+	return sprite;
 }
 
 dae::Font* dae::ResourceManager::LoadFont(const std::string& file, unsigned int size)

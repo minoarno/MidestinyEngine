@@ -3,7 +3,7 @@
 #include "BaseComponent.h"
 
 class Tile;
-class Grid : public BaseComponent
+class Grid final: public BaseComponent
 {
 public:
 	Grid(int size, float tileSize);
@@ -13,12 +13,13 @@ public:
 	Grid& operator=(Grid&& other) = delete;
 	~Grid();
 
-	virtual void Initialize() override;
+	void Initialize() override;
+	void CreateGrid();
 
-	bool MoveUpRight(int& r, int& w)const;
-	bool MoveUpLeft(int& r, int& w)const;
-	bool MoveDownRight(int& r, int& w)const;
-	bool MoveDownLeft(int& r, int& w)const;
+	bool MoveUpRight(int& r, int& w);
+	bool MoveUpLeft(int& r, int& w);
+	bool MoveDownRight(int& r, int& w);
+	bool MoveDownLeft(int& r, int& w);
 
 	Tile* GetTile(int r, int w)const;
 private:

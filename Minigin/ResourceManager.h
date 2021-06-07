@@ -4,6 +4,7 @@
 
 namespace dae
 {
+	class TextureSpriteSheet;
 	class Texture2D;
 	class Font;
 	class ResourceManager final : public Singleton<ResourceManager>
@@ -40,6 +41,7 @@ namespace dae
 		ResourceManager() = default;
 		std::string m_DataPath;
 		std::unordered_map<std::string, Texture2D*> m_pTextures;
+		std::vector<dae::TextureSpriteSheet*> m_pSprites;
 		std::unordered_map<std::string, Font*> m_pFonts;
 	};
 }
