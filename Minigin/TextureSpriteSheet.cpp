@@ -30,7 +30,8 @@ dae::TextureSpriteSheet::~TextureSpriteSheet()
 void dae::TextureSpriteSheet::SetIndex(int index)
 {
 	m_CurrentIndex = index % m_AmountOfSprites;
-	m_SrcRect = { m_CurrentIndex % m_AmountOfCols, m_CurrentIndex / m_AmountOfCols, int(m_SpriteWidth), int(m_SpriteHeight) };
+	m_SrcRect = { m_CurrentIndex % m_AmountOfCols * int(m_SpriteWidth), m_CurrentIndex / m_AmountOfCols * int(m_SpriteHeight), int(m_SpriteWidth), int(m_SpriteHeight) };
+	m_UseSourceRect = true;
 }
 
 void dae::TextureSpriteSheet::SetSize(float width, float height)
