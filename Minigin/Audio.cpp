@@ -38,7 +38,7 @@ bool Mixer_Sound_System::Play(int soundID, int loops)
 	// Don't save the channel as a data member, 
 	// because when it stops playing the channel becomes free
 	// and available for usage by other effects
-	if (soundID > m_Sounds.size())
+	if (soundID > int(m_Sounds.size()))
 	{
 		ME_CORE_WARN("soundID {0} is out of vector reach.");
 		return false;
@@ -53,7 +53,7 @@ bool Mixer_Sound_System::Play(int soundID, int loops)
 
 bool Mixer_Sound_System::PlayMusic(int soundID, bool repeat)
 {
-	if (soundID > m_Music.size())
+	if (soundID > int(m_Music.size()))
 	{
 		ME_CORE_WARN("soundID {0} is out of vector reach.");
 		return false;
@@ -68,7 +68,7 @@ bool Mixer_Sound_System::PlayMusic(int soundID, bool repeat)
 
 void Mixer_Sound_System::Stop(int soundID)
 {
-	if (m_Sounds.size() > soundID)
+	if (int(m_Sounds.size()) > soundID)
 	{
 		Mix_HaltChannel(m_Sounds[soundID].second);
 	}

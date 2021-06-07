@@ -80,7 +80,7 @@ std::shared_ptr<dae::Scene> dae::SceneManager::GetActiveScene() const
 
 void dae::SceneManager::SetActiveScene(const int index)
 {
-	if (index < m_Scenes.size())
+	if (index < int(m_Scenes.size()))
 	{
 		if (index != m_CurrentIndex)
 		{

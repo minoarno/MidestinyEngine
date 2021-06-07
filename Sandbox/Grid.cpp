@@ -64,13 +64,13 @@ void Grid::Initialize()
 
 bool Grid::MoveUpRight(int& r, int& w) const
 {
-	if (m_Grid.size() < 1)
+	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
 		return false;
 	}
 
-	if (r > 0 && w < m_Grid[r - 1].size())
+	if (r > 0 && w < int(m_Grid[r - 1].size()))
 	{
 		r--;
 		return true;
@@ -80,7 +80,7 @@ bool Grid::MoveUpRight(int& r, int& w) const
 
 bool Grid::MoveUpLeft(int& r, int& w) const
 {
-	if (m_Grid.size() < 1)
+	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
 		return false;
@@ -97,7 +97,7 @@ bool Grid::MoveUpLeft(int& r, int& w) const
 
 bool Grid::MoveDownRight(int& r, int& w) const
 {
-	if (m_Grid.size() < 1)
+	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
 		return false;
@@ -114,7 +114,7 @@ bool Grid::MoveDownRight(int& r, int& w) const
 
 bool Grid::MoveDownLeft(int& r, int&) const
 {
-	if (m_Grid.size() < 1)
+	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
 		return false;
