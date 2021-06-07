@@ -44,7 +44,7 @@ Multiplayer::Multiplayer()
 	Add(to2);
 
 	GameObject* lives1 = new GameObject();
-	TextComponent* textL1 = new TextComponent{ font , "Lives: 5" };
+	TextComponent* textL1 = new TextComponent{ font , "Lives: 3" };
 	LiveObserver* observerL1 = new LiveObserver(textL1);
 	lives1->AddComponent(textL1);
 	lives1->AddComponent(observerL1);
@@ -52,7 +52,7 @@ Multiplayer::Multiplayer()
 	Add(lives1);
 
 	GameObject* lives2 = new GameObject();
-	TextComponent* textL2 = new TextComponent{ font , "Lives: 5" };
+	TextComponent* textL2 = new TextComponent{ font , "Lives: 3" };
 	LiveObserver* observerL2 = new LiveObserver(textL2);
 	lives2->AddComponent(textL2);
 	lives2->AddComponent(observerL2);

@@ -1,4 +1,10 @@
 #pragma once
+#pragma warning(push)
+#pragma warning(disable : 4005)
+#include <SDL.h>
+#pragma warning(pop)
+
+
 struct SDL_Texture;
 namespace dae
 {
@@ -17,13 +23,21 @@ namespace dae
 		Texture2D & operator= (const Texture2D &) = delete;
 		Texture2D & operator= (const Texture2D &&) = delete;
 
-		virtual void SetSize(int width, int height);
+		virtual void SetSize(float width, float height);
+		float GetWidth()const { return m_Width; }
+		float GetHeight()const { return m_Height; }
+
+		bool IsCustomBoundaries()const { return m_CustomBoundaries; }
+		bool UseSourceRect()const { return m_UseSourceRect; }
+		
+		SDL_Rect GetSourceRect()const;
 	protected:
 		SDL_Texture* m_Texture;
 
-		int m_Width;
-		int m_Height;
-
-		void GetSize(SDL_Texture* texture, int& width, int& height);
+		float m_Width;
+		float m_Height;
+		bool m_CustomBoundaries = false;
+		bool m_UseSourceRect = false;
+		SDL_Rect m_SrcRect;
 	};
 }

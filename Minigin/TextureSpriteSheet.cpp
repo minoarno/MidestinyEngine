@@ -1,12 +1,6 @@
 #include "MiniginPCH.h"
 #include "TextureSpriteSheet.h"
-#include <SDL.h>
 #include "Renderer.h"
-
-SDL_Texture* dae::TextureSpriteSheet::GetSDLTexture() const
-{
-	return m_pCurrentSprite;
-}
 
 dae::TextureSpriteSheet::TextureSpriteSheet(SDL_Texture* texture, int col, int row)
 	: TextureSpriteSheet(texture, col, row, col* row)
@@ -19,41 +13,27 @@ dae::TextureSpriteSheet::TextureSpriteSheet(SDL_Texture* texture, int col, int r
 	, m_AmountOfRows{ row }
 	, m_AmountOfSprites{ amountOfSprites}
 {
-	m_SpriteWidth = m_Width / col;
-	m_SpriteHeight = m_Height / row;
+	int width, height;
+	SDL_QueryTexture(texture, NULL, NULL, &width, &height);
+
+	m_SpriteWidth = float(width) / float(col);
+	m_SpriteHeight = float(height) / float(row);
+
+	m_UseSourceRect = true;
 	SetIndex(m_CurrentIndex);
 }
 
 dae::TextureSpriteSheet::~TextureSpriteSheet()
 {
-	SDL_DestroyTexture(m_pCurrentSprite);
 }
 
 void dae::TextureSpriteSheet::SetIndex(int index)
 {
 	m_CurrentIndex = index % m_AmountOfSprites;
-	
-	SDL_Renderer* pRenderer = Renderer::GetInstance().GetSDLRenderer();
-
-	int width, height;
-	GetSize(m_Texture, width, height);
-	
-	SDL_Texture* pImgPart = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, m_SpriteWidth, m_SpriteHeight + 4);
-	
-	SDL_Rect srcRect = { m_CurrentIndex % m_AmountOfCols, m_CurrentIndex / m_AmountOfCols, m_SpriteWidth, m_SpriteHeight };
-	SDL_Rect dstRect = { 0, 0, m_Width, m_Height };
-	
-	SDL_SetRenderTarget(pRenderer, pImgPart);
-	SDL_RenderCopy(pRenderer, m_Texture, &srcRect, &dstRect);
-	
-	// the folowing line should reset the target to default(the screen)
-	SDL_SetRenderTarget(pRenderer, NULL);
-	
-	SDL_DestroyTexture(m_pCurrentSprite);
-	m_pCurrentSprite = pImgPart;
+	m_SrcRect = { m_CurrentIndex % m_AmountOfCols, m_CurrentIndex / m_AmountOfCols, int(m_SpriteWidth), int(m_SpriteHeight) };
 }
 
-void dae::TextureSpriteSheet::SetSize(int width, int height)
+void dae::TextureSpriteSheet::SetSize(float width, float height)
 {
 	Texture2D::SetSize(width, height);
 

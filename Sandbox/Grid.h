@@ -15,12 +15,12 @@ public:
 
 	virtual void Initialize() override;
 
-	bool MoveUpRight(int& r, int& w);
-	bool MoveUpLeft(int& r, int& w);
-	bool MoveDownRight(int& r, int& w);
-	bool MoveDownLeft(int& r, int& w);
+	bool MoveUpRight(int& r, int& w)const;
+	bool MoveUpLeft(int& r, int& w)const;
+	bool MoveDownRight(int& r, int& w)const;
+	bool MoveDownLeft(int& r, int& w)const;
 
-	Tile* GetTile(int r, int w);
+	Tile* GetTile(int r, int w)const;
 private:
 	std::vector<std::vector<Tile*>> m_Grid;
 	int m_Size;

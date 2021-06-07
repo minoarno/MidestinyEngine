@@ -1,4 +1,5 @@
 #pragma once
+#define HAVE_M_PI
 
 //For use outside of the engine only
 

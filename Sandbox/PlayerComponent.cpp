@@ -22,7 +22,6 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerBu
 	, m_pLives{ pLives }
 	, m_Col{ startC }
 	, m_Row{ startR }
-	, m_pGrid{ nullptr }
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
@@ -47,7 +46,6 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRi
 	, m_pLives{ pLives }
 	, m_Col{ startC }
 	, m_Row{ startR }
-	, m_pGrid{ nullptr }
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
@@ -107,7 +105,11 @@ void PlayerComponent::MoveUpRight()
 		glm::vec3 pos = pTile->GetPosition();
 		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
 	}
-	m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+
+	if (m_pSpriteSheet)
+	{
+		m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	}
 }
 
 void PlayerComponent::MoveUpLeft()
@@ -119,7 +121,10 @@ void PlayerComponent::MoveUpLeft()
 		glm::vec3 pos = pTile->GetPosition();
 		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
 	}
-	m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	if (m_pSpriteSheet)
+	{
+		m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	}
 }
 
 void PlayerComponent::MoveDownRight()
@@ -131,7 +136,10 @@ void PlayerComponent::MoveDownRight()
 		glm::vec3 pos = pTile->GetPosition();
 		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
 	}
-	m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	if (m_pSpriteSheet)
+	{
+		m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	}
 }
 
 void PlayerComponent::MoveDownLeft()
@@ -143,7 +151,10 @@ void PlayerComponent::MoveDownLeft()
 		glm::vec3 pos = pTile->GetPosition();
 		m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x,pos.y,pos.z);
 	}
-	m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	if (m_pSpriteSheet)
+	{
+		m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
+	}
 }
 
 void PlayerComponent::SetGrid(Grid* pGrid)

@@ -21,7 +21,7 @@ Singleplayer::Singleplayer()
 	go->SetTexture("background.jpg");
 	go->GetComponent<dae::Texture2D>()->SetSize(1280, 960);
 	Add(go);
-
+	
 	GameObject* go2 = new GameObject();
 	go2->SetTexture("logo.png");
 	go2->SetPosition(216, 180);
@@ -34,7 +34,7 @@ Singleplayer::Singleplayer()
 	Add(levelGrid);
 
 	GameObject* lives1 = new GameObject();
-	TextComponent* textL1 = new TextComponent{ font , "Lives: 5" };
+	TextComponent* textL1 = new TextComponent{ font , "Lives: 3" };
 	LiveObserver* observerL1 = new LiveObserver(textL1);
 	lives1->AddComponent(textL1);
 	lives1->AddComponent(observerL1);
@@ -54,7 +54,7 @@ Singleplayer::Singleplayer()
 	Score* pScore = new Score();
 	pLives->AddObserver(observerL1);
 	pScore->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,6,6 };
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,0,0 };
 	playerComponent->SetGrid(pGrid);
 	player->AddComponent(playerComponent);
 	player->SetTexture("Qbert.png",8,1);
