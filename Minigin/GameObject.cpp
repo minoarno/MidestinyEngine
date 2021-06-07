@@ -15,7 +15,7 @@ dae::GameObject::GameObject()
 {
 	if (m_pTransform == nullptr)
 	{
-		m_pTransform = new Transform{};
+		m_pTransform = new dae::Transform{};
 	}
 
 }
@@ -27,7 +27,7 @@ dae::GameObject::GameObject(Scene* pScene)
 {
 	if (m_pTransform == nullptr)
 	{
-		m_pTransform = new Transform{};
+		m_pTransform = new dae::Transform{};
 	}
 }
 

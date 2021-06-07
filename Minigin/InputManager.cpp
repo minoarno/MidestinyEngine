@@ -4,34 +4,44 @@
 #include "Commands.h"
 #include "UIManager.h"
 #include "Log.h"
+#include "SceneManager.h"
+#include "Scene.h"
 
 dae::InputManager::~InputManager()
 {
-	
-	for (std::pair<ControllerButton, std::pair<bool, Command*>> c : m_ControllerCommands)
+	for (auto& controllerCommands : m_ControllerCommands)
 	{
-		delete c.second.second;
-		c.second.second = nullptr;
+		for (std::pair<ControllerButton, std::pair<bool, Command*>> c : controllerCommands.second)
+		{
+			delete c.second.second;
+			c.second.second = nullptr;
+		}
+		controllerCommands.second.clear();
 	}
 	m_ControllerCommands.clear();
 
-	for (std::pair<SDL_Scancode, Command*> c : m_KeyboardCommands)
+	for (auto& keyboardCommands : m_KeyboardCommands)
 	{
-		delete c.second;
-		c.second = nullptr;
+		for (std::pair<SDL_Scancode, Command*> c : keyboardCommands.second)
+		{
+			delete c.second;
+			c.second = nullptr;
+		}
 	}
 }
 
 
 bool dae::InputManager::ProcessInput()
 {
+	dae::Scene* pActiveScene = SceneManager::GetInstance().GetActiveScene().get();
+
 	//DWORD state;
 	SecureZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
 
 	if (!IsPressed(ControllerButton(m_CurrentState.Gamepad.wButtons)))
 	{
-		for (auto& c : m_ControllerCommands)
+		for (auto& c : m_ControllerCommands[pActiveScene])
 		{
 			if (c.second.first == true)
 			{
@@ -51,16 +61,16 @@ bool dae::InputManager::ProcessInput()
 		}
 		if (e.type == SDL_KEYDOWN)
 		{
-			if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+			if (m_KeyboardCommands[pActiveScene].find(e.key.keysym.scancode) != m_KeyboardCommands[pActiveScene].end())
 			{
-				m_KeyboardCommands.at(e.key.keysym.scancode)->OnPressDown();
+				m_KeyboardCommands[pActiveScene].at(e.key.keysym.scancode)->OnPressDown();
 			}
 		}
 		if (e.type == SDL_KEYUP)
 		{
-			if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+			if (m_KeyboardCommands[pActiveScene].find(e.key.keysym.scancode) != m_KeyboardCommands[pActiveScene].end())
 			{
-				m_KeyboardCommands.at(e.key.keysym.scancode)->OnRelease();
+				m_KeyboardCommands[pActiveScene].at(e.key.keysym.scancode)->OnRelease();
 			}
 		}
 		if (e.type == SDL_MOUSEBUTTONDOWN)
@@ -76,7 +86,7 @@ bool dae::InputManager::ProcessInput()
 		{
 
 		}
-		for (auto& key : m_KeyboardCommands)
+		for (auto& key : m_KeyboardCommands[pActiveScene])
 		{
 			if (key.first == e.key.keysym.scancode)
 			{
@@ -84,9 +94,9 @@ bool dae::InputManager::ProcessInput()
 			}
 		}
 
-		if (m_KeyboardCommands.find(e.key.keysym.scancode) != m_KeyboardCommands.end())
+		if (m_KeyboardCommands[pActiveScene].find(e.key.keysym.scancode) != m_KeyboardCommands[pActiveScene].end())
 		{
-			m_KeyboardCommands.at(e.key.keysym.scancode)->OnHold();
+			m_KeyboardCommands[pActiveScene].at(e.key.keysym.scancode)->OnHold();
 		}
 	}
 
@@ -95,17 +105,20 @@ bool dae::InputManager::ProcessInput()
 
 bool dae::InputManager::IsPressed(ControllerButton button)
 {
-	if (m_ControllerCommands.find(button) != m_ControllerCommands.end())
+	dae::Scene* pActiveScene = SceneManager::GetInstance().GetActiveScene().get();
+
+
+	if (m_ControllerCommands[pActiveScene].find(button) != m_ControllerCommands[pActiveScene].end())
 	{
-		const bool previousState = m_ControllerCommands.at(button).first;
+		const bool previousState = m_ControllerCommands[pActiveScene].at(button).first;
 		if (previousState == false)
 		{
-			m_ControllerCommands.at(button).first = true;
-			m_ControllerCommands.at(button).second->OnPressDown();
+			m_ControllerCommands[pActiveScene].at(button).first = true;
+			m_ControllerCommands[pActiveScene].at(button).second->OnPressDown();
 		}
 		else
 		{
-			m_ControllerCommands.at(button).second->OnHold();
+			m_ControllerCommands[pActiveScene].at(button).second->OnHold();
 		}
 		return true;
 	}
@@ -119,15 +132,26 @@ SDL_Event dae::InputManager::GetEvent()
 	return temp;
 }
 
-void dae::InputManager::AddInput(ControllerButton controllerButton, Command* command)
+void dae::InputManager::AddInput(ControllerButton controllerButton, Command* command,const Scene* pScene)
 {
-	m_ControllerCommands.emplace(controllerButton, std::make_pair(false, command));
+	
+	if (m_ControllerCommands.find(pScene) == m_ControllerCommands.end())
+	{
+		std::map<dae::ControllerButton, std::pair<bool, Command*>> newMap = std::map<dae::ControllerButton, std::pair<bool, Command*>>();
+		m_ControllerCommands.emplace(pScene, newMap);
+	}
+	m_ControllerCommands[pScene].emplace(controllerButton, std::make_pair(false, command));
 }
 
 #pragma warning(push)
 #pragma warning(disable : 26812)
-void dae::InputManager::AddInput(SDL_Scancode scanCode, Command* command)
+void dae::InputManager::AddInput(SDL_Scancode scanCode, Command* command,const Scene* pScene)
 {
-	m_KeyboardCommands.emplace(scanCode, command);
+	if (m_KeyboardCommands.find(pScene) == m_KeyboardCommands.end())
+	{
+		std::map<SDL_Scancode, Command*> newMap = std::map<SDL_Scancode, Command*>();
+		m_KeyboardCommands.emplace(pScene, newMap);
+	}
+	m_KeyboardCommands[pScene].emplace(scanCode, command);
 }
 #pragma warning(pop)

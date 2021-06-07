@@ -14,7 +14,7 @@
 using namespace dae;
 
 Multiplayer::Multiplayer()
-	:Scene{"Multiplayer"}
+	:Scene{ "Multiplayer" }
 {
 	GameObject* go = new GameObject();
 	go->SetTexture("background.jpg");
@@ -27,8 +27,8 @@ Multiplayer::Multiplayer()
 	Add(go2);
 
 	dae::GameObject* levelGrid = new dae::GameObject();
-	Grid* pGrid = new Grid{ 7, 20.f };
-	levelGrid->AddComponent(pGrid);
+	m_pGrid = new Grid{ 7, 20.f };
+	levelGrid->AddComponent(m_pGrid);
 	levelGrid->SetPosition(500, 200);
 	Add(levelGrid);
 
@@ -51,14 +51,6 @@ Multiplayer::Multiplayer()
 	lives1->SetPosition(80, 420);
 	Add(lives1);
 
-	GameObject* lives2 = new GameObject();
-	TextComponent* textL2 = new TextComponent{ font , "Lives: 3" };
-	LiveObserver* observerL2 = new LiveObserver(textL2);
-	lives2->AddComponent(textL2);
-	lives2->AddComponent(observerL2);
-	lives2->SetPosition(300, 420);
-	Add(lives2);
-
 	GameObject* score1 = new GameObject();
 	TextComponent* textS1 = new TextComponent{ font , "Score: 0" };
 	ScoreObserver* observerS1 = new ScoreObserver(textS1);
@@ -66,6 +58,25 @@ Multiplayer::Multiplayer()
 	score1->AddComponent(observerS1);
 	score1->SetPosition(80, 500);
 	Add(score1);
+
+	GameObject* player1 = new GameObject();
+	Lives* pLives1 = new Lives(3);
+	Score* pScore1 = new Score();
+	pLives1->AddObserver(observerL1);
+	pScore1->AddObserver(observerS1);
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, 6, 0,this };
+	playerComponent->SetGrid(m_pGrid);
+	player1->AddComponent(playerComponent);
+	player1->SetTexture("Qbert.png", 8, 1);
+	Add(player1);
+
+	GameObject* lives2 = new GameObject();
+	TextComponent* textL2 = new TextComponent{ font , "Lives: 3" };
+	LiveObserver* observerL2 = new LiveObserver(textL2);
+	lives2->AddComponent(textL2);
+	lives2->AddComponent(observerL2);
+	lives2->SetPosition(300, 420);
+	Add(lives2);
 
 	GameObject* score2 = new GameObject();
 	TextComponent* textS2 = new TextComponent{ font , "Score: 0" };
@@ -75,24 +86,13 @@ Multiplayer::Multiplayer()
 	score2->SetPosition(300, 500);
 	Add(score2);
 
-	GameObject* player1 = new GameObject();
-	Lives* pLives1 = new Lives(3);
-	Score* pScore1 = new Score();
-	pLives1->AddObserver(observerL1);
-	pScore1->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent(pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, 6,0);
-	playerComponent->SetGrid(pGrid);
-	player1->AddComponent(playerComponent);
-	player1->SetTexture("Qbert.png", 8, 1);
-	Add(player1);
-
 	GameObject* player2 = new GameObject();
 	Lives* pLives2 = new Lives(3);
 	Score* pScore2 = new Score();
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
-	PlayerComponent* playerComponent2 = new PlayerComponent{ pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,6,6 };
-	playerComponent2->SetGrid(pGrid);
+	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, 6, 6,this};
+	playerComponent2->SetGrid(m_pGrid);
 	player2->AddComponent(playerComponent2);
 	player2->SetTexture("Qbert2.png", 8, 1);
 	Add(player2);

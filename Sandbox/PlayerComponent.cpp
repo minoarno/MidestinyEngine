@@ -13,10 +13,11 @@
 #include "GameObject.h"
 #include "TextureSpriteSheet.h"
 #include "MeTime.h"
+#include "Scene.h"
 
 using namespace dae;
 
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC, dae::Scene* pScene)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
@@ -26,22 +27,22 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerBu
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
-	dae::InputManager::GetInstance().AddInput(upRight, commandUpRight);
+	dae::InputManager::GetInstance().AddInput(upRight, commandUpRight, pScene);
 
 	FunctionCommand* commandUpLeft = new FunctionCommand();
 	commandUpLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpLeft, this));
-	dae::InputManager::GetInstance().AddInput(upLeft, commandUpLeft);
+	dae::InputManager::GetInstance().AddInput(upLeft, commandUpLeft, pScene);
 
 	FunctionCommand* commandDownRight = new FunctionCommand();
 	commandDownRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownRight, this));
-	dae::InputManager::GetInstance().AddInput(downRight, commandDownRight);
+	dae::InputManager::GetInstance().AddInput(downRight, commandDownRight, pScene);
 
 	FunctionCommand* commandDownLeft = new FunctionCommand();
 	commandDownLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownLeft, this));
-	dae::InputManager::GetInstance().AddInput(downLeft, commandDownLeft);
+	dae::InputManager::GetInstance().AddInput(downLeft, commandDownLeft, pScene);
 }
 
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC, dae::Scene* pScene)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
@@ -51,19 +52,19 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRi
 {
 	FunctionCommand* commandUpRight = new FunctionCommand();
 	commandUpRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpRight, this));
-	InputManager::GetInstance().AddInput(upRight, commandUpRight);
+	InputManager::GetInstance().AddInput(upRight, commandUpRight, pScene);
 
 	FunctionCommand* commandUpLeft = new FunctionCommand();
 	commandUpLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveUpLeft, this));
-	InputManager::GetInstance().AddInput(upLeft, commandUpLeft);
+	InputManager::GetInstance().AddInput(upLeft, commandUpLeft, pScene);
 
 	FunctionCommand* commandDownRight = new FunctionCommand();
 	commandDownRight->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownRight, this));
-	dae::InputManager::GetInstance().AddInput(downRight, commandDownRight);
+	dae::InputManager::GetInstance().AddInput(downRight, commandDownRight, pScene);
 
 	FunctionCommand* commandDownLeft = new FunctionCommand();
 	commandDownLeft->SetFunctionOnRelease(std::bind(&PlayerComponent::MoveDownLeft, this));
-	dae::InputManager::GetInstance().AddInput(downLeft, commandDownLeft);
+	dae::InputManager::GetInstance().AddInput(downLeft, commandDownLeft, pScene);
 }
 
 void PlayerComponent::Initialize()
@@ -162,4 +163,10 @@ void PlayerComponent::MoveDownLeft()
 void PlayerComponent::SetGrid(Grid* pGrid)
 {
 	m_pGrid = pGrid;
+}
+
+void PlayerComponent::SetRowAndCol(int row, int col)
+{
+	m_Row = row;
+	m_Col = col;
 }

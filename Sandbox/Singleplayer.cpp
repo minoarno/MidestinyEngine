@@ -32,30 +32,31 @@ Singleplayer::Singleplayer()
 	levelGrid->AddComponent(pGrid);
 	levelGrid->SetPosition(500, 200);
 	Add(levelGrid);
-
-	GameObject* lives1 = new GameObject();
-	TextComponent* textL1 = new TextComponent{ font , "Lives: 3" };
-	LiveObserver* observerL1 = new LiveObserver(textL1);
-	lives1->AddComponent(textL1);
-	lives1->AddComponent(observerL1);
-	lives1->SetPosition(80, 420);
-	Add(lives1);
-
-	GameObject* score1 = new GameObject();
-	TextComponent* textS1 = new TextComponent{ font , "Score: 0" };
-	ScoreObserver* observerS1 = new ScoreObserver(textS1);
-	score1->AddComponent(textS1);
-	score1->AddComponent(observerS1);
-	score1->SetPosition(80, 500);
-	Add(score1);
-
+	
+	GameObject* lives = new GameObject();
+	TextComponent* textL = new TextComponent{ font , "Lives: 3" };
+	LiveObserver* observerL = new LiveObserver(textL);
+	lives->AddComponent(textL);
+	lives->AddComponent(observerL);
+	lives->SetPosition(80, 420);
+	Add(lives);
+	
+	GameObject* score = new GameObject();
+	TextComponent* textS = new TextComponent{ font , "Score: 0" };
+	ScoreObserver* observerS = new ScoreObserver(textS);
+	score->AddComponent(textS);
+	score->AddComponent(observerS);
+	score->SetPosition(80, 500);
+	Add(score);
+	
 	GameObject* player = new GameObject();
 	Lives* pLives = new Lives(3);
 	Score* pScore = new Score();
-	pLives->AddObserver(observerL1);
-	pScore->AddObserver(observerS1);
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,0,0 };
+	pLives->AddObserver(observerL);
+	pScore->AddObserver(observerS);
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,0,0,this };
 	playerComponent->SetGrid(pGrid);
+	playerComponent->SetRowAndCol(6, 6);
 	player->AddComponent(playerComponent);
 	player->SetTexture("Qbert.png",8,1);
 	Add(player);

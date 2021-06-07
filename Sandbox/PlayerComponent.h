@@ -5,6 +5,7 @@
 namespace dae
 {
 	class TextureSpriteSheet;
+	class Scene;
 }
 class Lives;
 class Score;
@@ -20,13 +21,13 @@ public:
 		downLeft = 6
 	};
 
-	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC);
-	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC);
+	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC, dae::Scene* pScene);
+	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC, dae::Scene* pScene);
 	PlayerComponent(const PlayerComponent& other) = delete;
 	PlayerComponent& operator=(const PlayerComponent& other) = delete;
 	PlayerComponent(PlayerComponent&& other) = delete;
 	PlayerComponent& operator=(PlayerComponent&& other) = delete;
-	~PlayerComponent() = default;
+	~PlayerComponent() {};
 
 	void Initialize() override;
 
@@ -42,11 +43,13 @@ public:
 	void MoveDownLeft();
 
 	void SetGrid(Grid* pGrid);
+
+	void SetRowAndCol(int row, int col);
 private:
 	Score* m_pScore = nullptr;
 	Lives* m_pLives = nullptr;
-	int m_Row;
-	int m_Col;
+	int m_Row = 6;
+	int m_Col = 6;
 	Grid* m_pGrid = nullptr;
 	dae::TextureSpriteSheet* m_pSpriteSheet = nullptr;
 

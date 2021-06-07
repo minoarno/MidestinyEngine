@@ -50,30 +50,34 @@ void Grid::CreateGrid()
 	m_Grid.resize(m_Size);
 	for (int r = 0; r < m_Size; r++)
 	{
-		std::vector<Tile*> vector;
+		std::vector<Tile*> rowOfTiles;
 		int sizeCols = r + 1;
-		vector.resize(sizeCols);
+		rowOfTiles.resize(sizeCols);
+
 		for (int c = 0; c < sizeCols; c++)
 		{
-			dae::GameObject* pObject = new dae::GameObject{};
-			vector[c] = new Tile{ m_TileSize };
-			pObject->AddComponent(vector[c]);
-			dae::Transform* transform = pObject->GetComponent<dae::Transform>();
+			dae::GameObject* pTile = new dae::GameObject{};
+			rowOfTiles[c] = new Tile{ m_TileSize };
+			pTile->AddComponent(rowOfTiles[c]);
+
+			dae::Transform* transform = pTile->GetComponent<dae::Transform>();
+
 			transform->SetPosition(pos.x + tileWidth * (0.5f * ((m_Size - 1) - r) + c), pos.y + tileHeight * r, pos.z);
-			pObject->SetTexture("Blocks.png", 1, 3);
-			pObject->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth, tileHeight);
-			m_pGameObject->AddChild(pObject);
+			pTile->SetTexture("Blocks.png", 1, 3);
+			pTile->GetComponent<dae::TextureSpriteSheet>()->SetSize(tileWidth, tileHeight);
+
+			m_pGameObject->AddChild(pTile);
 		}
-		m_Grid[r] = vector;
+		m_Grid[r] = rowOfTiles;
 	}
 }
 
-bool Grid::MoveUpRight(int& r, int& w)
+bool Grid::MoveUpRight(int& r, int& w) const
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		CreateGrid();
+		return false;
 	}
 
 	if (r > 0 && w < int(m_Grid[r - 1].size()))
@@ -84,12 +88,12 @@ bool Grid::MoveUpRight(int& r, int& w)
 	return false;
 }
 
-bool Grid::MoveUpLeft(int& r, int& w)
+bool Grid::MoveUpLeft(int& r, int& w) const
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		CreateGrid();
+		return false;
 	}
 
 	if (r > 0 && w > 0)
@@ -101,12 +105,12 @@ bool Grid::MoveUpLeft(int& r, int& w)
 	return false;
 }
 
-bool Grid::MoveDownRight(int& r, int& w)
+bool Grid::MoveDownRight(int& r, int& w) const
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		CreateGrid();
+		return false;
 	}
 
 	if (r < (m_Size - 1) && w < int(m_Grid[r].size()))
@@ -118,12 +122,12 @@ bool Grid::MoveDownRight(int& r, int& w)
 	return false;
 }
 
-bool Grid::MoveDownLeft(int& r, int&)
+bool Grid::MoveDownLeft(int& r, int&) const
 {
 	if (int(m_Grid.size()) < 1)
 	{
 		ME_WARN("The grid is 0 rows big");
-		CreateGrid();
+		return false;
 	}
 
 	if (r < (m_Size - 1))

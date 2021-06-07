@@ -8,6 +8,8 @@
 class Command;
 namespace dae
 {
+	class Scene;
+
 	enum class ControllerButton
 	{
 		DPadUp = 0x0001,
@@ -34,14 +36,14 @@ namespace dae
 		bool IsPressed(ControllerButton button);
 		SDL_Event GetEvent();
 
-		void AddInput(ControllerButton controllerButton, Command* command);
-		void AddInput(SDL_Scancode scanCode, Command* command);
+		void AddInput(ControllerButton controllerButton, Command* command, const Scene* pScene);
+		void AddInput(SDL_Scancode scanCode, Command* command, const Scene* pScene);
 
 	private:
 		friend class Singleton<InputManager>;
 		InputManager() = default;
-		std::map<ControllerButton, std::pair<bool, Command*>> m_ControllerCommands;
-		std::map<SDL_Scancode, Command*> m_KeyboardCommands;
+		std::map<const Scene*,std::map<ControllerButton, std::pair<bool, Command*>>> m_ControllerCommands;
+		std::map<const Scene*,std::map<SDL_Scancode, Command*>> m_KeyboardCommands;
 		XINPUT_STATE m_CurrentState;
 		SDL_Event m_Event;
 		bool m_DidInputGet = false;
