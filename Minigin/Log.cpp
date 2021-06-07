@@ -1,3 +1,4 @@
+#pragma once
 #include "MiniginPCH.h"
 #include "Log.h"
 #pragma warning(push)

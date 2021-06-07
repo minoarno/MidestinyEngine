@@ -1,9 +1,6 @@
 #include "Tile.h"
 #include "GameObject.h"
 #include <SDL_opengl.h>
-#define  _USE_MATH_DEFINES
-#include <math.h>
-
 
 Tile::Tile(float tileSize)
 	: BaseComponent{}
