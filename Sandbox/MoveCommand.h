@@ -1,5 +1,6 @@
 #pragma once
 #include <Commands.h>
+
 namespace dae
 {
 	#include "Transform.h"

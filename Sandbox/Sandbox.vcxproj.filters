@@ -51,7 +51,6 @@
     <ClCompile Include="Versus.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Goei.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
@@ -61,7 +60,12 @@
     <ClCompile Include="Zako.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="BossGalaga.cpp" />
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="BossGalaga.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -91,7 +95,6 @@
     <ClInclude Include="Versus.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Goei.h">
       <Filter>Enemy</Filter>
     </ClInclude>
@@ -101,6 +104,11 @@
     <ClInclude Include="Zako.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="BossGalaga.h" />
+    <ClInclude Include="MoveCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="BossGalaga.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

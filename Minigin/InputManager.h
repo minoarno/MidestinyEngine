@@ -49,9 +49,6 @@ namespace dae
 		bool IsPressed(ControllerButton button);
 		SDL_Event GetEvent();
 
-		void AddInput(ControllerButton controllerButton, Command* command, const Scene* pScene);
-		void AddInput(SDL_Scancode scanCode, Command* command, const Scene* pScene);
-
 		void AddOnPressDown(ControllerButton controllerButton, Command* command, const Scene* pScene);
 		void AddOnPressDown(SDL_Scancode scanCode, Command* command, const Scene* pScene);
 
@@ -63,8 +60,6 @@ namespace dae
 	private:
 		friend class Singleton<InputManager>;
 		InputManager() = default;
-		std::map<const Scene*,std::map<ControllerButton, std::pair<bool, Command*>>> m_ControllerCommands;
-		std::map<const Scene*,std::map<SDL_Scancode, Command*>> m_KeyboardCommands;
 
 		std::map<const Scene*, std::map<ControllerButton, InputStruct>> m_ControllerCommands;
 		std::map<const Scene*, std::map<SDL_Scancode, InputStruct>> m_KeyboardCommands;

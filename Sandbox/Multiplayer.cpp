@@ -25,15 +25,7 @@ Multiplayer::Multiplayer()
 	go2->SetPosition(216, 180);
 	Add(go2);
 
-<<<<<<< Updated upstream
-	dae::GameObject* levelGrid = new dae::GameObject();
-	m_pGrid = new Grid{ 7, 20.f };
-	levelGrid->AddComponent(m_pGrid);
-	levelGrid->SetPosition(500, 200);
-	Add(levelGrid);
 
-=======
->>>>>>> Stashed changes
 	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	GameObject* to = new GameObject();
 	to->AddComponent(new TextComponent{ font,"Midestiny Engine" });
@@ -66,12 +58,9 @@ Multiplayer::Multiplayer()
 	Score* pScore1 = new Score();
 	pLives1->AddObserver(observerL1);
 	pScore1->AddObserver(observerS1);
-<<<<<<< Updated upstream
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, 6, 0,this };
-	playerComponent->SetGrid(m_pGrid);
-=======
+
 	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, this };
->>>>>>> Stashed changes
+
 	player1->AddComponent(playerComponent);
 	player1->SetTexture("Qbert.png", 8, 1);
 	Add(player1);
@@ -97,12 +86,9 @@ Multiplayer::Multiplayer()
 	Score* pScore2 = new Score();
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
-<<<<<<< Updated upstream
-	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, 6, 6,this};
-	playerComponent2->SetGrid(m_pGrid);
-=======
+
 	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, this};
->>>>>>> Stashed changes
+
 	player2->AddComponent(playerComponent2);
 	player2->SetTexture("Qbert2.png", 8, 1);
 	Add(player2);

@@ -20,13 +20,8 @@ public:
 		downLeft = 6
 	};
 
-<<<<<<< Updated upstream
-	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC, dae::Scene* pScene);
-	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC, dae::Scene* pScene);
-=======
-	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, dae::Scene* pScene);
-	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, dae::Scene* pScene);
->>>>>>> Stashed changes
+	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::Scene* pScene);
+	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, dae::Scene* pScene);
 	PlayerComponent(const PlayerComponent& other) = delete;
 	PlayerComponent& operator=(const PlayerComponent& other) = delete;
 	PlayerComponent(PlayerComponent&& other) = delete;
@@ -40,28 +35,10 @@ public:
 	void LoseLife();
 
 	void Update() override;
-
-	void MoveUpRight();
-	void MoveUpLeft();
-	void MoveDownRight();
-	void MoveDownLeft();
-<<<<<<< Updated upstream
-
-	void SetGrid(Grid* pGrid);
-
-	void SetRowAndCol(int row, int col);
-private:
-	Score* m_pScore = nullptr;
-	Lives* m_pLives = nullptr;
-	int m_Row = 6;
-	int m_Col = 6;
-	Grid* m_pGrid = nullptr;
-=======
 private:
 	Score* m_pScore = nullptr;
 	Lives* m_pLives = nullptr;
 
->>>>>>> Stashed changes
 	dae::TextureSpriteSheet* m_pSpriteSheet = nullptr;
 
 	int m_SpriteCounter = 0;
