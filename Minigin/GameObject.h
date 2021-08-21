@@ -4,9 +4,9 @@
 #include "TextureSpriteSheet.h"
 #include <vector>
 #include <typeindex>
-
+#include "BaseComponent.h"
 #include <string>
-class BaseComponent;
+
 namespace dae
 {
 	class Scene;

@@ -1,4 +1,5 @@
 #include "MoveCommand.h"
+#include "GameObject.h"
 #include "MeTime.h"
 
 MoveCommand::MoveCommand(dae::GameObject* pAffectedGameObject, const glm::vec3& direction, float speed)

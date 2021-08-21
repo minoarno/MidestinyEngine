@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "Button.h"
-#include "Commands.h"
+#include "FunctionCommand.h"
 #include "GameObject.h"
 #include <SDL.h>
 

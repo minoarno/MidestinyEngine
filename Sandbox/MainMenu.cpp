@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "Button.h"
 #include "ResourceManager.h"
-#include "Commands.h"
+#include "FunctionCommand.h"
 #include "GameObject.h"
 #include "TextComponent.h"
 

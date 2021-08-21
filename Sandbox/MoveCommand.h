@@ -1,10 +1,11 @@
 #pragma once
 #include <Commands.h>
 
+#include "Transform.h"
+
 namespace dae
 {
-	#include "Transform.h"
-	#include "GameObject.h"
+	class GameObject;
 }
 
 class MoveCommand : public Command
