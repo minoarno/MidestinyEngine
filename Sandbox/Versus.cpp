@@ -1,5 +1,4 @@
 #include "Versus.h"
-#include "Grid.h"
 #include "GameObject.h"
 
 using namespace dae;
@@ -7,11 +6,6 @@ using namespace dae;
 Versus::Versus()
 	: dae::Scene{"Versus"}
 {
-
-	GameObject* levelGrid = new GameObject();
-	levelGrid->AddComponent(new Grid{ 7, 20.f });
-	levelGrid->SetPosition(500, 200);
-	Add(levelGrid);
 }
 
 Versus::~Versus()

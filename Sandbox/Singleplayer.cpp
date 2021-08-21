@@ -1,5 +1,4 @@
 #include "Singleplayer.h"
-#include "Grid.h"
 #include "GameObject.h"
 #include "Texture2D.h"
 #include "Lives.h"
@@ -26,12 +25,15 @@ Singleplayer::Singleplayer()
 	go2->SetTexture("logo.png");
 	go2->SetPosition(216, 180);
 	Add(go2);
+<<<<<<< Updated upstream
 
 	GameObject* levelGrid = new GameObject();
 	Grid* pGrid = new Grid{ 7, 20.f };
 	levelGrid->AddComponent(pGrid);
 	levelGrid->SetPosition(500, 200);
 	Add(levelGrid);
+=======
+>>>>>>> Stashed changes
 	
 	GameObject* lives = new GameObject();
 	TextComponent* textL = new TextComponent{ font , "Lives: 3" };
@@ -54,9 +56,13 @@ Singleplayer::Singleplayer()
 	Score* pScore = new Score();
 	pLives->AddObserver(observerL);
 	pScore->AddObserver(observerS);
+<<<<<<< Updated upstream
 	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,0,0,this };
 	playerComponent->SetGrid(pGrid);
 	playerComponent->SetRowAndCol(6, 6);
+=======
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown,this };
+>>>>>>> Stashed changes
 	player->AddComponent(playerComponent);
 	player->SetTexture("Qbert.png",8,1);
 	Add(player);

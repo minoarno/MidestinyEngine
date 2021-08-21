@@ -155,31 +155,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="BossGalaga.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Goei.cpp" />
     <ClCompile Include="LiveObserver.cpp" />
     <ClCompile Include="Lives.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Multiplayer.cpp" />
     <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="SandboxApp.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ScoreObserver.cpp" />
     <ClCompile Include="Singleplayer.cpp" />
-    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Versus.cpp" />
+    <ClCompile Include="Zako.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Grid.h" />
+    <ClInclude Include="BossGalaga.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Goei.h" />
     <ClInclude Include="LiveObserver.h" />
     <ClInclude Include="Lives.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Multiplayer.h" />
     <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="ScoreObserver.h" />
     <ClInclude Include="Singleplayer.h" />
-    <ClInclude Include="Tile.h" />
     <ClInclude Include="Versus.h" />
+    <ClInclude Include="Zako.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,7 +9,6 @@ namespace dae
 }
 class Lives;
 class Score;
-class Grid;
 class PlayerComponent final : public BaseComponent
 {
 public:
@@ -21,8 +20,13 @@ public:
 		downLeft = 6
 	};
 
+<<<<<<< Updated upstream
 	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, int startR, int startC, dae::Scene* pScene);
 	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, int startR, int startC, dae::Scene* pScene);
+=======
+	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton upRight, dae::ControllerButton upLeft, dae::ControllerButton downRight, dae::ControllerButton downLeft, dae::Scene* pScene);
+	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode upRight, SDL_Scancode upLeft, SDL_Scancode downRight, SDL_Scancode downLeft, dae::Scene* pScene);
+>>>>>>> Stashed changes
 	PlayerComponent(const PlayerComponent& other) = delete;
 	PlayerComponent& operator=(const PlayerComponent& other) = delete;
 	PlayerComponent(PlayerComponent&& other) = delete;
@@ -41,6 +45,7 @@ public:
 	void MoveUpLeft();
 	void MoveDownRight();
 	void MoveDownLeft();
+<<<<<<< Updated upstream
 
 	void SetGrid(Grid* pGrid);
 
@@ -51,6 +56,12 @@ private:
 	int m_Row = 6;
 	int m_Col = 6;
 	Grid* m_pGrid = nullptr;
+=======
+private:
+	Score* m_pScore = nullptr;
+	Lives* m_pLives = nullptr;
+
+>>>>>>> Stashed changes
 	dae::TextureSpriteSheet* m_pSpriteSheet = nullptr;
 
 	int m_SpriteCounter = 0;

@@ -28,6 +28,19 @@ namespace dae
 		ButtonY = 0x8000
 	};
 
+	struct InputStruct
+	{
+	public:
+		Command* pOnPressDown = nullptr;
+		Command* pOnHold = nullptr;
+		Command* pOnRelease = nullptr;
+		bool wasPressedDownPreviousFrame = false;
+
+		InputStruct()
+		{
+		}
+	};
+
 	class InputManager final : public Singleton<InputManager>
 	{
 	public:
@@ -36,14 +49,31 @@ namespace dae
 		bool IsPressed(ControllerButton button);
 		SDL_Event GetEvent();
 
+<<<<<<< Updated upstream
 		void AddInput(ControllerButton controllerButton, Command* command, const Scene* pScene);
 		void AddInput(SDL_Scancode scanCode, Command* command, const Scene* pScene);
+=======
+		void AddOnPressDown(ControllerButton controllerButton, Command* command, const Scene* pScene);
+		void AddOnPressDown(SDL_Scancode scanCode, Command* command, const Scene* pScene);
 
+		void AddOnHold(ControllerButton controllerButton, Command* command, const Scene* pScene);
+		void AddOnHold(SDL_Scancode scanCode, Command* command, const Scene* pScene);
+>>>>>>> Stashed changes
+
+		void AddOnRelease(ControllerButton controllerButton, Command* command, const Scene* pScene);
+		void AddOnRelease(SDL_Scancode scanCode, Command* command, const Scene* pScene);
 	private:
 		friend class Singleton<InputManager>;
 		InputManager() = default;
+<<<<<<< Updated upstream
 		std::map<const Scene*,std::map<ControllerButton, std::pair<bool, Command*>>> m_ControllerCommands;
 		std::map<const Scene*,std::map<SDL_Scancode, Command*>> m_KeyboardCommands;
+=======
+
+		std::map<const Scene*, std::map<ControllerButton, InputStruct>> m_ControllerCommands;
+		std::map<const Scene*, std::map<SDL_Scancode, InputStruct>> m_KeyboardCommands;
+
+>>>>>>> Stashed changes
 		XINPUT_STATE m_CurrentState;
 		SDL_Event m_Event;
 		bool m_DidInputGet = false;

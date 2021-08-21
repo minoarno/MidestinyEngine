@@ -19,7 +19,7 @@ Button::Button(std::function<void()>& onPressDownFunction)
 	, m_Height{ 100 }
 {
 	FunctionCommand* funcCommand = new FunctionCommand{};
-	funcCommand->SetFunctionOnPressDown(onPressDownFunction);
+	funcCommand->SetFunction(onPressDownFunction);
 	m_pOnClickCommand = funcCommand;
 }
 
@@ -60,6 +60,9 @@ void Button::OnMouseDown(int mouseX, int mouseY) const
 	const glm::vec3 pos = m_pGameObject->GetComponent<dae::Transform>()->GetPosition();
 	if (pos.x < mouseX && pos.x + m_Width > mouseX && pos.y < mouseY && pos.y + m_Height > mouseY)
 	{
-		m_pOnClickCommand->OnPressDown();
+		if (m_pOnClickCommand != nullptr)
+		{
+			m_pOnClickCommand->Execute();
+		}
 	}
 }

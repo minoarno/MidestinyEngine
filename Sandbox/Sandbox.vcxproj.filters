@@ -10,11 +10,14 @@
     <Filter Include="Observers">
       <UniqueIdentifier>{256512ef-2ca4-496a-a3ec-a82b663857ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Grid">
-      <UniqueIdentifier>{44909f48-3723-4159-8b91-94d18145c59e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level">
       <UniqueIdentifier>{fdc5fe69-4067-4ad8-a8ad-47bfd1bed2ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{44909f48-3723-4159-8b91-94d18145c59e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Commands">
+      <UniqueIdentifier>{3ff94107-fd8f-4055-969b-afefe5193908}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,9 +39,6 @@
     <ClCompile Include="PlayerComponent.cpp">
       <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Grid</Filter>
-    </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>Level</Filter>
     </ClCompile>
@@ -48,12 +48,20 @@
     <ClCompile Include="Multiplayer.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Grid</Filter>
-    </ClCompile>
     <ClCompile Include="Versus.cpp">
       <Filter>Level</Filter>
     </ClCompile>
+    <ClCompile Include="MoveCommand.cpp" />
+    <ClCompile Include="Goei.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Zako.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BossGalaga.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -71,12 +79,6 @@
     <ClInclude Include="PlayerComponent.h">
       <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Grid</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>Grid</Filter>
-    </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Level</Filter>
     </ClInclude>
@@ -89,5 +91,16 @@
     <ClInclude Include="Versus.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="MoveCommand.h" />
+    <ClInclude Include="Goei.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Zako.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossGalaga.h" />
   </ItemGroup>
 </Project>

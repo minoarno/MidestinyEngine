@@ -16,7 +16,7 @@ MainMenu::MainMenu()
 	GameObject* pSinglePlayer = new GameObject{};
 	pSinglePlayer->GetComponent<dae::Transform>()->SetPosition(400,100,0);
 	FunctionCommand* pStartSingleplayerCommand = new FunctionCommand{};
-	pStartSingleplayerCommand->SetFunctionOnPressDown(std::bind(&MainMenu::StartSinglePlayer, this));
+	pStartSingleplayerCommand->SetFunction(std::bind(&MainMenu::StartSinglePlayer, this));
 	Button* pButtonSingleplayer = new Button{pStartSingleplayerCommand};
 	pButtonSingleplayer->SetSize(220, 60);
 	pSinglePlayer->AddComponent(pButtonSingleplayer);
@@ -26,7 +26,7 @@ MainMenu::MainMenu()
 	GameObject* pMultiPlayer = new GameObject{};
 	pMultiPlayer->GetComponent<dae::Transform>()->SetPosition(400,300,0);
 	FunctionCommand* pStartMultiplayer = new FunctionCommand{};
-	pStartMultiplayer->SetFunctionOnPressDown(std::bind(&MainMenu::StartMultiplayer, this));
+	pStartMultiplayer->SetFunction(std::bind(&MainMenu::StartMultiplayer, this));
 	Button* pButtonMultiplayer = new Button{ pStartMultiplayer };
 	pButtonMultiplayer->SetSize(200, 60);
 	pMultiPlayer->AddComponent(pButtonMultiplayer);
@@ -36,7 +36,7 @@ MainMenu::MainMenu()
 	GameObject* pVersus = new GameObject{};
 	pVersus->GetComponent<dae::Transform>()->SetPosition(400,500,0);
 	FunctionCommand* pStartVersus = new FunctionCommand{};
-	pStartVersus->SetFunctionOnPressDown(std::bind(&MainMenu::StartVersus, this));
+	pStartVersus->SetFunction(std::bind(&MainMenu::StartVersus, this));
 	Button* pButtonVersus = new Button{ pStartVersus };
 	pButtonVersus->SetSize(120, 60);
 	pVersus->AddComponent(new TextComponent{ font,"Versus" });
