@@ -8,3 +8,7 @@ BossGalaga::BossGalaga()
 BossGalaga::~BossGalaga()
 {
 }
+
+void BossGalaga::Dive()
+{
+}

@@ -1,6 +1,6 @@
 #pragma once
 #include "Enemy.h"
-class Goei : public Enemy
+class Goei final : public Enemy
 {
 public:
 	Goei();
@@ -9,6 +9,8 @@ public:
 	Goei(Goei&& other) = delete;
 	Goei& operator=(Goei&& other) = delete;
 	~Goei();
+
+	void Dive()override;
 private:
 
 };

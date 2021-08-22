@@ -8,3 +8,8 @@ Goei::Goei()
 Goei::~Goei()
 {
 }
+
+void Goei::Dive()
+{
+
+}

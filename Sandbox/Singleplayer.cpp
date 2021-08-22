@@ -48,9 +48,9 @@ Singleplayer::Singleplayer()
 	pLives->AddObserver(observerL);
 	pScore->AddObserver(observerS);
 
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,this };
-
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,this, player };
 	player->AddComponent(playerComponent);
+	playerComponent->SetGameObject(player);
 	player->SetTexture("Qbert.png",8,1);
 	Add(player);
 }

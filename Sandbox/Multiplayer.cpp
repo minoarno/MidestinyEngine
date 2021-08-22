@@ -59,9 +59,9 @@ Multiplayer::Multiplayer()
 	pLives1->AddObserver(observerL1);
 	pScore1->AddObserver(observerS1);
 
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_S, this };
-
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_S, SDL_SCANCODE_D, this, player1 };
 	player1->AddComponent(playerComponent);
+	playerComponent->SetGameObject(player1);
 	player1->SetTexture("Qbert.png", 8, 1);
 	Add(player1);
 
@@ -87,8 +87,7 @@ Multiplayer::Multiplayer()
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
 
-	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadRight, dae::ControllerButton::DPadDown, this};
-
+	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight, this,player2 };
 	player2->AddComponent(playerComponent2);
 	player2->SetTexture("Qbert2.png", 8, 1);
 	Add(player2);

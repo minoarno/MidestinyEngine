@@ -1,7 +1,6 @@
 #pragma once
 #include "Enemy.h"
-class Zako :
-    public Enemy
+class Zako final : public Enemy
 {
 public:
     Zako();
@@ -10,6 +9,8 @@ public:
     Zako(Zako&& other) = delete;
     Zako& operator=(Zako&& other) = delete;
     ~Zako();
+
+    void Dive() override;
 private:
 
 };

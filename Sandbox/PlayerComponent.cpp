@@ -14,29 +14,30 @@
 #include "MoveCommand.h"
 using namespace dae;
 
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::Scene* pScene)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::Scene* pScene, dae::GameObject* pGameObject)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
-	, m_FacingDirection{ FacingDirection::downLeft }
 {
-	dae::InputManager::GetInstance().AddOnRelease(up, new MoveCommand(m_pGameObject, {0,1,0}), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(left, new MoveCommand(m_pGameObject, { -1,0,0 }), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(down, new MoveCommand(m_pGameObject, { 0,-1,0 }), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(right, new MoveCommand(m_pGameObject, { 1,0,0 }), pScene);
+	dae::InputManager::GetInstance().AddOnHold(up   , new MoveCommand(pGameObject, { 0,-1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(left , new MoveCommand(pGameObject, {-1, 0, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(right, new MoveCommand(pGameObject, { 1, 0, 0 }, m_Speed), pScene);
 }
 
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, dae::Scene* pScene)
+#pragma warning(push)
+#pragma warning(disable : 26812)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, dae::Scene* pScene, dae::GameObject* pGameObject)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
-	, m_FacingDirection{ FacingDirection::downLeft }
 {
-	dae::InputManager::GetInstance().AddOnRelease(up, new MoveCommand(m_pGameObject, { 0,1,0 }), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(left, new MoveCommand(m_pGameObject, { -1,0,0 }), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(down, new MoveCommand(m_pGameObject, { 0,-1,0 }), pScene);
-	dae::InputManager::GetInstance().AddOnRelease(right, new MoveCommand(m_pGameObject, { 1,0,0 }), pScene);
+	dae::InputManager::GetInstance().AddOnHold(up   , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(left , new MoveCommand(pGameObject, {-1, 0, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0,-1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(right, new MoveCommand(pGameObject, { 1, 0, 0 }, m_Speed), pScene);
 }
+#pragma warning(pop)
 
 void PlayerComponent::Initialize()
 {
@@ -66,6 +67,5 @@ void PlayerComponent::Update()
 	{
 		++m_SpriteCounter %= 2;
 		m_SpriteTimerCounter = 0.f;
-		m_pSpriteSheet->SetIndex(int(m_FacingDirection) + m_SpriteCounter);
 	}
 }

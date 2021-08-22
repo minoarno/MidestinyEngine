@@ -18,6 +18,8 @@ public:
 
 	int GetScoreFromKilling()const;
 	EnemyState GetEnemyState()const;
+
+	virtual void Dive() = 0;
 private:
 	int m_ScoreInformation;
 	int m_ScoreDiving;

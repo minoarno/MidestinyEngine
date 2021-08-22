@@ -122,9 +122,6 @@ bool dae::InputManager::ProcessInput()
 
 		if (m_KeyboardCommands[pActiveScene].find(e.key.keysym.scancode) != m_KeyboardCommands[pActiveScene].end())
 		{
-
-			m_KeyboardCommands[pActiveScene].at(e.key.keysym.scancode).pOnHold->Execute();
-
 			if (m_KeyboardCommands[pActiveScene][e.key.keysym.scancode].pOnHold != nullptr)
 			{
 				m_KeyboardCommands[pActiveScene][e.key.keysym.scancode].pOnHold->Execute();
