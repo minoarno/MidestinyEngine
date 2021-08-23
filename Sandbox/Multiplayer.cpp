@@ -10,6 +10,8 @@
 #include "Font.h"
 #include "ResourceManager.h"
 
+#include "BoxCollider.h"
+
 #include "EnemyManager.h"
 
 using namespace dae;
@@ -17,6 +19,8 @@ using namespace dae;
 Multiplayer::Multiplayer()
 	:Scene{ "Multiplayer" }
 {
+	float size = 50.f;
+
 	GameObject* go = new GameObject();
 	go->SetTexture("background.jpg");
 	go->GetComponent<dae::Texture2D>()->SetSize(1280, 960);
@@ -60,11 +64,13 @@ Multiplayer::Multiplayer()
 	pLives1->AddObserver(observerL1);
 	pScore1->AddObserver(observerS1);
 
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_S, SDL_SCANCODE_D, this, player1 };
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_S, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, this, player1 };
 	player1->AddComponent(playerComponent);
 	playerComponent->SetGameObject(player1);
 	player1->SetTexture("SpaceShip.png", 2, 1);
 	player1->SetPosition(400, 700);
+	player1->GetComponent<TextureSpriteSheet>()->SetSize(size, size);
+	player1->AddComponent(new BoxCollider(size, size));
 	Add(player1);
 
 	GameObject* lives2 = new GameObject();
@@ -89,11 +95,12 @@ Multiplayer::Multiplayer()
 	pLives2->AddObserver(observerL2);
 	pScore2->AddObserver(observerS2);
 
-	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight, this,player2 };
+	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight, dae::ControllerButton::ButtonA , this,player2 };
 	player2->AddComponent(playerComponent2);
 	player2->SetTexture("SpaceShip.png", 2, 1);
 	player2->SetPosition(700, 700);
-
+	player2->GetComponent<TextureSpriteSheet>()->SetSize(size, size);
+	player2->AddComponent(new BoxCollider(size, size));
 	Add(player2);
 
 	m_pEnemyManager = new EnemyManager(this, 500, 300);

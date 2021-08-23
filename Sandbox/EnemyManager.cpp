@@ -16,6 +16,7 @@
 #include "GameObject.h"
 #include "Scene.h"
 #include "TextureSpriteSheet.h"
+#include "BoxCollider.h"
 
 #include "Log.h"
 #include <algorithm>
@@ -45,10 +46,7 @@ void EnemyManager::LoadFromFile(const std::string& filename)
 
 	std::ifstream in{ };
 	in.open(filename);
-	if (!in)
-	{
-		//ME_WARN(L"No such file");
-	}
+
 	BinaryReader::ReadDataTypeFromBin(in);
 	float enemySize = BinaryReader::ReadFloatFromBin(in);
 
@@ -69,7 +67,8 @@ void EnemyManager::LoadFromFile(const std::string& filename)
 			{
 				dae::GameObject* pObject = new dae::GameObject();
 
-
+				pObject->SetTag("Enemy");
+				pObject->AddComponent(new BoxCollider(enemySize, enemySize));
 				pObject->GetComponent<dae::Transform>()->Translate({m_SpawnerX + (c - cols * .5f) * enemySize, m_SpawnerY - r * enemySize,0});
 				Enemy* pEnemy = nullptr;
 				switch (et)
@@ -128,5 +127,5 @@ void EnemyManager::SaveToFiile(const std::string& filename, float monsterSize, i
 
 int EnemyManager::GetAmountOfEnemiesAlive() const
 {
-	return m_pEnemies.size();
+	return int(m_pEnemies.size());
 }

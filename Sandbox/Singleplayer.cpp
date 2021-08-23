@@ -9,6 +9,7 @@
 #include "ScoreObserver.h"
 #include "ResourceManager.h"
 #include "EnemyManager.h"
+#include "BoxCollider.h"
 
 using namespace dae;
 
@@ -50,12 +51,13 @@ Singleplayer::Singleplayer() : Scene{"Singleplayer"}
 	pLives->AddObserver(observerL);
 	pScore->AddObserver(observerS);
 
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,this, player };
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,dae::ControllerButton::ButtonA, this, player };
 	player->AddComponent(playerComponent);
 	playerComponent->SetGameObject(player);
 	player->SetTexture("SpaceShip.png",2,1);
 	player->GetComponent<TextureSpriteSheet>()->SetSize(size, size);
 	player->SetPosition(500, 700);
+	player->AddComponent(new BoxCollider(size, size));
 	Add(player);
 
 	//EnemyManager::SaveToFiile("../Data/Waves/Wave1.txt", size, 6, 2, 4, 2, 1, 1);

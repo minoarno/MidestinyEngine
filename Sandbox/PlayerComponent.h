@@ -20,8 +20,8 @@ public:
 		downLeft = 6
 	};
 
-	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::Scene* pScene, dae::GameObject* pGameObject);
-	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, dae::Scene* pScene, dae::GameObject* pGameObject);
+	PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::ControllerButton shoot, dae::Scene* pScene, dae::GameObject* pGameObject);
+	PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, SDL_Scancode shoot, dae::Scene* pScene, dae::GameObject* pGameObject);
 	PlayerComponent(const PlayerComponent& other) = delete;
 	PlayerComponent& operator=(const PlayerComponent& other) = delete;
 	PlayerComponent(PlayerComponent&& other) = delete;
@@ -44,5 +44,5 @@ private:
 	int m_SpriteCounter = 0;
 	float m_SpriteTimerCounter = 0.f;
 	float m_SpriteTimer = 0.5f;
-	float m_Speed = 50.f;
+	float m_Speed = 100.f;
 };

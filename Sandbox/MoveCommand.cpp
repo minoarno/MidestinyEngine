@@ -11,7 +11,10 @@ MoveCommand::MoveCommand(dae::GameObject* pAffectedGameObject, const glm::vec3& 
 
 void MoveCommand::Execute() const
 {
-	m_pAffectedGameObject->GetComponent<dae::Transform>()->Translate(m_Direction * (m_Speed * float(Time::GetInstance().GetFixedElapsedSeconds())));
+	if (m_pAffectedGameObject != nullptr)
+	{
+		m_pAffectedGameObject->GetComponent<dae::Transform>()->Translate(m_Direction * (m_Speed * float(Time::GetInstance().GetFixedElapsedSeconds())));
+	}
 }
 
 void MoveCommand::SetDirection(const glm::vec3& direction)

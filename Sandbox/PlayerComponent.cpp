@@ -12,9 +12,11 @@
 #include "MeTime.h"
 #include "Scene.h"
 #include "MoveCommand.h"
+#include "FireCommand.h"
+
 using namespace dae;
 
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::Scene* pScene, dae::GameObject* pGameObject)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerButton up, dae::ControllerButton left, dae::ControllerButton down, dae::ControllerButton right, dae::ControllerButton shoot, dae::Scene* pScene, dae::GameObject* pGameObject)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
@@ -23,11 +25,12 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, dae::ControllerBu
 	dae::InputManager::GetInstance().AddOnHold(left , new MoveCommand(pGameObject, {-1, 0, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(right, new MoveCommand(pGameObject, { 1, 0, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnRelease(shoot, new FireCommand(pGameObject, pScene, { 0,-1,0 }, "FriendlyBullet.png", pScore), pScene);
 }
 
 #pragma warning(push)
 #pragma warning(disable : 26812)
-PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, dae::Scene* pScene, dae::GameObject* pGameObject)
+PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, SDL_Scancode left, SDL_Scancode down, SDL_Scancode right, SDL_Scancode shoot, dae::Scene* pScene, dae::GameObject* pGameObject)
 	: BaseComponent()
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
@@ -36,12 +39,14 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, 
 	dae::InputManager::GetInstance().AddOnHold(left , new MoveCommand(pGameObject, {-1, 0, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(right, new MoveCommand(pGameObject, { 1, 0, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnRelease(shoot, new FireCommand(pGameObject, pScene, { 0,-1,0 }, "FriendlyBullet.png", pScore), pScene);
 }
 #pragma warning(pop)
 
 void PlayerComponent::Initialize()
 {
 	m_pSpriteSheet = m_pGameObject->GetComponent<dae::TextureSpriteSheet>();
+	m_pGameObject->SetTag("Player");
 }
 
 void PlayerComponent::IncrementScore()

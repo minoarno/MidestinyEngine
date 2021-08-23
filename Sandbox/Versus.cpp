@@ -10,6 +10,7 @@
 #include "FPSComponent.h"
 #include "Font.h"
 #include "ResourceManager.h"
+#include "BoxCollider.h"
 
 #include "EnemyManager.h"
 
@@ -18,6 +19,8 @@ using namespace dae;
 Versus::Versus()
 	: dae::Scene{"Versus"}
 {
+	float size = 50.f;
+
 	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 
 	GameObject* go = new GameObject();
@@ -52,11 +55,12 @@ Versus::Versus()
 	pLives->AddObserver(observerL);
 	pScore->AddObserver(observerS);
 
-	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,this, player };
+	PlayerComponent* playerComponent = new PlayerComponent{ pScore, pLives, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight,dae::ControllerButton::ButtonA,  this, player };
 	player->AddComponent(playerComponent);
 	playerComponent->SetGameObject(player);
 	player->SetTexture("SpaceShip.png", 2, 1);
 	player->SetPosition(500, 700);
+	player->AddComponent(new BoxCollider(size, size));
 	Add(player);
 
 	m_pEnemyManager = new EnemyManager(this, 500, 300);

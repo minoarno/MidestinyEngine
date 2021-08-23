@@ -69,6 +69,10 @@
     <ClCompile Include="EnemyManager.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="FireCommand.cpp" />
+    <ClCompile Include="BulletComponent.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -115,6 +119,10 @@
     </ClInclude>
     <ClInclude Include="EnemyManager.h">
       <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="FireCommand.h" />
+    <ClInclude Include="BulletComponent.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

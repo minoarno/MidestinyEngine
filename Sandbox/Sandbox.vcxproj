@@ -156,8 +156,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BossGalaga.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="FireCommand.cpp" />
     <ClCompile Include="Goei.cpp" />
     <ClCompile Include="LiveObserver.cpp" />
     <ClCompile Include="Lives.cpp" />
@@ -174,8 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossGalaga.h" />
+    <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="FireCommand.h" />
     <ClInclude Include="Goei.h" />
     <ClInclude Include="LiveObserver.h" />
     <ClInclude Include="Lives.h" />
