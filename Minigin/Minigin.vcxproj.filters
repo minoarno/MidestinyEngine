@@ -127,7 +127,9 @@
     <ClInclude Include="FunctionCommand.h">
       <Filter>Input, Commands And Observers</Filter>
     </ClInclude>
-    <ClInclude Include="BoxCollider.h" />
+    <ClInclude Include="BoxCollider.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -235,7 +237,9 @@
     <ClCompile Include="FunctionCommand.cpp">
       <Filter>Input, Commands And Observers</Filter>
     </ClCompile>
-    <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

@@ -49,6 +49,9 @@ namespace dae
 		T* GetComponent();
 		template<class T>
 		void SetComponent(T* value);
+
+		void SetTag(const std::string& tag) { m_Tag = tag; };
+		std::string GetTag()const { return m_Tag; };
 	private:
 		Transform* m_pTransform;
 		Texture2D* m_pTexture;
@@ -56,6 +59,7 @@ namespace dae
 		std::vector<GameObject*> m_pChildren;
 		GameObject* m_pParent = nullptr;
 		dae::Scene* m_pScene;
+		std::string m_Tag;
 	};
 
 	template<class T>
