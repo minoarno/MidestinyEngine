@@ -19,3 +19,8 @@ int Enemy::GetScoreFromKilling() const
 {
 	return (m_EnemyState == EnemyState::InFormation)? m_ScoreInformation : m_ScoreDiving;
 }
+
+int Enemy::GetHit()
+{
+	return GetScoreFromKilling();
+}

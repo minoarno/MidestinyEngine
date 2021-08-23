@@ -27,3 +27,17 @@ bool BoxCollider::IsColliding(const dae::Transform& transform, float width2, flo
 	
 	return true;
 }
+
+bool BoxCollider::IsColliding(BoxCollider* other)
+{
+	glm::vec3 pos1 = m_pGameObject->GetComponent<dae::Transform>()->GetPosition();
+	glm::vec3 pos2 = other->GetGameObject()->GetComponent<dae::Transform>()->GetPosition();;
+
+	//One is on the left of the other
+	if (pos1.x + m_Width < pos2.x || pos2.x + other->GetWidth() < pos1.x) return false;
+
+	//One is above the other
+	if (pos1.y + m_Height < pos2.y || pos2.y + other->GetHeight() < pos1.y) return false;
+
+	return true;
+}

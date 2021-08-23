@@ -20,7 +20,6 @@ public:
 	BulletComponent& operator=(BulletComponent&& other) = delete;
 	~BulletComponent();
 
-	virtual void FixedUpdate() override;
 	virtual void Update() override;
 private:
 	dae::GameObject* m_pOwnerGameObject;

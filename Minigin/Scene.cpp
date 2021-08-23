@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "BoxCollider.h"
 
 using namespace dae;
 
@@ -69,4 +70,33 @@ void Scene::Render() const
 	{
 		m_Objects[i]->Render();
 	}
+}
+
+
+std::vector<GameObject*> Scene::Collision(GameObject* object)
+{
+	std::vector<GameObject*> temp;
+
+	BoxCollider* box = object->GetComponent<BoxCollider>();
+	if (box == nullptr)
+	{
+		return temp;
+	}
+
+	for (size_t i = 0; i < m_Objects.size(); i++)
+	{
+		if (object != m_Objects[i])
+		{
+			BoxCollider* otherBox = m_Objects[i]->GetComponent<BoxCollider>();
+			if (otherBox != nullptr)
+			{
+				if (box->IsColliding(otherBox))
+				{
+					temp.push_back(m_Objects[i]);
+				}
+			}
+		}
+	}
+
+	return temp;
 }

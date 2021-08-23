@@ -21,7 +21,7 @@ public:
 	virtual void Render() const;
 
 	void SetGameObject(dae::GameObject* ownerGameObject) { m_pGameObject = ownerGameObject; }
-	const dae::GameObject* GetGameObject()const { return m_pGameObject; }
+	dae::GameObject* GetGameObject() { return m_pGameObject; }
 protected:
 	dae::GameObject* m_pGameObject = nullptr;
 };

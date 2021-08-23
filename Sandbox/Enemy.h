@@ -17,6 +17,7 @@ public:
 	~Enemy();
 
 	int GetScoreFromKilling()const;
+	virtual int GetHit();
 	EnemyState GetEnemyState()const;
 
 	virtual void Dive() = 0;

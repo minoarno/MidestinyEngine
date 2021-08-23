@@ -10,8 +10,10 @@ public:
 	BossGalaga& operator=(BossGalaga&& other) = delete;
 	~BossGalaga();
 
+	virtual int GetHit();
+
 	void Dive() override;
 private:
-
+	bool m_IsDamaged = false;
 };
 

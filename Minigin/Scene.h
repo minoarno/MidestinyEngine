@@ -24,6 +24,8 @@ namespace dae
 		virtual void Render() const;
 
 		virtual void Unload();
+
+		std::vector<GameObject*> Collision(GameObject* object);
 	private: 
 		std::string m_Name;
 		std::vector <GameObject*> m_Objects{};
