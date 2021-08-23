@@ -25,10 +25,12 @@ public:
 	EnemyManager& operator=(EnemyManager&& other) = delete;
 	~EnemyManager();
 
-	void Update(float elapsedSec);
+	void Update();
 
 	void LoadFromFile(const std::string& filename);
 	static void SaveToFiile(const std::string& filename, float monsterSize, int amountOfColsZako, int amountOfRowsZako, int amountOfColsGoei, int amountOfRowsGoei, int amountOfColsGalaga, int amountOfRowsGalaga);
+
+	int GetAmountOfEnemiesAlive()const;
 private:
 	float m_SpawnerX;
 	float m_SpawnerY;

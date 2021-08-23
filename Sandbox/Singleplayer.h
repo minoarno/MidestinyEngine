@@ -12,11 +12,11 @@ public:
 	Singleplayer(Singleplayer&& other) = delete;
 	~Singleplayer();
 
-	//void FixedUpdate() override;
-	//void Update() override;
-	//void LateUpdate() override;
-	//void Render() const override;
+	void Update() override;
+
 private:
 	EnemyManager* m_pEnemyManager = nullptr;
+	std::vector<std::string> m_WaveNames;
+	int m_CurrentWaveIndex = 0;
 };
 

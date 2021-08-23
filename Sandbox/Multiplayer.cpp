@@ -10,6 +10,8 @@
 #include "Font.h"
 #include "ResourceManager.h"
 
+#include "EnemyManager.h"
+
 using namespace dae;
 
 Multiplayer::Multiplayer()
@@ -93,8 +95,16 @@ Multiplayer::Multiplayer()
 	player2->SetPosition(700, 700);
 
 	Add(player2);
+
+	m_pEnemyManager = new EnemyManager(this, 500, 300);
+	m_pEnemyManager->LoadFromFile("../Data/Waves/Wave1.txt");
 }
 
 Multiplayer::~Multiplayer()
 {
+}
+
+void Multiplayer::Update()
+{
+	m_pEnemyManager->Update();
 }

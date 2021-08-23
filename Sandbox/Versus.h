@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 
+class EnemyManager;
 class Versus final : public dae::Scene
 {
 public:
@@ -20,5 +21,5 @@ public:
 
 	virtual void Unload();
 private:
-
+	EnemyManager* m_pEnemyManager = nullptr;
 };

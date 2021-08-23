@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-class Grid;
+class EnemyManager;
 class Multiplayer final : public dae::Scene
 {
 public:
@@ -12,7 +12,8 @@ public:
 	Multiplayer(Multiplayer&& other) = delete;
 	Multiplayer& operator=(Multiplayer&& other) = delete;
 
+	void Update() override;
 private:
-	Grid* m_pGrid = nullptr;
+	EnemyManager* m_pEnemyManager = nullptr;
 };
 

@@ -63,9 +63,21 @@ Singleplayer::Singleplayer() : Scene{"Singleplayer"}
 	//EnemyManager::SaveToFiile("../Data/Waves/Wave3.txt", size, 10, 3, 8, 3, 6, 1);
 
 	m_pEnemyManager = new EnemyManager(this, 500, 300);
-	m_pEnemyManager->LoadFromFile("../Data/Waves/Wave1.txt");
+
+	m_WaveNames = { "../Data/Waves/Wave1.txt","../Data/Waves/Wave2.txt","../Data/Waves/Wave3.txt" };
+	m_pEnemyManager->LoadFromFile(m_WaveNames[m_CurrentWaveIndex]);
 }
 
 Singleplayer::~Singleplayer()
 {
+}
+
+void Singleplayer::Update()
+{
+	m_pEnemyManager->Update();
+	if (m_pEnemyManager->GetAmountOfEnemiesAlive())
+	{
+		m_CurrentWaveIndex++;
+		m_pEnemyManager->LoadFromFile(m_WaveNames[m_CurrentWaveIndex]);
+	}
 }

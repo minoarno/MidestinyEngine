@@ -18,6 +18,7 @@
 #include "TextureSpriteSheet.h"
 
 #include "Log.h"
+#include <algorithm>
 
 EnemyManager::EnemyManager(dae::Scene* pScene,float xSpawner, float ySpawner)
 	: m_pScene{ pScene }
@@ -30,8 +31,18 @@ EnemyManager::~EnemyManager()
 {
 }
 
+void EnemyManager::Update()
+{
+	if (m_pEnemies.size() > 0)
+	{
+		std::vector<Enemy*>::iterator pend = std::remove(m_pEnemies.begin(), m_pEnemies.end(), nullptr);
+	}
+}
+
 void EnemyManager::LoadFromFile(const std::string& filename)
 {
+	m_pEnemies.clear();
+
 	std::ifstream in{ };
 	in.open(filename);
 	if (!in)
@@ -113,4 +124,9 @@ void EnemyManager::SaveToFiile(const std::string& filename, float monsterSize, i
 	BinaryWriter::SaveToBin(out, amountOfRowsGalaga);
 
 	out.close();
+}
+
+int EnemyManager::GetAmountOfEnemiesAlive() const
+{
+	return m_pEnemies.size();
 }

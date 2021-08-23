@@ -11,6 +11,8 @@
 #include "Font.h"
 #include "ResourceManager.h"
 
+#include "EnemyManager.h"
+
 using namespace dae;
 
 Versus::Versus()
@@ -54,7 +56,11 @@ Versus::Versus()
 	player->AddComponent(playerComponent);
 	playerComponent->SetGameObject(player);
 	player->SetTexture("SpaceShip.png", 2, 1);
+	player->SetPosition(500, 700);
 	Add(player);
+
+	m_pEnemyManager = new EnemyManager(this, 500, 300);
+	m_pEnemyManager->LoadFromFile("../Data/Waves/Wave1.txt");
 }
 
 Versus::~Versus()
@@ -71,6 +77,7 @@ void Versus::FixedUpdate()
 
 void Versus::Update()
 {
+	m_pEnemyManager->Update();
 }
 
 void Versus::LateUpdate()
