@@ -66,6 +66,9 @@
     <ClCompile Include="BossGalaga.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lives.h">
@@ -108,6 +111,9 @@
       <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="BossGalaga.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
       <Filter>Enemy</Filter>
     </ClInclude>
   </ItemGroup>

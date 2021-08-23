@@ -192,16 +192,23 @@ void dae::GameObject::Render() const
 		{
 			if (m_pTexture->UseSourceRect())
 			{
-				Renderer::GetInstance().RenderTexture(*m_pTexture, m_pTexture->GetSourceRect(), pos.x, pos.y, m_pTexture->GetWidth(), m_pTexture->GetHeight());
+				Renderer::GetInstance().RenderTexture(m_pTexture, m_pTexture->GetSourceRect(), pos.x, pos.y, m_pTexture->GetWidth(), m_pTexture->GetHeight());
 			}
 			else
 			{
-				Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y, m_pTexture->GetWidth(), m_pTexture->GetHeight());
+				Renderer::GetInstance().RenderTexture(m_pTexture, pos.x, pos.y, m_pTexture->GetWidth(), m_pTexture->GetHeight());
 			}
 		}
 		else
 		{
-			Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+			if (m_pTexture->UseSourceRect())
+			{
+				Renderer::GetInstance().RenderTexture(m_pTexture, m_pTexture->GetSourceRect(),pos.x, pos.y);
+			}
+			else
+			{
+				Renderer::GetInstance().RenderTexture(m_pTexture, pos.x, pos.y);
+			}
 		}
 	}
 

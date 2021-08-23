@@ -38,6 +38,6 @@ namespace dae
 		float m_Height;
 		bool m_CustomBoundaries = false;
 		bool m_UseSourceRect = false;
-		SDL_Rect m_SrcRect;
+		SDL_Rect m_SrcRect = {};
 	};
 }

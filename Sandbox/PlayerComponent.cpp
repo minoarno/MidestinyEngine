@@ -32,9 +32,9 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, 
 	, m_pScore{ pScore }
 	, m_pLives{ pLives }
 {
-	dae::InputManager::GetInstance().AddOnHold(up   , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(up   , new MoveCommand(pGameObject, { 0,-1, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(left , new MoveCommand(pGameObject, {-1, 0, 0 }, m_Speed), pScene);
-	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0,-1, 0 }, m_Speed), pScene);
+	dae::InputManager::GetInstance().AddOnHold(down , new MoveCommand(pGameObject, { 0, 1, 0 }, m_Speed), pScene);
 	dae::InputManager::GetInstance().AddOnHold(right, new MoveCommand(pGameObject, { 1, 0, 0 }, m_Speed), pScene);
 }
 #pragma warning(pop)
@@ -42,8 +42,6 @@ PlayerComponent::PlayerComponent(Score* pScore, Lives* pLives, SDL_Scancode up, 
 void PlayerComponent::Initialize()
 {
 	m_pSpriteSheet = m_pGameObject->GetComponent<dae::TextureSpriteSheet>();
-	glm::vec3 pos = {};
-	m_pGameObject->GetComponent<dae::Transform>()->SetPosition(pos.x, pos.y, pos.z);
 }
 
 void PlayerComponent::IncrementScore()

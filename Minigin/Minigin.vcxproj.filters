@@ -124,7 +124,10 @@
     <ClInclude Include="BinaryDataType.h">
       <Filter>Binary Reader And Writer</Filter>
     </ClInclude>
-    <ClInclude Include="FunctionCommand.h" />
+    <ClInclude Include="FunctionCommand.h">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -229,7 +232,10 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="FunctionCommand.cpp" />
+    <ClCompile Include="FunctionCommand.cpp">
+      <Filter>Input, Commands And Observers</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

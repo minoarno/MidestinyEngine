@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="BossGalaga.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Goei.cpp" />
     <ClCompile Include="LiveObserver.cpp" />
     <ClCompile Include="Lives.cpp" />
@@ -174,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="BossGalaga.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Goei.h" />
     <ClInclude Include="LiveObserver.h" />
     <ClInclude Include="Lives.h" />

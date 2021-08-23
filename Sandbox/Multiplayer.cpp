@@ -25,7 +25,6 @@ Multiplayer::Multiplayer()
 	go2->SetPosition(216, 180);
 	Add(go2);
 
-
 	Font* font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	GameObject* to = new GameObject();
 	to->AddComponent(new TextComponent{ font,"Midestiny Engine" });
@@ -62,7 +61,8 @@ Multiplayer::Multiplayer()
 	PlayerComponent* playerComponent = new PlayerComponent{ pScore1, pLives1, SDL_SCANCODE_W, SDL_SCANCODE_A, SDL_SCANCODE_S, SDL_SCANCODE_D, this, player1 };
 	player1->AddComponent(playerComponent);
 	playerComponent->SetGameObject(player1);
-	player1->SetTexture("Qbert.png", 8, 1);
+	player1->SetTexture("SpaceShip.png", 2, 1);
+	player1->SetPosition(400, 700);
 	Add(player1);
 
 	GameObject* lives2 = new GameObject();
@@ -89,7 +89,9 @@ Multiplayer::Multiplayer()
 
 	PlayerComponent* playerComponent2 = new PlayerComponent{pScore2, pLives2, dae::ControllerButton::DPadUp, dae::ControllerButton::DPadLeft, dae::ControllerButton::DPadDown, dae::ControllerButton::DPadRight, this,player2 };
 	player2->AddComponent(playerComponent2);
-	player2->SetTexture("Qbert2.png", 8, 1);
+	player2->SetTexture("SpaceShip.png", 2, 1);
+	player2->SetPosition(700, 700);
+
 	Add(player2);
 }
 

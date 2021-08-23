@@ -61,7 +61,7 @@ void TextComponent::Render() const
 		if (m_Text != "")
 		{
 			const glm::vec3 pos = m_pGameObject->GetComponent<dae::Transform>()->GetPosition();
-			dae::Renderer::GetInstance().RenderTexture(*m_pGameObject->GetComponent<dae::Texture2D>(), pos.x, pos.y);
+			dae::Renderer::GetInstance().RenderTexture(m_pGameObject->GetComponent<dae::Texture2D>(), pos.x, pos.y);
 		}
 	}
 }

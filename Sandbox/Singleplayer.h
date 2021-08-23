@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 
+class EnemyManager;
 class Singleplayer final : public dae::Scene
 {
 public:
@@ -10,7 +11,12 @@ public:
 	Singleplayer& operator=(Singleplayer&& other) = delete;
 	Singleplayer(Singleplayer&& other) = delete;
 	~Singleplayer();
-private:
 
+	//void FixedUpdate() override;
+	//void Update() override;
+	//void LateUpdate() override;
+	//void Render() const override;
+private:
+	EnemyManager* m_pEnemyManager = nullptr;
 };
 
